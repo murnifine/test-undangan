@@ -1,16 +1,26 @@
 "use client";
 
+import MantineProvideLayout from "@/lib/MantineProvideLayout";
+import { Button } from "@mantine/core";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-export default function Home() {
-  const [template, setTemplate] = useState("edi/edi1");
+// export const metadata: Metadata = {
+//   title: "Weeding Nasir &",
+//   description: "come to my weeding",
+// };
 
-  const Templates = dynamic(() => import(`../template/${template}/`), {
-    ssr: false,
-  });
+export default function Home() {
+  const [template, setTemplate] = useState("edi/tmp1");
+
+  const exampleTemplates = [];
+
+  const Templates = dynamic(() => import(`../template/${template}/`));
+
   return (
     <>
+      {/* <MantineProvideLayout> */}
       <div>
         <select onChange={(e) => setTemplate(e.target.value)} name="" id="">
           <option value="edi/edi1">edi 1</option>
@@ -18,6 +28,8 @@ export default function Home() {
           <option value="oscar/tmp1">tmp 1 by oscar edit</option>
         </select>
       </div>
+      <Button>Halo</Button>
+      {/* </MantineProvideLayout> */}
       {/* <Templates /> */}
     </>
   );

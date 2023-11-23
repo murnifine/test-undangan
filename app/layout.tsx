@@ -5,9 +5,12 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Weeding Nasir &",
-  description: "come to my weeding",
+  title: "Web Undangan",
+  description: "Gunakan website undangan dengan mudah",
 };
+
+import "@mantine/core/styles.css";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 export default function RootLayout({
   children,
@@ -21,5 +24,12 @@ export default function RootLayout({
         {children}
       </body>
     </html>
+
+    // <html lang="en">
+    //   <head>
+    //     <ColorSchemeScript />
+    //   </head>
+    //   <body>{children}</body>
+    // </html>
   );
 }
