@@ -9,8 +9,7 @@ export default function Tmp1() {
 
   return (
     <Layout>
-
-      <h1>Edi : ini saya edit</h1>
+      <div>azmi : ini saya azmi</div>
 
       <div className="relative flex flex-col   justify-center w-full px-5 md:max-w-[600px] h-full overflow-scroll  ">
         <Image
