@@ -1,11 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import Slide1 from "../template/wanazmi/tmp1/(content)/slide1";
-import Slide2 from "../template/wanazmi/tmp1/(content)/slide2";
-import dataTemplates from "@/lib/dataTemplates";
 import dynamic from "next/dynamic";
-import Winter from "@/template/winter/page";
 import { useState } from "react";
 
 export default function Home() {
