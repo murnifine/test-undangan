@@ -1,3 +1,7 @@
 export default function Index() {
-  return <>Halo edi edit lagi</>;
+  return (
+    <>
+      <div>Mengedit file edi lagi</div>
+    </>
+  );
 }
