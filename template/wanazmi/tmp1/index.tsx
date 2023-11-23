@@ -9,7 +9,9 @@ export default function Tmp1() {
 
   return (
     <Layout>
-      <div>update dari branch wanazmi</div>
+
+      <h1>Edi : ini saya edit</h1>
+
       <div className="relative flex flex-col   justify-center w-full px-5 md:max-w-[600px] h-full overflow-scroll  ">
         <Image
           className="absolute h-full inline-block  z-0"
