@@ -15,7 +15,7 @@ export default function Home() {
         <select onChange={(e) => setTemplate(e.target.value)} name="" id="">
           <option value="edi/edi1">edi 1</option>
           <option value="edi/edi2">edi 2</option>
-          <option value="oscar/tmp1">tmp 1 by oscar</option>
+          <option value="oscar/tmp1">tmp 1 by oscar edit</option>
         </select>
       </div>
       {/* <Templates /> */}

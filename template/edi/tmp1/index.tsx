@@ -1,3 +1,3 @@
 export default function Index() {
-  return <>Halo edi</>;
+  return <>Halo edi edit lagi</>;
 }
