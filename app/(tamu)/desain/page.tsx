@@ -6,6 +6,8 @@ import { useState } from "react";
 import { SearchTemplate } from "../components/SearchTemplate";
 import { CardItemTemplate } from "../components/CardItemTemplate";
 
+import { debounce } from "lodash";
+
 // export const metadata: Metadata = {
 //   title: "Desain - Olvit | Online Invitation",
 //   description: "Sampaikan undanganmu dengan mudah",
@@ -45,6 +47,22 @@ export default function Page() {
     },
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Handle search input change with debounce
+  const handleSearchChange = debounce((value) => {
+    setSearchTerm(value);
+    console.log(value, "ok");
+  }, 300);
+
+  // Filter templates based on search term
+  const filteredTemplates = templates.filter((template) =>
+    template.path
+      .replace("-", " ")
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="py-10">
       <Container size="lg">
@@ -60,15 +78,25 @@ export default function Page() {
           </p>
         </div>
 
-        <SearchTemplate />
+        <SearchTemplate handleSearchChange={handleSearchChange} />
 
         <div className="py-10">
+          {filteredTemplates.length <= 0 && (
+            <div>
+              <p className="text-center">Desain tersebut belum tersedia!</p>
+            </div>
+          )}
+
           <Grid>
-            {templates.map((item) => (
-              <Grid.Col span={4} key={item.path}>
-                <CardItemTemplate template={item} />
-              </Grid.Col>
-            ))}
+            {filteredTemplates &&
+              filteredTemplates.map((item) => (
+                <Grid.Col
+                  span={{ base: 12, sm: 6, md: 4, lg: 3 }}
+                  key={item.path}
+                >
+                  <CardItemTemplate template={item} />
+                </Grid.Col>
+              ))}
           </Grid>
         </div>
       </Container>

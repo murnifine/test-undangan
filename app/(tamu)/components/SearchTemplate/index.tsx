@@ -7,11 +7,16 @@ import {
 } from "@mantine/core";
 import { IconSearch, IconArrowRight } from "@tabler/icons-react";
 
-export function SearchTemplate(props: TextInputProps) {
+export function SearchTemplate({
+  handleSearchChange,
+}: {
+  handleSearchChange: any;
+}) {
   const theme = useMantineTheme();
 
   return (
     <TextInput
+      onChange={(e) => handleSearchChange(e.target.value)}
       radius="xl"
       size="lg"
       placeholder="Cari desain yang kamu suka"
@@ -32,7 +37,7 @@ export function SearchTemplate(props: TextInputProps) {
           />
         </ActionIcon>
       }
-      {...props}
+      // {...props}
     />
   );
 }

@@ -14,6 +14,7 @@ import {
   Modal,
   Button,
   ActionIcon,
+  ScrollArea,
 } from "@mantine/core";
 import classes from "./ImageCard.module.css";
 import uppercaseFirstLetter from "@/utils/uppercaseFirstLetter";
@@ -39,6 +40,7 @@ export function CardItemTemplate({ template }: { template: Template }) {
   const [previewTemplate, setPreviewTemplate] = useState<string | null>(
     "wanazmi/simple-flower"
   );
+
   const TemplateComponent = dynamic(
     () => import(`../../../../template/${previewTemplate}/`)
   );
@@ -111,6 +113,7 @@ export function CardItemTemplate({ template }: { template: Template }) {
 
       <>
         <Modal
+          scrollAreaComponent={ScrollArea.Autosize}
           styles={{
             body: { padding: 0 },
           }}
@@ -118,18 +121,22 @@ export function CardItemTemplate({ template }: { template: Template }) {
           opened={opened}
           onClose={close}
           // title="This is a fullscreen modal"
-          fullScreen
-          radius={0}
+          // fullScreen
+          radius={5}
           p={0}
+          size={"100%"}
           transitionProps={{ transition: "fade", duration: 200 }}
         >
           <div className="relative">
-            <TemplateComponent />
-            <div className="fixed right-6 top-6">
-              <Button variant="filled" size="xs" onClick={close}>
+            <div className="fixed mx-auto top-2 flex gap-2">
+              <Button variant="filled" size="sm" onClick={close}>
                 Kembali
               </Button>
+              {/* <div className="bg-white flex justify-center items-center px-3 w-full">
+                Halo
+              </div> */}
             </div>
+            <TemplateComponent />
           </div>
         </Modal>
       </>
