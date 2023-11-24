@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Web Undangan",
-  description: "Gunakan website undangan dengan mudah",
+  title: "Olvit - Online Invitation",
+  description: "Sampaikan undanganmu dengan mudah",
 };
-
-import "@mantine/core/styles.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 export default function RootLayout({
   children,
@@ -19,17 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {/* <body className=" font-Poppins flex flex-col items-center justify-center w-full h-full bg-slate-100 overflow-scroll"> */}
-        {children}
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body className=" min-h-screen min-w-full">
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
-
-    // <html lang="en">
-    //   <head>
-    //     <ColorSchemeScript />
-    //   </head>
-    //   <body>{children}</body>
-    // </html>
   );
 }
