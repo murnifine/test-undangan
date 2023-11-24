@@ -16,7 +16,7 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import classes from "./ImageCard.module.css";
-import uppercaseFirstLetter from "@/lib/uppercaseFirstLetter";
+import uppercaseFirstLetter from "@/utils/uppercaseFirstLetter";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import dynamic from "next/dynamic";
