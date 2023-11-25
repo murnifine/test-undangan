@@ -12,15 +12,15 @@ const dataWeedings = [
             photos : memepelaiPria,
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
-                instagram : 'h',
-                tiktok : '',
+                instagram : '',
+                tiktok : 'https://www.tiktok.com/@shinobi.mubar?_t=8hcXG1a5lO4&_r=1',
             }
         },
         wanita : {
             id: 2,
             namaMempelai : 'Nurlina',
-            bapak : 'Gunawan',
-            ibu: 'Wa Ode Tila',
+            bapak : 'La Ringgasa',
+            ibu: 'Wa Ode Wiya',
             photos : memepelaiPria,
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',

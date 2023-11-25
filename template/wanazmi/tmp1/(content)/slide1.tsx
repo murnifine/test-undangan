@@ -7,7 +7,6 @@ import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
 
 export default function Slide1({ dataWeddings }: any) {
-  console.log(dataWeddings);
   useEffect(() => {
     const arrowAnimation = anime.timeline({
       autoplay: true,

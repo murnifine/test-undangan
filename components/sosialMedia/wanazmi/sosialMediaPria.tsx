@@ -7,7 +7,7 @@ export default function SosialMediaPria({ dataWeddings }: any) {
   const { facebook, instagram, tiktok } = dataWeddings?.pria.sosialMedia;
   return (
     <>
-      <div className="flex h-10 gap-5 justify-start items-center">
+      <div className="flex h-10 gap-5 justify-start items-center bg-pink-300 px-4 rounded-lg shadow-md">
         {instagram && (
           <Link href={instagram} target="_blank">
             <IoLogoInstagram size="1.5rem" />

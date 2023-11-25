@@ -4,8 +4,8 @@ import dataWeedings from "@/lib/dataweedings";
 import { IoLogoInstagram } from "react-icons/io";
 import { CiFacebook } from "react-icons/ci";
 import { PiTiktokLogoThin } from "react-icons/pi";
-import SosialMediaPria from "./sosialMediaPria";
-import SosialMediaWanita from "./sosialMediaWanita";
+import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
+import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
 
 export default function Candidate({ dataWeddings }: any) {
   return (
@@ -47,7 +47,7 @@ export default function Candidate({ dataWeddings }: any) {
         </div>
         <div className="flex flex-col items-center gap-5 text-slate-800">
           <div className=" flex flex-col items-center text-sm ">
-            <span className=" font-semibold ">Putra dari</span>
+            <span className=" font-semibold ">Putri dari</span>
             <span>
               {dataWeddings.wanita.bapak} & {dataWeddings.wanita.ibu}
             </span>
