@@ -12,6 +12,8 @@ export default async function Page({
   // GET USER DATA
   const user = await prisma.user.findFirst({
     include: {
+      ucapan: true,
+      photo_moment: true,
       template: {
         include: {
           admin: true,
@@ -38,7 +40,6 @@ export default async function Page({
       default: () => <div>Pengguna belum menerapkan template</div>,
     }))
   );
-
   const defaultFoto = await imageDefault();
 
   return (
