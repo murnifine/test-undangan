@@ -1,6 +1,6 @@
 export default async function imageDefault(){
     const response = await fetch(
-        "https://api.unsplash.com/search/photos/?query=weddings&client_id=vbGpOUjSQYepsYnW5uBcdVRRmcZsv-lxUZDbTr2NQTc"
+        `https://api.unsplash.com/search/photos/?query=weddings&client_id=${process.env.UNPLAS_ACCES_KEY}`
       );
     
       function generateRandomNumber() {
