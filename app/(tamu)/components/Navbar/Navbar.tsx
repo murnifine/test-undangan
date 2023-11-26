@@ -103,7 +103,7 @@ export function Navbar() {
             {/* <MantineLogo size={30} /> */}
             <Link href={"/"} className="flex gap-2 items-center">
               <IconHeartFilled className="text-pink-600" />
-              <p className="text-2xl font-semibold text-pink-600 ">Olvit</p>
+              <p className="text-2xl font-semibold text-pink-600 ">Olvite</p>
             </Link>
 
             <Group h="100%" gap={0} visibleFrom="sm">
