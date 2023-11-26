@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Slide1 from "./(content)/slide1";
 import Slide2 from "./(content)/slide2";
@@ -8,7 +9,8 @@ import Slide4 from "./(content)/slide4";
 import Slide5 from "./(content)/slide5";
 import Slide6 from "./(content)/slide6";
 
-export default function Tmp1() {
+
+export default function Tmp1({ user }: { user: User }) {
   const dataWeddings = dataweedings[0];
 
   return (
@@ -27,6 +29,7 @@ export default function Tmp1() {
         <Slide3 dataWeddings={dataWeddings} />
         <Slide4 dataWeddings={dataWeddings} />
         <Slide6 dataWeddings={dataWeddings} />
+
       </div>
     </Layout>
   );

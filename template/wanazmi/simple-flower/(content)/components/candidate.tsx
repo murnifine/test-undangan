@@ -7,7 +7,13 @@ import { PiTiktokLogoThin } from "react-icons/pi";
 import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
 import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
 
-export default function Candidate({ dataWeddings }: any) {
+
+type Props = {
+  dataWeddings: any;
+  user: User;
+};
+
+export default function Candidate({ dataWeddings, user }: Props) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-10">
       <div className="flex flex-col justify-center items-center gap-5 text-xlå">
@@ -23,12 +29,10 @@ export default function Candidate({ dataWeddings }: any) {
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putra dari</span>
             <span>
-              {dataWeddings.pria.bapak} & {dataWeddings.pria.ibu}
+              {user.nama_ibu_pria} & {user.nama_ayah_pria}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">
-            {dataWeddings.pria?.namaMempelai}
-          </span>
+          <span className="text-4xl font-Sacramento ">{user.nama_pria}</span>
           <SosialMediaPria dataWeddings={dataWeddings} />
         </div>
       </div>
@@ -49,12 +53,10 @@ export default function Candidate({ dataWeddings }: any) {
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putri dari</span>
             <span>
-              {dataWeddings.wanita.bapak} & {dataWeddings.wanita.ibu}
+              {user.nama_ayah_wanita} & {user.nama_ibu_wanita}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">
-            {dataWeddings.wanita?.namaMempelai}
-          </span>
+          <span className="text-4xl font-Sacramento ">{user.nama_wanita}</span>
           <SosialMediaWanita dataWeddings={dataWeddings} />
         </div>
       </div>
