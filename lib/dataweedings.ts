@@ -2,6 +2,8 @@ import memepelaiPria from "../public/img/mempelaiP.jpg"
 
 
 
+
+
 const dataWeedings = [
     {   
         pria : {
