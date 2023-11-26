@@ -1,19 +1,19 @@
 import Image from "next/image";
-// import mempelaiPria from "";
-import dataWeedings from "@/lib/dataweedings";
-import { IoLogoInstagram } from "react-icons/io";
-import { CiFacebook } from "react-icons/ci";
-import { PiTiktokLogoThin } from "react-icons/pi";
 import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
 import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
+import { PropsDataUser } from "@/types/types";
 
-export default function Candidate({ dataWeddings }: any) {
+export default function Candidate({
+  dataWeddings,
+  user,
+  defaultFoto,
+}: PropsDataUser) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-10">
       <div className="flex flex-col justify-center items-center gap-5 text-xlå">
         <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
           <Image
-            src={dataWeddings.pria.photos}
+            src={user.url_foto_pria ? user.url_foto_pria : "/img/flower.png"}
             width={500}
             height={700}
             alt="mempelai pria"
@@ -23,12 +23,10 @@ export default function Candidate({ dataWeddings }: any) {
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putra dari</span>
             <span>
-              {dataWeddings.pria.bapak} & {dataWeddings.pria.ibu}
+              {user.nama_ibu_pria} & {user.nama_ayah_pria}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">
-            {dataWeddings.pria?.namaMempelai}
-          </span>
+          <span className="text-4xl font-Sacramento ">{user.nama_pria}</span>
           <SosialMediaPria dataWeddings={dataWeddings} />
         </div>
       </div>
@@ -39,7 +37,7 @@ export default function Candidate({ dataWeddings }: any) {
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
           <Image
-            src={dataWeddings.wanita.photos}
+            src={user.url_foto_wanita ? user.url_foto_wanita : defaultFoto}
             width={500}
             height={700}
             alt="mempelai wanita"
@@ -49,12 +47,10 @@ export default function Candidate({ dataWeddings }: any) {
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putri dari</span>
             <span>
-              {dataWeddings.wanita.bapak} & {dataWeddings.wanita.ibu}
+              {user.nama_ayah_wanita} & {user.nama_ibu_wanita}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">
-            {dataWeddings.wanita?.namaMempelai}
-          </span>
+          <span className="text-4xl font-Sacramento ">{user.nama_wanita}</span>
           <SosialMediaWanita dataWeddings={dataWeddings} />
         </div>
       </div>

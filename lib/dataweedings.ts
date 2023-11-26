@@ -1,4 +1,4 @@
-import memepelaiPria from "../public/img/mempelaiP.jpg"
+// import memepelaiPria from "/img/mempelaiP.jpg"
 
 
 
@@ -11,7 +11,7 @@ const dataWeedings = [
             namaMempelai : 'Nasir, S.Si.',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
                 instagram : '',
@@ -23,7 +23,7 @@ const dataWeedings = [
             namaMempelai : 'Nurlina',
             bapak : 'La Ringgasa',
             ibu: 'Wa Ode Wiya',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',
                 instagram : '',
@@ -37,7 +37,7 @@ const dataWeedings = [
             namaMempelai : 'Nasir, S.Si.',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
                 instagram : '',
@@ -49,7 +49,7 @@ const dataWeedings = [
             namaMempelai : 'Nurlina',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',
                 instagram : '',
