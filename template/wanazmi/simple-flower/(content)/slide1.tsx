@@ -7,6 +7,7 @@ import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
 import { User } from "@prisma/client";
 
+
 type Props = {
   dataWeddings: any;
   user: User;

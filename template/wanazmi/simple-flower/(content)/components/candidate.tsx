@@ -4,9 +4,9 @@ import dataWeedings from "@/lib/dataweedings";
 import { IoLogoInstagram } from "react-icons/io";
 import { CiFacebook } from "react-icons/ci";
 import { PiTiktokLogoThin } from "react-icons/pi";
-import SosialMediaPria from "./sosialMediaPria";
-import SosialMediaWanita from "./sosialMediaWanita";
-import { User } from "@prisma/client";
+import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
+import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
+
 
 type Props = {
   dataWeddings: any;
@@ -51,7 +51,7 @@ export default function Candidate({ dataWeddings, user }: Props) {
         </div>
         <div className="flex flex-col items-center gap-5 text-slate-800">
           <div className=" flex flex-col items-center text-sm ">
-            <span className=" font-semibold ">Putra dari</span>
+            <span className=" font-semibold ">Putri dari</span>
             <span>
               {user.nama_ayah_wanita} & {user.nama_ibu_wanita}
             </span>

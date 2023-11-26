@@ -6,6 +6,7 @@ generator client {
 }
 
 datasource db {
+
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
@@ -20,6 +21,7 @@ model Admin {
 model TemplateUndangan {
   id   Int     @id @default(autoincrement())
   nama String?
+
 
   users User[]
 

@@ -8,7 +8,7 @@ type Props = {
 
 export default function Slide2({ dataWeddings, user }: Props) {
   return (
-    <div className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 my-20 px-5 rounded-xl shadow-md">
+    <div className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 mt-20 px-5 rounded-xl shadow-md">
       <div className="flex flex-col items-center gap-2">
         <span className="text-3xl text-">
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
