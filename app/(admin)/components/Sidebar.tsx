@@ -18,20 +18,22 @@ import {
   IconReceiptRefund,
   IconLogout,
   IconSwitchHorizontal,
+  IconUser,
+  IconUserHexagon,
+  IconTemplate,
+  IconPhoto,
 } from "@tabler/icons-react";
 import classes from "./Sidebar.module.css";
 
 const tabs = {
   account: [
-    { link: "", label: "Notifications", icon: IconBellRinging },
-    { link: "", label: "Billing", icon: IconReceipt2 },
-    { link: "", label: "Security", icon: IconFingerprint },
-    { link: "", label: "SSH Keys", icon: IconKey },
-    { link: "", label: "Databases", icon: IconDatabaseImport },
-    { link: "", label: "Authentication", icon: Icon2fa },
-    { link: "", label: "Other Settings", icon: IconSettings },
+    { link: "admin", label: "Admin", icon: IconUserHexagon },
+    { link: "admin/user", label: "User", icon: IconUser },
+    { link: "admin/template", label: "Template", icon: IconTemplate },
+    { link: "admin/foto", label: "Foto", icon: IconPhoto },
+    { link: "admin/ucapan", label: "Ucapan", icon: IconMessages },
   ],
-  general: [
+  other: [
     { link: "", label: "Orders", icon: IconShoppingCart },
     { link: "", label: "Receipts", icon: IconLicense },
     { link: "", label: "Reviews", icon: IconMessage2 },
@@ -43,8 +45,8 @@ const tabs = {
 };
 
 export function Sidebar() {
-  const [section, setSection] = useState<"account" | "general">("account");
-  const [active, setActive] = useState("Billing");
+  const [section, setSection] = useState<"account" | "other">("account");
+  const [active, setActive] = useState("Admin");
 
   const links = tabs[section].map((item) => (
     <a
@@ -63,11 +65,11 @@ export function Sidebar() {
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div>
-        <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
+    <nav className="flex flex-col p-5 bg-slate-50 min-h-screen w-60">
+      <div className="flex-none w-full">
+        {/* <Text fw={500} size="sm" className={classes.title} c="dimmed" mb="xs">
           bgluesticker@mantine.dev
-        </Text>
+        </Text> */}
 
         <SegmentedControl
           value={section}
@@ -76,22 +78,22 @@ export function Sidebar() {
           fullWidth
           data={[
             { label: "Account", value: "account" },
-            { label: "System", value: "general" },
+            { label: "Other", value: "other" },
           ]}
         />
       </div>
 
-      <div className={classes.navbarMain}>{links}</div>
+      <div className="flex-1 mt-5">{links}</div>
 
-      <div className={classes.footer}>
-        <a
+      <div className="flex-none">
+        {/* <a
           href="#"
           className={classes.link}
           onClick={(event) => event.preventDefault()}
         >
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span>Change account</span>
-        </a>
+        </a> */}
 
         <a
           href="#"
@@ -99,7 +101,7 @@ export function Sidebar() {
           onClick={(event) => event.preventDefault()}
         >
           <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
+          <span>Keluar</span>
         </a>
       </div>
     </nav>
