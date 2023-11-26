@@ -5,9 +5,15 @@ import { useEffect } from "react";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
+import { User } from "@prisma/client";
 
-export default function Slide1({ dataWeddings }: any) {
-  console.log(dataWeddings);
+type Props = {
+  dataWeddings: any;
+  user: User;
+};
+
+export default function Slide1({ dataWeddings, user }: Props) {
+  // console.log(dataWeddings);
   useEffect(() => {
     const arrowAnimation = anime.timeline({
       autoplay: true,
@@ -55,8 +61,7 @@ export default function Slide1({ dataWeddings }: any) {
       <div className="mt-10 flex flex-col justify-center items-center gap-2">
         <span className="font-Shadows text-lg">THE WEDDING OF</span>
         <span className=" text-4xl font-Rouge">
-          {dataWeddings.wanita?.namaMempelai} &{" "}
-          {dataWeddings.pria?.namaMempelai}
+          {user.nama_wanita} & {user.nama_pria}
         </span>
         <div className="flex justify-center items-center  font-Rajdhani font-bold text-lg text-slate-800 mt-2 ">
           <span className=" border-r-2 pr-5 border-slate-600 mr-5 ">
