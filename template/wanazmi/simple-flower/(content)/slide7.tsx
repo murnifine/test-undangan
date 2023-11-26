@@ -1,4 +1,6 @@
 import { PropsDataUser } from "@/types/types";
+// import Image from "next/image";
+import { Image } from "antd";
 
 export default function Slide7({ user }: PropsDataUser) {
   return (
@@ -12,6 +14,23 @@ export default function Slide7({ user }: PropsDataUser) {
             kasih dan sayang."
           </span>
           <span className=" font-semibold">Q.S Ar-Rum : 21</span>
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <Image
+            className=" rounded-full"
+            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+            width={75}
+          />
+          <Image
+            className=" rounded-full"
+            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+            width={75}
+          />
+          <Image
+            className=" rounded-full"
+            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+            width={75}
+          />
         </div>
         <div className="flex flex-col items-center gap-5 text-xs">
           <span className=" text-center ">

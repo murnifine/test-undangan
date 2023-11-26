@@ -1,14 +1,21 @@
 import { User } from "@prisma/client";
 import Candidate from "./components/candidate";
 import { PropsDataUser } from "@/types/types";
+import { useEffect } from "react";
 
 export default function Slide2({
   dataWeddings,
   user,
   defaultFoto,
 }: PropsDataUser) {
+  // useEffect({
+  //   aos,
+  // });
   return (
-    <div className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 mt-20 px-5 rounded-xl shadow-md">
+    <div
+      data-aos="fade-up"
+      className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 mt-20 px-5 rounded-xl shadow-md"
+    >
       <div className="flex flex-col items-center gap-2">
         <span className="text-3xl text-">
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم

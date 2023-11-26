@@ -11,7 +11,10 @@ export default function Candidate({
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-10">
       <div className="flex flex-col justify-center items-center gap-5 text-xlå">
-        <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
+        <div
+          data-aos="fade-right"
+          className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
+        >
           <Image
             src={user.url_foto_pria ? user.url_foto_pria : "/img/flower.png"}
             width={500}
@@ -35,7 +38,10 @@ export default function Candidate({
       </div>
 
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
-        <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
+        <div
+          data-aos="fade-left"
+          className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
+        >
           <Image
             src={user.url_foto_wanita ? user.url_foto_wanita : defaultFoto}
             width={500}
