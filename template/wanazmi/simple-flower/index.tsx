@@ -1,10 +1,12 @@
+"use client";
 import Image from "next/image";
 import Slide1 from "./(content)/slide1";
 import Slide2 from "./(content)/slide2";
 import Layout from "./layout";
 import dataweedings from "../../../lib/dataweedings";
+import { User } from "@prisma/client";
 
-export default function Tmp1() {
+export default function Tmp1({ user }: { user: User }) {
   const dataWeddings = dataweedings[0];
 
   return (
@@ -18,8 +20,8 @@ export default function Tmp1() {
           quality={75}
           style={{ objectFit: "cover" }}
         />
-        <Slide1 dataWeddings={dataWeddings} />
-        <Slide2 dataWeddings={dataWeddings} />
+        <Slide1 dataWeddings={dataWeddings} user={user} />
+        <Slide2 dataWeddings={dataWeddings} user={user} />
       </div>
     </Layout>
   );
