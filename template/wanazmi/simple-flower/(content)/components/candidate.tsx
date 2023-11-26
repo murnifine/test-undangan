@@ -1,25 +1,19 @@
 import Image from "next/image";
-// import mempelaiPria from "";
-import dataWeedings from "@/lib/dataweedings";
-import { IoLogoInstagram } from "react-icons/io";
-import { CiFacebook } from "react-icons/ci";
-import { PiTiktokLogoThin } from "react-icons/pi";
-import SosialMediaPria from "./sosialMediaPria";
-import SosialMediaWanita from "./sosialMediaWanita";
-import { User } from "@prisma/client";
+import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
+import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
+import { PropsDataUser } from "@/types/types";
 
-type Props = {
-  dataWeddings: any;
-  user: User;
-};
-
-export default function Candidate({ dataWeddings, user }: Props) {
+export default function Candidate({
+  dataWeddings,
+  user,
+  defaultFoto,
+}: PropsDataUser) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-10">
       <div className="flex flex-col justify-center items-center gap-5 text-xlå">
         <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
           <Image
-            src={dataWeddings.pria.photos}
+            src={user.url_foto_pria ? user.url_foto_pria : "/img/flower.png"}
             width={500}
             height={700}
             alt="mempelai pria"
@@ -43,7 +37,7 @@ export default function Candidate({ dataWeddings, user }: Props) {
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden ">
           <Image
-            src={dataWeddings.wanita.photos}
+            src={user.url_foto_wanita ? user.url_foto_wanita : defaultFoto}
             width={500}
             height={700}
             alt="mempelai wanita"
@@ -51,7 +45,7 @@ export default function Candidate({ dataWeddings, user }: Props) {
         </div>
         <div className="flex flex-col items-center gap-5 text-slate-800">
           <div className=" flex flex-col items-center text-sm ">
-            <span className=" font-semibold ">Putra dari</span>
+            <span className=" font-semibold ">Putri dari</span>
             <span>
               {user.nama_ayah_wanita} & {user.nama_ibu_wanita}
             </span>

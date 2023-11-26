@@ -28,6 +28,19 @@ CREATE TABLE "User" (
     "nama_ayah_wanita" TEXT NOT NULL,
     "nama_ibu_wanita" TEXT NOT NULL,
     "templateId" INTEGER,
+    "pria_fb" TEXT,
+    "pria_ig" TEXT,
+    "pria_tk" TEXT,
+    "wanita_fb" TEXT,
+    "wanita_ig" TEXT,
+    "wanita_tk" TEXT,
+    "url_foto_pria" TEXT,
+    "url_foto_wanita" TEXT,
+    "url_foto_utama" TEXT,
+    "waktu_akad_nikah" TIMESTAMP(3),
+    "waktu_resepsi" TIMESTAMP(3),
+    "alamat_akad_nikah" TEXT,
+    "alamat_resepsi" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

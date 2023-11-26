@@ -1,4 +1,6 @@
-import memepelaiPria from "../public/img/mempelaiP.jpg"
+// import memepelaiPria from "/img/mempelaiP.jpg"
+
+
 
 
 
@@ -9,19 +11,19 @@ const dataWeedings = [
             namaMempelai : 'Nasir, S.Si.',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
-                instagram : 'h',
-                tiktok : '',
+                instagram : '',
+                tiktok : 'https://www.tiktok.com/@shinobi.mubar?_t=8hcXG1a5lO4&_r=1',
             }
         },
         wanita : {
             id: 2,
             namaMempelai : 'Nurlina',
-            bapak : 'Gunawan',
-            ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            bapak : 'La Ringgasa',
+            ibu: 'Wa Ode Wiya',
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',
                 instagram : '',
@@ -35,7 +37,7 @@ const dataWeedings = [
             namaMempelai : 'Nasir, S.Si.',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
                 instagram : '',
@@ -47,7 +49,7 @@ const dataWeedings = [
             namaMempelai : 'Nurlina',
             bapak : 'Gunawan',
             ibu: 'Wa Ode Tila',
-            photos : memepelaiPria,
+            photos : "/img/mempelaiP.jpg",
             sosialMedia : {
                 facebook : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',
                 instagram : '',

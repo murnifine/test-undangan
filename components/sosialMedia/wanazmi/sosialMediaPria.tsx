@@ -4,11 +4,11 @@ import { IoLogoInstagram } from "react-icons/io";
 import { PiTiktokLogoThin } from "react-icons/pi";
 
 export default function SosialMediaPria({ dataWeddings }: any) {
-  // const { facebook, instagram, tiktok } = dataWeddings?.pria.sosialMedia;
-  const facebook = dataWeddings?.pria?.sosialMedia.facebook;
-  const instagram = dataWeddings?.pria?.sosialMedia.instagram;
-  const tiktok = dataWeddings?.pria?.sosialMedia.tiktok;
-
+  const { facebook, instagram, tiktok } = dataWeddings?.pria?.sosialMedia;
+  // const facebook = dataWeddings?.pria?.sosialMedia.facebook;
+  // console.log(facebook);
+  // const instagram = dataWeddings?.pria?.sosialMedia.instagram;
+  // const tiktok = dataWeddings?.pria?.sosialMedia.tiktok;
   return (
     <>
       <div className="flex h-10 gap-5 justify-start items-center bg-pink-300 px-4 rounded-lg shadow-md">

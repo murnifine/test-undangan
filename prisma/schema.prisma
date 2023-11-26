@@ -42,4 +42,19 @@ model User {
 
   template   TemplateUndangan? @relation(fields: [templateId], references: [id])
   templateId Int?
+
+  pria_fb         String?
+  pria_ig         String?
+  pria_tk         String?
+  wanita_fb       String?
+  wanita_ig       String?
+  wanita_tk       String?
+  url_foto_pria   String?
+  url_foto_wanita String?
+  url_foto_utama  String?
+
+  waktu_akad_nikah  DateTime?
+  waktu_resepsi     DateTime?
+  alamat_akad_nikah String?
+  alamat_resepsi    String?
 }

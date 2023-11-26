@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import dynamic from "next/dynamic";
 import { Suspense, lazy } from "react";
 import Mempelai from "./Mempelai";
+import imageDefault from "@/utils/imageDefault";
 
 export default async function Page({
   params,
@@ -38,9 +39,11 @@ export default async function Page({
     }))
   );
 
+  const defaultFoto = await imageDefault();
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <TemplateComponent user={user} />
+      <TemplateComponent user={user} defaultFoto={defaultFoto} />
     </Suspense>
   );
 

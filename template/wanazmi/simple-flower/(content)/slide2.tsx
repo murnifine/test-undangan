@@ -1,14 +1,14 @@
 import { User } from "@prisma/client";
 import Candidate from "./components/candidate";
+import { PropsDataUser } from "@/types/types";
 
-type Props = {
-  dataWeddings: any;
-  user: User;
-};
-
-export default function Slide2({ dataWeddings, user }: Props) {
+export default function Slide2({
+  dataWeddings,
+  user,
+  defaultFoto,
+}: PropsDataUser) {
   return (
-    <div className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 my-20 px-5 rounded-xl shadow-md">
+    <div className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 mt-20 px-5 rounded-xl shadow-md">
       <div className="flex flex-col items-center gap-2">
         <span className="text-3xl text-">
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
@@ -21,7 +21,11 @@ export default function Slide2({ dataWeddings, user }: Props) {
           Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
         </span>
       </div>
-      <Candidate dataWeddings={dataWeddings} user={user} />
+      <Candidate
+        dataWeddings={dataWeddings}
+        user={user}
+        defaultFoto={defaultFoto}
+      />
     </div>
   );
 }

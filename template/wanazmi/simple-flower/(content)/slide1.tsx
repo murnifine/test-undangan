@@ -6,13 +6,13 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
 import { User } from "@prisma/client";
+import { PropsDataUser } from "@/types/types";
 
-type Props = {
-  dataWeddings: any;
-  user: User;
-};
-
-export default function Slide1({ dataWeddings, user }: Props) {
+export default function Slide1({
+  dataWeddings,
+  user,
+  defaultFoto,
+}: PropsDataUser) {
   // console.log(dataWeddings);
   useEffect(() => {
     const arrowAnimation = anime.timeline({
@@ -42,6 +42,7 @@ export default function Slide1({ dataWeddings, user }: Props) {
         height={500}
         alt="flower"
       />
+
       <Image
         className=" absolute bottom-0  w-52 z-30 -left-5"
         src={"/img/flower2.png"}
@@ -52,7 +53,7 @@ export default function Slide1({ dataWeddings, user }: Props) {
       <div className="relative shadow-lg w-52 h-52 bg-white rounded-full overflow-hidden border-8 border-white">
         <Image
           className=" w-72 scale-150 mt-5"
-          src={"/img/photo.JPG"}
+          src={user.url_foto_utama ? user.url_foto_utama : defaultFoto}
           width={700}
           height={500}
           alt="bg"

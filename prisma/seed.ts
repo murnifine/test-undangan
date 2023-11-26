@@ -30,18 +30,6 @@ async function main() {
   await prisma.user.createMany({
     data: [
       {
-        email: "malik@mail.com",
-        name: "malik",
-        nama_pria: "Malik",
-        nama_ayah_pria: "Nama ayah",
-        nama_ibu_pria: "nama ibu",
-
-        nama_wanita: "Kilam",
-        nama_ayah_wanita: "Nama ayah",
-        nama_ibu_wanita: "Nama ibu",
-        templateId: 1,
-      },
-      {
         email: "nasir@mail.com",
         name: "nasir",
         nama_pria: "Nasir, S.Si.",
@@ -49,9 +37,24 @@ async function main() {
         nama_ibu_pria: "Wa Ode Tila",
 
         nama_wanita: "Nurlina",
-        nama_ayah_wanita: "Ronaldo",
-        nama_ibu_wanita: "Berliani",
+        nama_ayah_wanita: "La Ringgasa",
+        nama_ibu_wanita: "Wa Ode Wiya",
         templateId: 2,
+
+
+        pria_fb : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
+        pria_ig : '',
+        pria_tk : 'https://www.tiktok.com/@shinobi.mubar?_t=8hcXG1a5lO4&_r=1',
+        wanita_fb : 'https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL',
+        wanita_ig : '',
+        wanita_tk : '',
+        url_foto_pria : '/img/mempelaiP.jpg',
+        url_foto_wanita : '/img/mempelaiP.jpg',
+        url_foto_utama : '/img/photo.JPG',
+      
+     
+        alamat_akad_nikah : '',
+        alamat_resepsi : '',
       },
     ],
   });
