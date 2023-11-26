@@ -42,7 +42,10 @@ export function CardItemTemplate({ template }: { template: Template }) {
   );
 
   const TemplateComponent = dynamic(
-    () => import(`../../../../template/${previewTemplate}/`)
+    () => import(`../../../../template/${previewTemplate}/`),
+    {
+      loading: () => <p>Loading...</p>,
+    }
   );
 
   return (
