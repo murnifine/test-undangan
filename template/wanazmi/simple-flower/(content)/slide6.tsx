@@ -3,9 +3,10 @@
 import { sendUcapan } from "@/lib/actions";
 import prisma from "@/lib/prisma";
 import { PropsDataUser } from "@/types/types";
+import { User } from "@prisma/client";
 import { useRef } from "react";
 
-export default function Slide6({ user }: PropsDataUser) {
+export default function Slide6({ user }: { user: User }) {
   const ref = useRef(null);
   return (
     <div className="flex flex-col items-center w-full h-full z-20  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md">
@@ -41,7 +42,7 @@ export default function Slide6({ user }: PropsDataUser) {
         50 Ucapan
       </span>
       <div className="flex flex-col gap-4  w-full p-3 bg-white/50 h-64 overflow-scroll">
-        {user?.ucapan
+        {/* {user?.ucapan
           ?.map((x) => (
             <div className="flex flex-col text-sm gap-2  p-4  border border-sky-600 rounded-lg text-slate-800 ">
               <span className="text-sm pb-1 border-b border-slate-500">
@@ -50,7 +51,7 @@ export default function Slide6({ user }: PropsDataUser) {
               <span className="text-xs">{x.pesan}</span>
             </div>
           ))
-          .reverse()}
+          .reverse()} */}
       </div>
     </div>
   );

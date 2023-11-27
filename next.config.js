@@ -1,14 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'images.unsplash.com',
-          },
-        ],
-      },
- 
-}
+  images: {
+    domains: ["images.unsplash.com", "*.public.blob.vercel-storage.com"],
+  },
+};
 
 module.exports = nextConfig
