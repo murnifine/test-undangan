@@ -31,11 +31,14 @@ export default function CountDown() {
   }, [timeLeft]);
   return (
     <div className="flex  gap-2 mt-5">
-      {Object.entries(timeLeft).map((cdTime) => {
+      {Object.entries(timeLeft).map((cdTime, i) => {
         const label = cdTime[0];
         const value = cdTime[1];
         return (
-          <div className="flex flex-col justify-center items-center gap-1 bg-pink-500 px-4 py-2 text-xs text-white rounded-lg w-20">
+          <div
+            key={i}
+            className="flex flex-col justify-center items-center gap-1 bg-pink-500 px-4 py-2 text-xs text-white rounded-lg w-20"
+          >
             <span className="text-2xl">{value}</span>
             <span>{label}</span>
           </div>

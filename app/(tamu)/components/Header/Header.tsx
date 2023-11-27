@@ -1,18 +1,5 @@
-import {
-  Image,
-  Container,
-  Title,
-  Button,
-  Group,
-  Text,
-  List,
-  ThemeIcon,
-  rem,
-} from "@mantine/core";
-import { IconCheck } from "@tabler/icons-react";
-import image from "../public/vercel.svg";
+import { Image, Container, Title, Button, Group, Text } from "@mantine/core";
 import classes from "./Header.module.css";
-import MantineProvideLayout from "@/lib/MantineProvideLayout";
 
 export function Header() {
   return (
@@ -70,7 +57,7 @@ export function Header() {
               </Button> */}
             </Group>
           </div>
-          <Image src="./header.webp" className={classes.image} />
+          <Image src="./header.webp" className={classes.image} alt="gambar" />
         </div>
       </Container>
     </div>

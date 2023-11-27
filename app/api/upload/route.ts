@@ -2,6 +2,7 @@ import { put } from "@vercel/blob";
 import { NextRequest, NextResponse } from "next/server";
 import formidable from "formidable";
 import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: Request): Promise<NextResponse> {
   if (!request.body) return NextResponse.json({ message: "bodynya kosong" });
@@ -30,5 +31,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   // console.log(formData, file, { blob });
 
   // return NextResponse.json(blob);
+  revalidatePath(`/admin/foto?userId=${userId}`);
   return NextResponse.json({ message: "upload" });
 }

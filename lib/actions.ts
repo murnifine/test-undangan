@@ -27,23 +27,60 @@ export const getAllUsers = async () => {
   return users;
 };
 
-// export const uploadGambar = async (formData: FormData, userId: string) => {
-export const uploadGambar = async (files: any, userId: string) => {
-  // const file = formData.get("file") as File;
-  const file = files[0] as File;
+// // export const uploadGambar = async (formData: FormData, userId: string) => {
+// export const uploadGambar = async (files: any, userId: string) => {
+//   // const file = formData.get("file") as File;
+//   const file = files[0] as File;
 
-  console.log({ file });
+//   console.log({ file });
 
-  // const blob = await put(file.name, file, {
-  //   access: "public",
-  // });
+//   // const blob = await put(file.name, file, {
+//   //   access: "public",
+//   // });
 
-  // await prisma.photoMoments.create({
-  //   data: {
-  //     url_foto: blob.url,
-  //     userId: parseInt(userId),
-  //   },
-  // });
+//   // await prisma.photoMoments.create({
+//   //   data: {
+//   //     url_foto: blob.url,
+//   //     userId: parseInt(userId),
+//   //   },
+//   // });
 
-  // console.log({ blob });
-};
+//   // console.log({ blob });
+// };
+
+export async function getUserByName(name: string){
+  const user = await prisma.user.findFirst({
+    include: {
+      ucapan: true,
+      photo_moment: true,
+      template: {
+        include: {
+          admin: true,
+        },
+      },
+    },
+    where: {
+      name: name,
+    },
+  });
+
+  return user
+}
+export async function getUserById(id: number){
+  const user = await prisma.user.findFirst({
+    include: {
+      ucapan: true,
+      photo_moment: true,
+      template: {
+        include: {
+          admin: true,
+        },
+      },
+    },
+    where: {
+      id: id,
+    },
+  });
+
+  return user
+}
