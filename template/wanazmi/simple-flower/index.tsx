@@ -12,6 +12,7 @@ import Slide6 from "./(content)/slide6";
 import { AllDataUserProps } from "@/types/types";
 import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
+import Music from "@/components/Music";
 
 export default function Tmp1({
   AllDataUser,
@@ -22,7 +23,7 @@ export default function Tmp1({
 
   return (
     <Layout>
-      <div className="relative flex flex-col gap-5 pb-40   justify-center w-full px-5 md:max-w-[600px] h-full overflow-scroll  ">
+      <div className="relative flex flex-col gap-5 pb-40   justify-center w-full px-5 md:max-w-[600px] h-full overflow-scroll">
         <Image
           className="absolute h-full inline-block  z-0"
           src={"/img/bg.jpg"}
@@ -40,6 +41,7 @@ export default function Tmp1({
       </div>
 
       <Footer />
+      <Music />
     </Layout>
   );
 }

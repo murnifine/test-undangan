@@ -1,8 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { AllDataUserProps, PropsDataUser } from "@/types/types";
+import { AllDataUserProps } from "@/types/types";
 import Image from "next/image";
-// import { Image } from "antd";
 
 export default function Slide7({
   AllDataUser,
@@ -26,6 +26,7 @@ export default function Slide7({
         <div className="flex justify-center items-center gap-3">
           {photoMoments?.slice(0, 3).map((photoMoment) => (
             <Image
+              key={photoMoment.id}
               className=" w-20 h-20 rounded-full object-cover shadow-xl p-1 "
               src={`${photoMoment.url_foto}`}
               width={75}

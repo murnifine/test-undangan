@@ -2,7 +2,7 @@
 
 import { AllDataUserProps } from "@/types/types";
 
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Masonry from "react-responsive-masonry";
 import { Image } from "antd";
 
 const Slide4 = ({ AllDataUser }: { AllDataUser: AllDataUserProps }) => {
@@ -14,6 +14,7 @@ const Slide4 = ({ AllDataUser }: { AllDataUser: AllDataUserProps }) => {
       <Masonry columnsCount={3} className="p-5" gutter="10px">
         {photoMoments?.map((image, i) => (
           <Image
+            alt="Foto"
             key={i}
             src={`${image.url_foto}`}
             style={{ width: "100%", display: "block" }}

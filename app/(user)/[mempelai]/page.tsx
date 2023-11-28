@@ -5,6 +5,7 @@ import imageDefault from "@/utils/imageDefault";
 import { getUserByName } from "@/lib/actions";
 import { UserProps } from "@/types/types";
 
+
 export default async function MempelaiPage({
   params,
 }: {

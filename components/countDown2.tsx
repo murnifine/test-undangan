@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 const countDowntarget: Date = new Date("2023-12-26:12:59:59");
@@ -8,12 +8,22 @@ const waktuSekarang: Date = new Date();
 const now = waktuSekarang.getTime();
 const totalTimeLeft = TargetTimesamp - now;
 export default function CountDown2() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <Countdown
-      daysInHours={true}
-      date={Date.now() + totalTimeLeft}
-      renderer={renderer}
-    />
+    <>
+      {isClient && (
+        <Countdown
+          daysInHours={true}
+          date={Date.now() + totalTimeLeft}
+          renderer={renderer}
+        />
+      )}
+    </>
   );
 }
 
