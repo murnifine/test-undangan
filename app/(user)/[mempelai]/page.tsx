@@ -3,6 +3,8 @@ import dynamic from "next/dynamic";
 import { Suspense, lazy } from "react";
 import Mempelai from "./Mempelai";
 import imageDefault from "@/utils/imageDefault";
+import { profile } from "console";
+import { Profile } from "@prisma/client";
 
 export default async function Page({
   params,
@@ -12,11 +14,16 @@ export default async function Page({
   // GET USER DATA
   const user = await prisma.user.findFirst({
     include: {
-      ucapan: true,
-      photo_moment: true,
-      template: {
+      // Profile: true,
+      Profile: {
         include: {
-          admin: true,
+          ucapan: true,
+          photo_moment: true,
+          template: {
+            include: {
+              admin: true,
+            },
+          },
         },
       },
     },
@@ -24,15 +31,15 @@ export default async function Page({
       name: params.mempelai,
     },
   });
-
+  const profile = user?.Profile;
   // STOP DAN TAMPILKAN PESAN JIKA USER TIDAK ADA
   if (!user) return <p>User tidak ditemukan</p>;
 
   // GET NAMA TEMPLATE
-  const namaTemplate = user?.template?.nama;
+  const namaTemplate = user?.Profile?.template?.nama;
 
   // GET NAMA PEMBUAT
-  const pembuat = user?.template?.admin?.name;
+  const pembuat = user?.Profile?.template?.admin?.name;
 
   // GET TEMPLATE COMPONENT : CARA 1
   const TemplateComponent = lazy(() =>
@@ -44,7 +51,11 @@ export default async function Page({
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <TemplateComponent user={user} defaultFoto={defaultFoto} />
+      <TemplateComponent
+        user={user}
+        profile={profile}
+        defaultFoto={defaultFoto}
+      />
     </Suspense>
   );
 
