@@ -24,14 +24,15 @@ import {
   IconPhoto,
 } from "@tabler/icons-react";
 import classes from "./Sidebar.module.css";
+import Link from "next/link";
 
 const tabs = {
   account: [
-    { link: "admin", label: "Admin", icon: IconUserHexagon },
-    { link: "admin/user", label: "User", icon: IconUser },
-    { link: "admin/template", label: "Template", icon: IconTemplate },
-    { link: "admin/foto", label: "Foto", icon: IconPhoto },
-    { link: "admin/ucapan", label: "Ucapan", icon: IconMessages },
+    { link: "/admin", label: "Admin", icon: IconUserHexagon },
+    { link: "/admin/user", label: "User", icon: IconUser },
+    { link: "/admin/template", label: "Template", icon: IconTemplate },
+    { link: "/admin/foto", label: "Foto", icon: IconPhoto },
+    { link: "/admin/ucapan", label: "Ucapan", icon: IconMessages },
   ],
   other: [
     { link: "", label: "Orders", icon: IconShoppingCart },
@@ -49,19 +50,19 @@ export function Sidebar() {
   const [active, setActive] = useState("Admin");
 
   const links = tabs[section].map((item) => (
-    <a
+    <Link
       className={classes.link}
       data-active={item.label === active || undefined}
       href={item.link}
       key={item.label}
       onClick={(event) => {
-        event.preventDefault();
+        // event.preventDefault();
         setActive(item.label);
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (
