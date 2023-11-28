@@ -1,16 +1,11 @@
-import { User } from "@prisma/client";
 import Candidate from "./components/candidate";
-import { PropsDataUser } from "@/types/types";
-import { useEffect } from "react";
+import { AllDataUserProps } from "@/types/types";
 
 export default function Slide2({
-  dataWeddings,
-  user,
-  defaultFoto,
-}: PropsDataUser) {
-  // useEffect({
-  //   aos,
-  // });
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
   return (
     <div
       data-aos="fade-up"
@@ -28,11 +23,7 @@ export default function Slide2({
           Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
         </span>
       </div>
-      <Candidate
-        dataWeddings={dataWeddings}
-        user={user}
-        defaultFoto={defaultFoto}
-      />
+      <Candidate AllDataUser={AllDataUser} />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   await prisma.photoMoments.create({
     data: {
-      userId: parseInt(userId),
+      profileId: parseInt(userId),
       url_foto: blob.url,
     },
   });

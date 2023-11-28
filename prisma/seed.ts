@@ -32,6 +32,13 @@ async function main() {
       {
         email: "nasir@mail.com",
         name: "nasir",
+      },
+    ],
+  });
+  await prisma.profile.createMany({
+    data: [
+      {
+        userId : 1,
         nama_pria: "Nasir, S.Si.",
         nama_ayah_pria: "Gunawan",
         nama_ibu_pria: "Wa Ode Tila",
@@ -40,6 +47,7 @@ async function main() {
         nama_ayah_wanita: "La Ringgasa",
         nama_ibu_wanita: "Wa Ode Wiya",
         templateId: 2,
+       
 
 
         pria_fb : 'https://www.facebook.com/nasiracill?mibextid=ZbWKwL',
@@ -51,8 +59,6 @@ async function main() {
         url_foto_pria : '/img/mempelaiP.jpg',
         url_foto_wanita : '/img/mempelaiP.jpg',
         url_foto_utama : '/img/photo.JPG',
-      
-     
         alamat_akad_nikah : '',
         alamat_resepsi : '',
       },

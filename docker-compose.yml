@@ -3,15 +3,18 @@ version: '3.8'
 services:
   postgres:
     image: postgres
-    container_name: wedding
+    container_name: wedding_db
     ports:
       - '5433:5432'
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
+
       POSTGRES_DB: wedding
     volumes :
     - data_postgres:/var/lib/postgresql/data
 
 volumes:
   data_postgres:
+
+

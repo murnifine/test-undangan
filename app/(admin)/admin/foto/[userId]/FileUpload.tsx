@@ -59,7 +59,7 @@ export default function FileUpload({ userId }: { userId: string }) {
         files={files}
         onupdatefiles={handleFileChange}
         allowMultiple={true}
-        maxFiles={3}
+        maxFiles={10}
         acceptedFileTypes={["image/*"]}
         name="files"
         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'

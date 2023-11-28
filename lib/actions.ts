@@ -10,7 +10,7 @@ export const sendUcapan = async (formData: FormData, user: User) => {
 
   const sendUser = await prisma.ucapan.create({
     data: {
-      userId: user.id as number,
+      profileId: user.id as number,
       nama: nama as string,
       pesan: ucapan as string,
     },
@@ -21,11 +21,16 @@ export const sendUcapan = async (formData: FormData, user: User) => {
 export const getAllUsers = async () => {
   const users = await prisma.user.findMany({
     include: {
-      photo_moment: true,
+      Profile : {
+        include : {
+          photo_moment: true,
+        }
+      }
     },
   });
   return users;
 };
+
 
 // // export const uploadGambar = async (formData: FormData, userId: string) => {
 // export const uploadGambar = async (files: any, userId: string) => {
@@ -51,13 +56,17 @@ export const getAllUsers = async () => {
 export async function getUserByName(name: string){
   const user = await prisma.user.findFirst({
     include: {
-      ucapan: true,
-      photo_moment: true,
-      template: {
+      Profile : {
         include: {
-          admin: true,
-        },
-      },
+          ucapan: true,
+          photo_moment: true,
+          template: {
+            include: {
+              admin: true,
+            },
+          },
+        }  
+      }
     },
     where: {
       name: name,
@@ -69,13 +78,18 @@ export async function getUserByName(name: string){
 export async function getUserById(id: number){
   const user = await prisma.user.findFirst({
     include: {
-      ucapan: true,
-      photo_moment: true,
-      template: {
-        include: {
-          admin: true,
-        },
-      },
+      Profile : {
+        include : {
+          ucapan: true,
+          photo_moment: true,
+          template: {
+            include: {
+              admin: true,
+            },
+          },
+
+        }
+      }
     },
     where: {
       id: id,
@@ -84,3 +98,22 @@ export async function getUserById(id: number){
 
   return user
 }
+
+// export async function getSosialMedia(id : number){
+//   const user = await prisma.user.findFirst({
+//     include : {
+//       Profile : {
+//         include : {
+//           pria_ig,
+
+//         }
+
+//       }
+//     },
+//     where : {
+//       id:id
+//     }
+
+//   })
+// }
+
