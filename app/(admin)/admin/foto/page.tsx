@@ -43,10 +43,13 @@ export default async function Page({
                     href={`?userId=${user.id}`}
                     className="flex flex-1 gap-2 items-center px-3"
                   >
-                    <Avatar src={user.url_foto_utama} alt={user.name} />
+                    <Avatar
+                      src={user.Profile?.url_foto_utama}
+                      alt={user.name}
+                    />
                     <div className="flex flex-col">
                       <p className="font-medium text-sm">
-                        {user.nama_pria} & {user.nama_wanita}
+                        {user.Profile?.nama_pria} & {user.Profile?.nama_wanita}
                       </p>
                       <p className="text-xs">{user.name}</p>
                     </div>

@@ -1,8 +1,16 @@
-import { PropsDataUser } from "@/types/types";
-// import Image from "next/image";
-import { Image } from "antd";
+"use client";
 
-export default function Slide7({ user }: PropsDataUser) {
+import { AllDataUserProps, PropsDataUser } from "@/types/types";
+import Image from "next/image";
+// import { Image } from "antd";
+
+export default function Slide7({
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
+  const photoMoments = AllDataUser.user.Profile?.photo_moment;
+
   return (
     <div className="flex flex-col items-center w-full h-full z-20 text-slate-800  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md">
       <div className="flex flex-col gap-5 mt-10 pb-20 ">
@@ -15,22 +23,16 @@ export default function Slide7({ user }: PropsDataUser) {
           </span>
           <span className=" font-semibold">Q.S Ar-Rum : 21</span>
         </div>
-        <div className="flex justify-center items-center gap-2">
-          <Image
-            className=" rounded-full"
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            width={75}
-          />
-          <Image
-            className=" rounded-full"
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            width={75}
-          />
-          <Image
-            className=" rounded-full"
-            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            width={75}
-          />
+        <div className="flex justify-center items-center gap-3">
+          {photoMoments?.slice(0, 3).map((photoMoment) => (
+            <Image
+              className=" w-20 h-20 rounded-full object-cover shadow-xl p-1 "
+              src={`${photoMoment.url_foto}`}
+              width={75}
+              height={75}
+              alt="imageData"
+            />
+          ))}
         </div>
         <div className="flex flex-col items-center gap-5 text-xs">
           <span className=" text-center ">
@@ -45,7 +47,8 @@ export default function Slide7({ user }: PropsDataUser) {
         <div className="flex flex-col items-center gap-5 text-xs">
           <span className=" font-semibold">Kami yang berbahagia</span>
           <span className="text-3xl font-semibold font-Sacramento">
-            {user?.nama_wanita} & {user?.nama_pria}
+            {AllDataUser.user?.Profile?.nama_wanita} &{" "}
+            {AllDataUser.user?.Profile?.nama_pria}
           </span>
         </div>
       </div>

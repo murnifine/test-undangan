@@ -6,7 +6,7 @@ import { IconTrash } from "@tabler/icons-react";
 import { UserProps } from "@/types/types";
 
 export default function Foto({ user }: { user: UserProps }) {
-  const images = user?.photo_moment?.map((item) => ({
+  const images = user?.Profile?.photo_moment?.map((item) => ({
     original: item.url_foto,
     thumbnail: item.url_foto,
   }));

@@ -9,10 +9,15 @@ import Slide3 from "./(content)/slide3";
 import Slide4 from "./(content)/slide4";
 import Slide5 from "./(content)/slide5";
 import Slide6 from "./(content)/slide6";
-import { PropsDataUser } from "@/types/types";
+import { AllDataUserProps } from "@/types/types";
 import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
-export default function Tmp1({ defaultFoto, user }: PropsDataUser) {
+
+export default function Tmp1({
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
   const dataWedding = dataWeedings[0];
 
   return (
@@ -26,20 +31,12 @@ export default function Tmp1({ defaultFoto, user }: PropsDataUser) {
           quality={75}
           style={{ objectFit: "cover" }}
         />
-        <Slide1
-          dataWeddings={dataWedding}
-          user={user}
-          defaultFoto={defaultFoto}
-        />
-        <Slide2
-          dataWeddings={dataWedding}
-          user={user}
-          defaultFoto={defaultFoto}
-        />
-        <Slide3 dataWeddings={dataWedding} user={user} />
-        <Slide4 dataWeddings={dataWedding} />
-        <Slide6 user={user} />
-        <Slide7 user={user} />
+        <Slide1 AllDataUser={AllDataUser} />
+        <Slide2 AllDataUser={AllDataUser} />
+        <Slide3 AllDataUser={AllDataUser} />
+        <Slide4 AllDataUser={AllDataUser} />
+        <Slide6 AllDataUser={AllDataUser} />
+        <Slide7 AllDataUser={AllDataUser} />
       </div>
 
       <Footer />

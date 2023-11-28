@@ -1,13 +1,14 @@
 import Image from "next/image";
-import SosialMediaPria from "../../../../../components/sosialMedia/wanazmi/sosialMediaPria";
-import SosialMediaWanita from "../../../../../components/sosialMedia/wanazmi/sosialMediaWanita";
-import { PropsDataUser } from "@/types/types";
+
+import { AllDataUserProps, PropsDataUser } from "@/types/types";
+import SosialMediaPria from "./sosialMediaPria";
+import SosialMediaWanita from "./sosialMediaWanita";
 
 export default function Candidate({
-  dataWeddings,
-  user,
-  defaultFoto,
-}: PropsDataUser) {
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 mt-10">
       <div className="flex flex-col justify-center items-center gap-5 text-xlå">
@@ -16,7 +17,11 @@ export default function Candidate({
           className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
         >
           <Image
-            src={user.url_foto_pria ? user.url_foto_pria : "/img/flower.png"}
+            src={
+              AllDataUser.user.Profile?.url_foto_pria
+                ? AllDataUser.user.Profile?.url_foto_pria
+                : AllDataUser.defaultFoto
+            }
             width={500}
             height={700}
             alt="mempelai pria"
@@ -26,11 +31,14 @@ export default function Candidate({
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putra dari</span>
             <span>
-              {user.nama_ibu_pria} & {user.nama_ayah_pria}
+              {AllDataUser.user.Profile?.nama_ibu_pria} &{" "}
+              {AllDataUser.user.Profile?.nama_ayah_pria}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">{user.nama_pria}</span>
-          <SosialMediaPria dataWeddings={dataWeddings} />
+          <span className="text-4xl font-Sacramento ">
+            {AllDataUser.user.Profile?.nama_pria}
+          </span>
+          <SosialMediaPria AllDataUser={AllDataUser} />
         </div>
       </div>
       <div>
@@ -43,7 +51,11 @@ export default function Candidate({
           className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
         >
           <Image
-            src={user.url_foto_wanita ? user.url_foto_wanita : defaultFoto}
+            src={
+              AllDataUser.user.Profile?.url_foto_wanita
+                ? AllDataUser.user.Profile?.url_foto_wanita
+                : AllDataUser.defaultFoto
+            }
             width={500}
             height={700}
             alt="mempelai wanita"
@@ -53,11 +65,14 @@ export default function Candidate({
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putri dari</span>
             <span>
-              {user.nama_ayah_wanita} & {user.nama_ibu_wanita}
+              {AllDataUser.user.Profile?.nama_ayah_wanita} &{" "}
+              {AllDataUser.user.Profile?.nama_ibu_wanita}
             </span>
           </div>
-          <span className="text-4xl font-Sacramento ">{user.nama_wanita}</span>
-          <SosialMediaWanita dataWeddings={dataWeddings} />
+          <span className="text-4xl font-Sacramento ">
+            {AllDataUser.user.Profile?.nama_wanita}
+          </span>
+          <SosialMediaWanita AllDataUser={AllDataUser} />
         </div>
       </div>
     </div>

@@ -1,13 +1,15 @@
+import { AllDataUserProps } from "@/types/types";
 import Link from "next/link";
 import { CiFacebook } from "react-icons/ci";
 import { IoLogoInstagram } from "react-icons/io";
 import { PiTiktokLogoThin } from "react-icons/pi";
 
-export default function SosialMediaPria({ dataWeddings }: any) {
-  // const { facebook, instagram, tiktok } = dataWeddings?.pria.sosialMedia;
-  const facebook = dataWeddings?.pria?.sosialMedia.facebook;
-  const instagram = dataWeddings?.pria?.sosialMedia.instagram;
-  const tiktok = dataWeddings?.pria?.sosialMedia.tiktok;
+export default function SosialMediaPria({
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
+  const { facebook, instagram, tiktok } = AllDataUser.sosialMediaPria;
 
   return (
     <>

@@ -1,10 +1,15 @@
+import { AllDataUserProps } from "@/types/types";
 import Link from "next/link";
 import { CiFacebook } from "react-icons/ci";
 import { IoLogoInstagram } from "react-icons/io";
 import { PiTiktokLogoThin } from "react-icons/pi";
 
-export default function SosialMediaWanita({ dataWeddings }: any) {
-  const { facebook, instagram, tiktok } = dataWeddings?.wanita.sosialMedia;
+export default function SosialMediaWanita({
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
+  const { facebook, instagram, tiktok } = AllDataUser.sosialMediaPria;
   return (
     <>
       <div className="flex h-10 gap-5 justify-start items-center bg-pink-300 px-4 rounded-lg shadow-md">

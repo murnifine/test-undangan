@@ -32,11 +32,25 @@ export default async function MempelaiPage({
 
   // GET DEFAULT FOTO
   const defaultFoto = await imageDefault();
+  const AllDataUser = {
+    user: user,
+    defaultFoto: defaultFoto,
+    sosialMediaPria: {
+      facebook: user.Profile?.pria_fb,
+      instagram: user.Profile?.pria_ig,
+      tiktok: user.Profile?.pria_tk,
+    },
+    sosialMediaWanita: {
+      facebook: user.Profile?.wanita_fb,
+      instagram: user.Profile?.wanita_ig,
+      tiktok: user.Profile?.wanita_tk,
+    },
+  };
 
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <TemplateComponent user={user} defaultFoto={defaultFoto} />
+        <TemplateComponent AllDataUser={AllDataUser} />
       </Suspense>
     </>
   );

@@ -5,11 +5,15 @@ import { useEffect } from "react";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
-import { PropsDataUser } from "@/types/types";
 
 import { AosInit } from "@/lib/aos";
+import { AllDataUserProps, UserProps } from "@/types/types";
 
-export default function Slide1({ user, defaultFoto, profile }: PropsDataUser) {
+export default function Slide1({
+  AllDataUser,
+}: {
+  AllDataUser: AllDataUserProps;
+}) {
   useEffect(() => {
     AosInit;
     const arrowAnimation = anime.timeline({
@@ -28,7 +32,6 @@ export default function Slide1({ user, defaultFoto, profile }: PropsDataUser) {
         { value: 0, duration: 700, delay: 300 },
       ],
     });
-    console.log(user, "ini");
   });
   return (
     <div className="relative  flex flex-col justify-center items-center max-w-full md:w-[600px] h-screen z-20">
@@ -54,9 +57,9 @@ export default function Slide1({ user, defaultFoto, profile }: PropsDataUser) {
         <Image
           className=" w-72 scale-150 mt-5"
           src={
-            user?.profile?.url_foto_utama
-              ? user?.profile?.url_foto_utama
-              : defaultFoto
+            AllDataUser.user?.Profile?.url_foto_utama
+              ? AllDataUser.user?.Profile?.url_foto_utama
+              : AllDataUser.defaultFoto
           }
           width={700}
           height={500}
@@ -69,47 +72,59 @@ export default function Slide1({ user, defaultFoto, profile }: PropsDataUser) {
       >
         <span className="font-Shadows text-lg">THE WEDDING OF</span>
         <span className=" text-4xl font-Rouge">
-          {user?.profile?.nama_wanita} & {user?.profile?.nama_pria}
+          {AllDataUser.user?.Profile?.nama_wanita} &{" "}
+          {AllDataUser.user?.Profile?.nama_pria}
         </span>
         <div
           data-aos="fade-in"
           className="flex justify-center items-center  font-Rajdhani font-bold text-lg text-slate-800 mt-2 "
-        >
-          <span>2023-12-26</span>
-        </div>
-        {/* <div
+        ></div>
+        <div
           data-aos="fade-in"
           className="flex justify-center items-center  font-Rajdhani font-bold text-lg text-slate-800 mt-2 "
         >
-          <span>
-            {user?.profile?.waktu_akad_nikah.toLocaleString("en-GB", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-          </span>
+          {/* <span>
+            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+              "en-GB",
+              {
+                hour: "2-digit",
+                minute: "2-digit",
+              }
+            )}
+          </span> */}
           <span className=" border-r-2 pr-5 border-slate-600 mr-5 ">
-            {user?.profile?.waktu_akad_nikah.toLocaleString("en-GB", {
-              weekday: "long",
-            })}
+            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+              "en-GB",
+              {
+                weekday: "long",
+              }
+            )}
           </span>
 
           <span>
-            {user?.profile?.waktu_akad_nikah.toLocaleString("en-GB", {
-              day: "2-digit",
-            })}{" "}
+            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+              "en-GB",
+              {
+                day: "2-digit",
+              }
+            )}{" "}
             -{" "}
-            {user?.profile?.waktu_akad_nikah.toLocaleString("en-GB", {
-              month: "2-digit",
-            })}{" "}
+            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+              "en-GB",
+              {
+                month: "2-digit",
+              }
+            )}{" "}
             -{" "}
-            {user?.profile?.waktu_akad_nikah.toLocaleString("en-GB", {
-              year: "numeric",
-            })}
+            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+              "en-GB",
+              {
+                year: "numeric",
+              }
+            )}
           </span>
-        </div> */}
-        {/* <div data-aos="flip-down" className="z-30"> */}
+        </div>
         <CountDown2 />
-        {/* </div> */}
         <div className="flex flex-col justify-center text-sky-600 items-center gap-2 mt-10">
           <IoIosArrowRoundDown id="arrow-scroll" size="2em" />
           <span className=" text-sky-600 font-bold font-Rajdhani">
