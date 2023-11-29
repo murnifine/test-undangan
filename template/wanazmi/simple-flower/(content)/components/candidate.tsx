@@ -10,7 +10,7 @@ export default function Candidate({
   AllDataUser: AllDataUserProps;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-5 mt-10">
+    <div className="flex flex-col items-center justify-center gap-5 ">
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div
           data-aos="fade-right"

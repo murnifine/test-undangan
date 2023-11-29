@@ -21,7 +21,6 @@ export default function Slide6({
           await sendUcapan(FormData, AllDataUser.user);
           ref.current?.reset();
         }}
-        method="POST"
         className="flex  flex-col w-full h-full gap-5"
       >
         <input
