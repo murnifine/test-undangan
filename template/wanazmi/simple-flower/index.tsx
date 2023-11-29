@@ -14,6 +14,7 @@ import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
 import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
+import { Komponen1 } from "@/components/contoh/ControhContext";
 
 export default function Tmp1({
   AllDataUser,
@@ -29,6 +30,8 @@ export default function Tmp1({
 
   return (
     <Layout>
+      <Komponen1 />
+
       <div
         className="relative flex flex-col gap-5 pb-40   justify-center w-full  md:max-w-[600px] h-full  "
         data-selector="index"

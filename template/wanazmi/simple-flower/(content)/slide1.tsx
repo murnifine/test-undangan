@@ -17,12 +17,10 @@ export default function Slide1({
 }: {
   AllDataUser: AllDataUserProps;
 }) {
+
+
   useEffect(() => {
     jalankanAos();
-    //   document.body.addEventListener("mouseenter",()=>{
-    //     (document.querySelector("#musicBtn") as HTMLButtonElement).click()
-    //     console.log("first")
-    //   })
   }, []);
 
   const waktu = AllDataUser.user?.Profile?.dateTime_akad_nikah;
@@ -31,22 +29,6 @@ export default function Slide1({
     <div
       id="section1"
       className="relative  flex flex-col justify-center items-center max-w-full md:w-[600px] h-screen z-20"
-      // onMouseEnter={() => {
-      //   const playBtn= (document.querySelector("#musicBtn") as HTMLButtonElement)
-      //   if (playBtn.getAttribute("data-play") === "false") {
-      //     (document.querySelector("#musicBtn") as HTMLButtonElement).click()
-      //     playBtn.setAttribute("data-play", "true")
-      //   }
-      // }}
-      // onClick={() => {
-      //   const playBtn = document.querySelector(
-      //     "#musicBtn"
-      //   ) as HTMLButtonElement;
-      //   if (playBtn.getAttribute("data-play") === "false") {
-      //     (document.querySelector("#musicBtn") as HTMLButtonElement).click();
-      //     playBtn.setAttribute("data-play", "true");
-      //   }
-      // }}
     >
       {[
         {
