@@ -83,7 +83,7 @@ function AppIcon({ mouseX, menu }: { mouseX: MotionValue; menu: any }) {
       smooth={true}
       offset={-70}
       duration={500}
-      className="cursor-pointer"
+      className="cursor-pointer "
     >
       <motion.div
         ref={ref}
