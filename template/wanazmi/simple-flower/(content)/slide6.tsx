@@ -11,7 +11,10 @@ export default function Slide6({
 }) {
   const ref: LegacyRef<HTMLFormElement> | undefined = useRef(null);
   return (
-    <div className="flex flex-col items-center w-full h-full z-20  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md">
+    <div
+      id="section6"
+      className="flex flex-col items-center w-full h-full z-20  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md"
+    >
       <span className=" font-Shadows text-3xl  text-pink-700">
         Ucapan & Doa
       </span>

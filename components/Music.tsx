@@ -13,13 +13,44 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
   const [music, setMusic] = useState<Howl>();
   const [isPlay, setIsPlay] = useState(false);
 
-  function controlMusic() {
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     const music = document.querySelector("[data-music='false']");
+
+  //     if (music) {
+  //       music.addEventListener("mouseenter", () => {
+  //         if (music.getAttribute("data-music") == "false") {
+  //           controlMusic();
+  //           music.setAttribute("data-music", "true");
+  //         }
+  //       });
+  //     }
+
+  //     // document.querySelector("#index")?.addEventListener("mouseenter", () => {
+  //     //   controlMusic();
+  //     // });
+  //   }, 2000);
+
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, []);
+
+  function controlMusic(index: number = 0) {
     if (!music) {
       setMusic(
         new Howl({
-          src: listMusic,
-          loop: true,
+          // loop: true,
+          src: [listMusic[index]],
+          preload: true,
           autoplay: true,
+          onend: function () {
+            if (index + 1 == listMusic.length) {
+              controlMusic(0);
+            } else {
+              controlMusic(index + 1);
+            }
+          },
         })
       );
       setIsPlay(true);
@@ -37,8 +68,10 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
 
   return (
     <div
-      className={`fixed bottom-14 right-8 ${isPlay && " animate-pulse"}`}
-      onClick={controlMusic}
+      className={`fixed bottom-28 right-4 ${
+        isPlay && " animate-pulse"
+      } z-[99999] `}
+      onClick={() => controlMusic(0)}
     >
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
         <ActionIcon

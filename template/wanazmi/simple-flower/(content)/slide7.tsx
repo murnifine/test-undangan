@@ -12,7 +12,10 @@ export default function Slide7({
   const photoMoments = AllDataUser.user.Profile?.photo_moment;
 
   return (
-    <div className="flex flex-col items-center w-full h-full z-20 text-slate-800  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md">
+    <div
+      id="section7"
+      className="flex flex-col items-center w-full h-full z-20 text-slate-800  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md"
+    >
       <div className="flex flex-col gap-5 mt-10 pb-20 ">
         <div className="flex flex-col items-center gap-5 text-xs">
           <span className=" text-center italic">

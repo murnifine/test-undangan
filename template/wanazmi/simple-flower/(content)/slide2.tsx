@@ -8,6 +8,7 @@ export default function Slide2({
 }) {
   return (
     <div
+      id="section2"
       data-aos="fade-up"
       className="flex flex-col   items-center w-full h-full z-20   bg-white/5 gap-10 border-2 border-white py-10 mt-20 px-5 rounded-xl shadow-md"
     >
