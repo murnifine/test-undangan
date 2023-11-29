@@ -14,8 +14,9 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import Link from "next/link";
+
 import { useRef } from "react";
+import { Link } from "react-scroll";
 
 export default function MenuDock() {
   let mouseX = useMotionValue(Infinity);
@@ -23,27 +24,27 @@ export default function MenuDock() {
   const menus = [
     {
       icon: <IconHeartBolt color="white" />,
-      link: "#section1",
+      link: "section1",
     },
     {
       icon: <IconHome color="white" />,
-      link: "#section2",
+      link: "section2",
     },
     {
       icon: <IconCalendar color="white" />,
-      link: "#section3",
+      link: "section3",
     },
     {
       icon: <IconPhoto color="white" />,
-      link: "#section4",
+      link: "section4",
     },
     {
       icon: <IconForms color="white" />,
-      link: "#section6",
+      link: "section6",
     },
     {
       icon: <IconNote color="white" />,
-      link: "#section7",
+      link: "section7",
     },
   ];
 
@@ -75,7 +76,15 @@ function AppIcon({ mouseX, menu }: { mouseX: MotionValue; menu: any }) {
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
   return (
-    <Link href={menu.link} className="">
+    <Link
+      activeClass="active"
+      to={menu.link}
+      spy={true}
+      smooth={true}
+      offset={-70}
+      duration={500}
+      className="cursor-pointer"
+    >
       <motion.div
         ref={ref}
         style={{ width }}
