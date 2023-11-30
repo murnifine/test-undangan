@@ -1,5 +1,8 @@
 "use client";
-import React from "react";
+
+import { motion } from "framer-motion";
+
+import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 const countDowntarget: Date = new Date("2023-12-26:12:59:59");
@@ -8,12 +11,22 @@ const waktuSekarang: Date = new Date();
 const now = waktuSekarang.getTime();
 const totalTimeLeft = TargetTimesamp - now;
 export default function CountDown2() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <Countdown
-      daysInHours={true}
-      date={Date.now() + totalTimeLeft}
-      renderer={renderer}
-    />
+    <>
+      {isClient && (
+        <Countdown
+          daysInHours={true}
+          date={Date.now() + totalTimeLeft}
+          renderer={renderer}
+        />
+      )}
+    </>
   );
 }
 
@@ -51,15 +64,16 @@ const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     // Render a countdown
     return (
       <>
-        <div className="flex  gap-2 mt-5">
+        <div className="flex  gap-4 mt-5">
           {boxContetnt.map((Timer) => (
-            <div
+            <motion.div
+              whileHover={{ scale: 1.2 }}
               key={Timer.id}
               className="flex flex-col justify-center items-center gap-1 bg-pink-500 px-4 py-2 text-xs text-white rounded-lg w-20"
             >
               <div className="text-2xl">{Timer.value}</div>
               <div>{Timer.label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </>

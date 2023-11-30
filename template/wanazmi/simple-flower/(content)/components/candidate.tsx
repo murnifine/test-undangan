@@ -10,8 +10,8 @@ export default function Candidate({
   AllDataUser: AllDataUserProps;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-5 mt-10">
-      <div className="flex flex-col justify-center items-center gap-5 text-xlå">
+    <div className="flex flex-col items-center justify-center gap-5 ">
+      <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div
           data-aos="fade-right"
           className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
@@ -41,6 +41,7 @@ export default function Candidate({
           <SosialMediaPria AllDataUser={AllDataUser} />
         </div>
       </div>
+
       <div>
         <span className="text-[60px] font-Sacramento">&</span>
       </div>

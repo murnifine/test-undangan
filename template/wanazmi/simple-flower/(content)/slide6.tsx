@@ -1,19 +1,20 @@
 "use client";
 
 import { sendUcapan } from "@/lib/actions";
-import prisma from "@/lib/prisma";
 import { AllDataUserProps } from "@/types/types";
-import { User } from "@prisma/client";
-import { useRef } from "react";
+import { LegacyRef, useRef } from "react";
 
 export default function Slide6({
   AllDataUser,
 }: {
   AllDataUser: AllDataUserProps;
 }) {
-  const ref = useRef(null);
+  const ref: LegacyRef<HTMLFormElement> | undefined = useRef(null);
   return (
-    <div className="flex flex-col items-center w-full h-full z-20  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md">
+    <div
+      id="section6"
+      className="flex flex-col items-center w-full h-full z-20  bg-white/5 gap-10 border-2 border-white py-10  px-5 rounded-xl shadow-md"
+    >
       <span className=" font-Shadows text-3xl  text-pink-700">
         Ucapan & Doa
       </span>
@@ -23,7 +24,6 @@ export default function Slide6({
           await sendUcapan(FormData, AllDataUser.user);
           ref.current?.reset();
         }}
-        method="POST"
         className="flex  flex-col w-full h-full gap-5"
       >
         <input
@@ -48,7 +48,10 @@ export default function Slide6({
       <div className="flex flex-col gap-4  w-full p-3 bg-white/50 h-64 overflow-scroll">
         {AllDataUser.user?.Profile?.ucapan
           ?.map((x) => (
-            <div className="flex flex-col text-sm gap-2  p-4  border border-sky-600 rounded-lg text-slate-800 ">
+            <div
+              key={x.id}
+              className="flex flex-col text-sm gap-2  p-4  border border-sky-600 rounded-lg text-slate-800 "
+            >
               <span className="text-sm pb-1 border-b border-slate-500">
                 @{x.nama}
               </span>
