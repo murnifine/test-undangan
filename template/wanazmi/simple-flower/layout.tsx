@@ -1,4 +1,6 @@
+import { fchmod } from "fs";
 import React from "react";
+import Cover from "./(content)/cover";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

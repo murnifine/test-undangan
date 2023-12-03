@@ -14,6 +14,8 @@ import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
 import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
+import Cover from "./(content)/cover";
+import { useState } from "react";
 
 export default function Tmp1({
   AllDataUser,
@@ -21,42 +23,51 @@ export default function Tmp1({
   AllDataUser: AllDataUserProps;
 }) {
   const listMusic = [
-    "music/snowfall.mp3",
+    // "music/snowfall.mp3",
     "https://invisimple.id/wp-content/uploads/2023/06/Bruno-Mars-Marry-You.mp3",
-    "https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/LS3LNGNUv9ggLA10rIC67I31xO4g3GWdwovPm8wA.mp3",
-    "https://cdn.discordapp.com/attachments/997069374009659415/1179276306018467861/snowfall.mp3",
+    // "https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/LS3LNGNUv9ggLA10rIC67I31xO4g3GWdwovPm8wA.mp3",
+    // "https://cdn.discordapp.com/attachments/997069374009659415/1179276306018467861/snowfall.mp3",
   ];
+  // const [hideIsi, useHideIsi] = useState('hidden')
 
   return (
-    <Layout>
-      <div
-        className="relative flex flex-col gap-5 pb-40   justify-center w-full  md:max-w-[600px] h-full  "
-        data-selector="index"
-        data-music="false"
-      >
-        <Image
+    <>
+      <Cover AllDataUser={AllDataUser} />
+      <Layout>
+
+        <div id="isiUndangan"
+          className="relative hidden bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
+          data-selector="index"
+          data-music="false"
+
+        >
+          {/* <Image
           className="absolute h-full inline-block z-0"
           src={"/img/bg.jpg"}
           alt="bacground"
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 33vw"
+          // sizes="(max-width: 768px) 100vw, 33vw"
           quality={75}
-          style={{ objectFit: "cover" }}
-          placeholder="blur"
+          // style={{ objectFit: "cover" }}
+          // placeholder="blur"
           blurDataURL={"/img/bg.jpg"}
-        />
-        <Slide1 AllDataUser={AllDataUser} />
-        <Slide2 AllDataUser={AllDataUser} />
-        <Slide3 AllDataUser={AllDataUser} />
-        <Slide4 AllDataUser={AllDataUser} />
-        <Slide6 AllDataUser={AllDataUser} />
-        <Slide7 AllDataUser={AllDataUser} />
-      </div>
+        /> */}
 
-      <Footer />
-      <Music listMusic={listMusic} />
-      <MenuDock />
-    </Layout>
+          <Slide1 AllDataUser={AllDataUser} />
+          <Slide2 AllDataUser={AllDataUser} />
+          <Slide3 AllDataUser={AllDataUser} />
+          <Slide4 AllDataUser={AllDataUser} />
+          <Slide6 AllDataUser={AllDataUser} />
+          <Slide7 AllDataUser={AllDataUser} />
+        </div>
+
+        <Music listMusic={listMusic} />
+        <MenuDock />
+        <Footer />
+      </Layout >
+
+    </>
+
   );
 }

@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -15,6 +15,7 @@ const config: Config = {
         Rouge: ["Rouge Script", "cursive"],
         Sacramento: ["Sacramento", "cursive"],
         Poppins: ["Poppins", "sans-serif"],
+        GlassAntiqu: ["Glass Antiqua", "cursive"],
       },
     },
     backgroundImage: {
@@ -24,4 +25,4 @@ const config: Config = {
     },
   },
 };
-export default config
+export default config;
