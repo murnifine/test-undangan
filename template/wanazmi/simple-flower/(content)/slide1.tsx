@@ -16,7 +16,7 @@ export default function Slide1({
 
   useEffect(() => {
     jalankanAos();
-  }, []);
+  }, [100]);
 
   const waktu = AllDataUser.user?.Profile?.dateTime_akad_nikah;
 
@@ -50,21 +50,8 @@ export default function Slide1({
         </motion.div>
       ))}
 
-      {/* <motion.div
-        className="absolute top-0 right-0 w-56  origin-top-right"
-        animate={{ scale: [1, 1.4, 1] }}
-        transition={{
-          duration: 10,
-          ease: "easeInOut",
-          times: [0, 0.5, 1],
-          repeat: Infinity,
-        }}
-      >
-        <Image src={"/img/flower.png"} width={500} height={500} alt="flower" />
-      </motion.div> */}
-
       <div
-        // data-aos="fade-up"
+        data-aos="fade-up"
         className=".image_url2 bg-white w-72 rounded-full overflow-hidden border-2 border-white "
       >
         <Image
@@ -81,7 +68,7 @@ export default function Slide1({
       </div>
 
       <div
-        // data-aos="zoom-in"
+        data-aos="zoom-in"
         className="mt-10 flex flex-col justify-center items-center"
       >
         <span className="font-Shadows text-lg">THE WEDDING OF</span>

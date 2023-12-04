@@ -1,12 +1,16 @@
 import Candidate from "./components/candidate";
 import { AllDataUserProps } from "@/types/types";
+import { useScroll, MotionValue, useTransform } from "framer-motion";
 
 export default function Slide2({
   AllDataUser,
 }: {
   AllDataUser: AllDataUserProps;
 }) {
+
+
   return (
+
     <div
       id="section2"
       data-aos="fade-up"
