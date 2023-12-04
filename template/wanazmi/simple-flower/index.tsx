@@ -16,7 +16,6 @@ import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
 
 import Cover from "./(content)/cover";
-import { useState } from "react";
 
 import { Komponen1 } from "@/components/contoh/ControhContext";
 
@@ -32,7 +31,6 @@ export default function Tmp1({
     // "https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/LS3LNGNUv9ggLA10rIC67I31xO4g3GWdwovPm8wA.mp3",
     // "https://cdn.discordapp.com/attachments/997069374009659415/1179276306018467861/snowfall.mp3",
   ];
-  // const [hideIsi, useHideIsi] = useState('hidden')
 
   return (
 
@@ -44,7 +42,8 @@ export default function Tmp1({
           className="relative flex bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
           data-selector="index"
           data-music="false"
-      >
+        >
+
 
           <Slide1 AllDataUser={AllDataUser} />
           <Slide2 AllDataUser={AllDataUser} />
