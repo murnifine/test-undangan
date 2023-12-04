@@ -33,10 +33,10 @@ export default function Tmp1({
   return (
     <>
       <Cover AllDataUser={AllDataUser} />
-      <Layout>
 
-        <div id="isiUndangan"
-          className="relative hidden bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
+      <Layout >
+        <div
+          className="relative flex bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
           data-selector="index"
           data-music="false"
 
@@ -66,6 +66,7 @@ export default function Tmp1({
         <MenuDock />
         <Footer />
       </Layout >
+
 
     </>
 
