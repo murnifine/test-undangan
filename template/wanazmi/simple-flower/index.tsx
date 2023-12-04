@@ -33,12 +33,13 @@ export default function Tmp1({
   ];
 
   return (
+    <>
 
-    <Layout>
-         <Cover AllDataUser={AllDataUser} />
-      <Komponen1 />
+      <Cover AllDataUser={AllDataUser} />
+      <Layout>
+        {/* <Komponen1 /> */}
 
-  <div
+        <div
           className="relative flex bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
           data-selector="index"
           data-music="false"
