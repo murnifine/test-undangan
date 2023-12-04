@@ -15,7 +15,6 @@ import Footer from "@/app/(tamu)/components/Footer/Footer";
 import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
 import Cover from "./(content)/cover";
-import { useState } from "react";
 
 export default function Tmp1({
   AllDataUser,
@@ -39,20 +38,7 @@ export default function Tmp1({
           className="relative flex bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
           data-selector="index"
           data-music="false"
-
         >
-          {/* <Image
-          className="absolute h-full inline-block z-0"
-          src={"/img/bg.jpg"}
-          alt="bacground"
-          fill
-          priority
-          // sizes="(max-width: 768px) 100vw, 33vw"
-          quality={75}
-          // style={{ objectFit: "cover" }}
-          // placeholder="blur"
-          blurDataURL={"/img/bg.jpg"}
-        /> */}
 
           <Slide1 AllDataUser={AllDataUser} />
           <Slide2 AllDataUser={AllDataUser} />
