@@ -4,14 +4,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
 import { IoIosArrowRoundDown } from "react-icons/io";
-import anime from "animejs";
 import CountDown2 from "@/components/countDown2";
-
-// import { AosInit } from "@/lib/aos";
 import { AllDataUserProps } from "@/types/types";
-import Aos from "aos";
 import { jalankanAos } from "@/lib/aos";
-
 export default function Slide1({
   AllDataUser,
 }: {
@@ -33,17 +28,17 @@ export default function Slide1({
       {[
         {
           image_url: "/img/flower.png",
-          position: "top-0 right-0 origin-top-right",
+          position: "top-0 -right-5 origin-top-right w-24 z-10",
         },
         {
           image_url: "/img/flower2.png",
-          position: "bottom-0 left-0 origin-bottom-left",
+          position: "bottom-0 -left-5 -bottom-5 origin-bottom-left w-24 z-10",
         },
       ].map((item) => (
         <motion.div
           key={item.image_url}
           className={`absolute w-56  ${item.position}`}
-          animate={{ scale: [1, 1.4, 1] }}
+          animate={{ scale: [1, 1.1, 1] }}
           transition={{
             duration: 10,
             ease: "easeInOut",
@@ -51,7 +46,7 @@ export default function Slide1({
             repeat: Infinity,
           }}
         >
-          <Image src={item.image_url} width={500} height={500} alt="flower" />
+          <Image src={item.image_url} width={300} height={300} alt="flower" />
         </motion.div>
       ))}
 
@@ -69,25 +64,25 @@ export default function Slide1({
       </motion.div> */}
 
       <div
-        data-aos="fade-up"
-        className=".image_url2 h-52 bg-white rounded-full overflow-hidden border-8 border-white"
+        // data-aos="fade-up"
+        className=".image_url2 bg-white w-72 rounded-full overflow-hidden border-2 border-white "
       >
         <Image
-          className=" w-72 scale-150 mt-5"
+          className=" w-72  z-0"
           src={
             AllDataUser.user?.Profile?.url_foto_utama
               ? AllDataUser.user?.Profile?.url_foto_utama
               : AllDataUser.defaultFoto
           }
-          width={700}
+          width={500}
           height={500}
           alt="bg"
         />
       </div>
 
       <div
-        data-aos="zoom-in"
-        className="mt-10 flex flex-col justify-center items-center gap-2"
+        // data-aos="zoom-in"
+        className="mt-10 flex flex-col justify-center items-center"
       >
         <span className="font-Shadows text-lg">THE WEDDING OF</span>
         <span className=" text-4xl font-Rouge">
@@ -136,7 +131,7 @@ export default function Slide1({
 
         <CountDown2 />
 
-        <div className="flex flex-col justify-center text-sky-600 items-center gap-2 mt-10">
+        <div className="flex flex-col justify-center text-sky-600 items-center gap-2 mt-5">
           <IoIosArrowRoundDown id="arrow-scroll" size="2em" />
           <span className=" text-sky-600 font-bold font-Rajdhani">
             Scroll Down

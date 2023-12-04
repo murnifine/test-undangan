@@ -12,7 +12,7 @@ export default function User() {
           defaultValue={new Date()}
           label="Pick date and time"
           placeholder="Pick date and time"
-          onChange={setDate}
+          // onChange={setDate}
         />
         <button
           onClick={() => {
