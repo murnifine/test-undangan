@@ -14,7 +14,11 @@ import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
 import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
+
 import Cover from "./(content)/cover";
+
+import { Komponen1 } from "@/components/contoh/ControhContext";
+
 
 export default function Tmp1({
   AllDataUser,
@@ -29,15 +33,17 @@ export default function Tmp1({
   ];
 
   return (
-    <>
-      <Cover AllDataUser={AllDataUser} />
 
-      <Layout >
-        <div
+    <Layout>
+         <Cover AllDataUser={AllDataUser} />
+      <Komponen1 />
+
+  <div
           className="relative flex bgThema1  flex-col gap-5 pb-40 px-5  justify-center w-full  md:max-w-[600px] h-full  "
           data-selector="index"
           data-music="false"
         >
+
 
           <Slide1 AllDataUser={AllDataUser} />
           <Slide2 AllDataUser={AllDataUser} />
