@@ -27,7 +27,6 @@ export default function Tmp1({
     // "https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/LS3LNGNUv9ggLA10rIC67I31xO4g3GWdwovPm8wA.mp3",
     // "https://cdn.discordapp.com/attachments/997069374009659415/1179276306018467861/snowfall.mp3",
   ];
-  // const [hideIsi, useHideIsi] = useState('hidden')
 
   return (
     <>
