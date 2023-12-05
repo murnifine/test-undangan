@@ -2,7 +2,6 @@
 import { AllDataUserProps } from "@/types/types";
 import Image from "next/image";
 import { useState } from "react";
-import { FcInvite } from "react-icons/fc";
 import { motion } from "framer-motion";
 
 
@@ -12,24 +11,29 @@ export default function Cover({
   AllDataUser: AllDataUserProps;
 }) {
   const [openUndangan, setOpenUndangan] = useState(0)
+  const [opacity, setOpacity] = useState(100)
 
   const HandleOpen = () => {
-    const openMove = -1000
+    const openMove = -500
     const isiUndangan = document.querySelector('#isiUndangan')
     const playMusic = document.querySelector('#musicBtn')
 
-    isiUndangan?.classList.add('flex')
-    isiUndangan?.classList.remove('hidden');
+    isiUndangan?.classList.add('h-full')
+    isiUndangan?.classList.remove('overflow-hidden');
+    isiUndangan?.classList.remove('h-screen');
     (playMusic as HTMLElement).click()
     setOpenUndangan(openMove)
+    setOpacity(0)
   }
   return (
-    <motion.div className="flex  fixed justify-center items-center w-full  top-0 h-screen bg-white z-50 py-20"
-      animate={{ y: openUndangan }}
-      transition={{ ease: "easeOut", duration: 1, times: [0, 0.5, 1], }}
+    <motion.div className="flex  fixed justify-center items-center w-full  top-0 h-screen bg-slate-900 z-50 py-20"
+      animate={{ y: openUndangan, opacity: opacity }}
+      // transition={{ ease: "easeOut", duration: 2, times: [0, 1.5, 1], }}
+      transition={{ ease: "easeOut", duration: 2 }}
+    // transition={{ duration: 2 }}
 
     >
-      <div className="flex  fixed justify-center items-center w-full  md:max-w-[600px]  top-0 h-screen">
+      <div className="flex  fixed justify-center items-center w-full  md:max-w-[600px] shadow-md  top-0 h-screen">
         <Image
           className="absolute h-full inline-block z-0"
           src={"/img/bgCoverUtama.jpg"}
