@@ -15,7 +15,7 @@ export function jalankanAos() {
 
   const arrowAnimation = anime.timeline({
     autoplay: true,
-    delay: 150,
+    // delay: 150,
     loop: true,
     direction: "alternate",
     easing: "easeInOutCirc",

@@ -68,9 +68,8 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
 
   return (
     <div
-      className={`fixed bottom-28 right-4 ${
-        isPlay && " animate-pulse"
-      } z-[99999] `}
+      className={`fixed bottom-28 right-4   ${isPlay && " animate-pulse"
+        } z-30 `}
       onClick={() => controlMusic(0)}
     >
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
@@ -82,9 +81,8 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
           size="xl"
           radius="xl"
           aria-label="Play Music"
-          className={`relative flex ${
-            isPlay && "animate-[spin_8s_linear_infinite]"
-          } `}
+          className={`relative flex z-10 ${isPlay && "animate-[spin_8s_linear_infinite]"
+            } `}
         >
           {isPlay && (
             <>

@@ -12,6 +12,10 @@ export default async function Page() {
       <h1>Selamat datang </h1>kkkkkkkkkkks
       {/* <h1>Selamat datang {session.user.name}</h1> */}
       {JSON.stringify(session?.user)}
+       <div className="flex flex-col justify-center items-center p-5 w-full h-screen bg-red-100">
+      <Link href={'/user/create'}>create</Link>
+    </div>
     </main>
+
   );
 }
