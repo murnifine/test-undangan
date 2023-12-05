@@ -168,8 +168,12 @@ export function Navbar() {
             </Group>
 
             <Group visibleFrom="sm">
-              <Button variant="default">Masuk</Button>
-              <Button className="bg-pink-600">Daftar</Button>
+              <Link href={"/login"}>
+                <Button variant="default">Masuk</Button>
+              </Link>
+              {/* <Link href={"/"}>
+                <Button className="bg-pink-600">Daftar</Button>
+              </Link> */}
             </Group>
 
             <Burger

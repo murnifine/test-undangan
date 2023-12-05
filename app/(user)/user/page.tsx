@@ -1,30 +1,21 @@
-"use client"
-
-import { DateTimePicker } from "@mantine/dates";
-import InputsDataForm from "./components/inputsDataForm";
-import { AllDataUserProps } from "@/types/types";
-import { Form } from "antd";
-
-import { useForm, Controller } from "react-hook-form"
+import { auth } from "@/lib/auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-
-
-export default function User({ dataFormusers }: { dataFormusers: AllDataUserProps }) {
-
-  const name = dataFormusers?.user?.Profile
-
-
-
-  const { handleSubmit, control } = useForm()
-
-
-
-
+export default async function Page() {
+  const session = await auth();
+  if (!session?.user) return redirect(`/login?callbackUrl=/user`);
 
   return (
-    <div className="flex flex-col justify-center items-center p-5 w-full h-screen bg-red-100">
+    <main>
+      <Link href="/api/auth/signout">Keluar</Link>
+      <h1>Selamat datang </h1>kkkkkkkkkkks
+      {/* <h1>Selamat datang {session.user.name}</h1> */}
+      {JSON.stringify(session?.user)}
+       <div className="flex flex-col justify-center items-center p-5 w-full h-screen bg-red-100">
       <Link href={'/user/create'}>create</Link>
     </div>
+    </main>
+
   );
 }
