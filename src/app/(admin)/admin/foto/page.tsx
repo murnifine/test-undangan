@@ -22,7 +22,7 @@ export default async function Page({
   let user;
   // let userId = "";
   if (userId) {
-    const id = parseInt(userId);
+    const id = userId;
     user = await getUserById(id);
   }
 
@@ -45,7 +45,7 @@ export default async function Page({
                   >
                     <Avatar
                       src={user.Profile?.url_foto_utama}
-                      alt={user.name}
+                      alt={user?.name ?? "foto utama"}
                     />
                     <div className="flex flex-col">
                       <p className="font-medium text-sm">
