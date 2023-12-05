@@ -25,11 +25,21 @@ type UserProps = Prisma.UserGetPayload<{
   }
 }>;
 
-// type sosialMediaProps = Prisma.UserGetPayload<{
-
+// type UserProfileProps = Prisma.UserGetPayload<{
+//   include: {
+//     Profile : {
+//       include: {
+//         ucapan: true;
+//         photo_moment: true;
+//         template: {
+//           include: {
+//             admin: true;
+//           };
+//         };
+//       };
+//     }
 //   }
-
-// }>
+// }>;
 
 type AllDataUserProps = {
   defaultFoto : string,

@@ -1,5 +1,6 @@
 import { Image, Container, Title, Button, Group, Text } from "@mantine/core";
 import classes from "./Header.module.css";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -39,14 +40,16 @@ export function Header() {
               </List.Item>
             </List> */}
             <Group mt={30}>
-              <Button
-                radius="sm"
-                size="md"
-                color="blue"
-                className={classes.control}
-              >
-                Buat Undanganmu Sekarang
-              </Button>
+              <Link href={"/login"}>
+                <Button
+                  radius="sm"
+                  size="md"
+                  color="blue"
+                  className={classes.control}
+                >
+                  Buat Undanganmu Sekarang
+                </Button>
+              </Link>
               {/* <Button
                 variant="default"
                 radius="xl"

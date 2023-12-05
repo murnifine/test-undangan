@@ -3,14 +3,15 @@ import { revalidatePath } from "next/cache";
 import prisma from "./prisma";
 import { User } from "@prisma/client";
 import { put } from "@vercel/blob";
+import { UserProps } from "@/types/types";
 
-export const sendUcapan = async (formData: FormData, user: User) => {
+export const sendUcapan = async (formData: FormData, user: UserProps) => {
   const nama = formData.get("nama");
   const ucapan = formData.get("ucapan");
 
   const sendUser = await prisma.ucapan.create({
     data: {
-      profileId: user.id as number,
+      profileId: user.Profile?.id,
       nama: nama as string,
       pesan: ucapan as string,
     },
@@ -21,16 +22,15 @@ export const sendUcapan = async (formData: FormData, user: User) => {
 export const getAllUsers = async () => {
   const users = await prisma.user.findMany({
     include: {
-      Profile : {
-        include : {
+      Profile: {
+        include: {
           photo_moment: true,
-        }
-      }
+        },
+      },
     },
   });
   return users;
 };
-
 
 // // export const uploadGambar = async (formData: FormData, userId: string) => {
 // export const uploadGambar = async (files: any, userId: string) => {
@@ -53,50 +53,51 @@ export const getAllUsers = async () => {
 //   // console.log({ blob });
 // };
 
-export async function getUserByName(name: string){
+export async function getUserByName(name: string) {
   const user = await prisma.user.findFirst({
     include: {
-      Profile : {
+      Profile: {
         include: {
           ucapan: true,
           photo_moment: true,
-          template: {
-            include: {
-              admin: true,
-            },
-          },
-        }  
-      }
+          template: true,
+          // template: {
+          //   include: {
+          //     admin: true,
+          //   },
+          // },
+        },
+      },
     },
     where: {
       name: name,
     },
   });
 
-  return user
+  return user;
 }
-export async function getUserById(id: number){
+export async function getUserById(id: string) {
   const user = await prisma.user.findFirst({
     include: {
-      Profile : {
-        include : {
+      Profile: {
+        include: {
           ucapan: true,
           photo_moment: true,
-          template: {
-            include: {
-              admin: true,
-            },
-          },
-
-        }
-      }
+          template: true,
+          // template: {
+          //   include: {
+          //     admin: true,
+          //   },
+          // },
+        },
+      },
     },
     where: {
       id: id,
     },
   });
 
-  return user
+  return user;
 }
 
 // export async function getSosialMedia(id : number){
