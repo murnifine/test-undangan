@@ -14,9 +14,9 @@ export default function Slide1({
 }) {
 
 
-  useEffect(() => {
-    jalankanAos();
-  }, [100]);
+  // useEffect(() => {
+  //   jalankanAos();
+  // }, []);
 
   const waktu = AllDataUser.user?.Profile?.dateTime_akad_nikah;
 

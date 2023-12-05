@@ -51,8 +51,8 @@ export default function MenuDock() {
   return (
     <div className="fixed z-40 bottom-3 right-0  flex w-full gap-3 justify-center items-center">
       <motion.div
-        onMouseMove={(e) => mouseX.set(e.pageX)}
-        onMouseLeave={() => mouseX.set(Infinity)}
+        // onMouseMove={(e) => mouseX.set(e.pageX)}
+        // onMouseLeave={() => mouseX.set(Infinity)}
         className="mx-auto flex h-16 items-end gap-2 rounded-2xl bg-white shadow-md px-4 pb-3"
       >
         {menus.map((menu) => (

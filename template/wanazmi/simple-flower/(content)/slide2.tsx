@@ -1,3 +1,5 @@
+"use client"
+
 import Candidate from "./components/candidate";
 import { AllDataUserProps } from "@/types/types";
 import { useScroll, MotionValue, useTransform } from "framer-motion";
