@@ -49,7 +49,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-   role          String?
+  role          String?
   image         String?
   accounts      Account[]
   sessions      Session[]
@@ -84,12 +84,13 @@ model User {
 model Profile {
   id                  Int               @id @default(autoincrement())
   userId              String               @unique
-  nama_pria           String
-  nama_ayah_pria      String
-  nama_ibu_pria       String
-  nama_wanita         String
-  nama_ayah_wanita    String
-  nama_ibu_wanita     String
+  slug String?
+  nama_pria           String?
+  nama_ayah_pria      String?
+  nama_ibu_pria       String?
+  nama_wanita         String?
+  nama_ayah_wanita    String?
+  nama_ibu_wanita     String?
   pria_fb             String?
   pria_ig             String?
   pria_tk             String?
