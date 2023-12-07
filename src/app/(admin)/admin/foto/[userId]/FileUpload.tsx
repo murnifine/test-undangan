@@ -22,8 +22,15 @@ registerPlugin(
   FilePondPluginImagePreview,
   FilePondPluginImageEdit
 );
+// const pond = useRef<FilePond>(null);
 
-export default function FileUpload({ userId }: { userId: string }) {
+export const kirimFilePhotos = () => {
+  // if (pond.current) {
+  //   pond.current.processFiles();
+  // }
+}
+
+export default function FileUpload({ userId, register }: { userId: string, register: any }) {
   const [files, setFiles] = useState<(string | Blob | FilePondInitialFile)[]>(
     []
   );
@@ -39,89 +46,99 @@ export default function FileUpload({ userId }: { userId: string }) {
     setFiles(newFiles);
   }, []);
 
-  const kirim = async () => {
-    // const formData = new FormData();
-    // console.log("pond", pond);
+  // const kirim = async () => {
 
-    if (pond.current) {
-      pond.current.processFiles();
-    }
+  //   if (pond.current) {
+  //     pond.current.processFiles();
+  //   }
 
-    // console.log(files);
-    // await uploadGambar(files, params.userId);
-  };
+
+  // };
+
 
   return (
     <>
-      <FilePond
-        ref={pond}
-        instantUpload={false}
-        files={files}
-        onupdatefiles={handleFileChange}
-        allowMultiple={true}
-        maxFiles={10}
-        acceptedFileTypes={["image/*"]}
-        name="files"
-        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-        server={{
-          process: async (
-            fieldName,
-            file,
-            metadata,
-            load,
-            error,
-            progress,
-            abort
-          ) => {
-            // fieldName is the name of the input field
-            // file is the actual file object to send
-            const formData = new FormData();
-            // formData.append("filename", file.name);
-            formData.append("userId", userId);
-            formData.append(fieldName, file, file.name);
+      <div className=" flex justify-center items-center w-full">
 
-            const request = new XMLHttpRequest();
-            request.open("POST", `/api/upload`);
+        <div className=" w-40 ">
 
-            // Should call the progress method to update the progress to 100% before calling load
-            // Setting computable to false switches the loading indicator to infinite mode
-            request.upload.onprogress = (e) => {
-              progress(e.lengthComputable, e.loaded, e.total);
-            };
+          <FilePond
+            ref={pond}
+            instantUpload={false}
+            files={files}
+            onupdatefiles={handleFileChange}
+            allowMultiple={true}
+            maxFiles={10}
+            acceptedFileTypes={["image/*"]}
+            name="files"
+            {...register}
+            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+            server={{
+              process: async (
+                fieldName,
+                file,
+                metadata,
+                load,
+                error,
+                progress,
+                abort
+              ) => {
+                // fieldName is the name of the input field
+                // file is the actual file object to send
+                const formData = new FormData();
+                // formData.append("filename", file.name);
+                formData.append("userId", userId);
+                formData.append(fieldName, file, file.name);
 
-            // Should call the load method when done and pass the returned server file id
-            // this server file id is then used later on when reverting or restoring a file
-            // so your server knows which file to return without exposing that info to the client
-            request.onload = function () {
-              if (request.status >= 200 && request.status < 300) {
-                // the load method accepts either a string (id) or an object
-                load(request.responseText);
-              } else {
-                // Can call the error method if something is wrong, should exit after
-                error("oh no");
-              }
-            };
+                const request = new XMLHttpRequest();
+                request.open("POST", `/api/upload`);
 
-            // CARA 1 : send sebagai FormData
-            request.send(formData);
+                // Should call the progress method to update the progress to 100% before calling load
+                // Setting computable to false switches the loading indicator to infinite mode
+                request.upload.onprogress = (e) => {
+                  progress(e.lengthComputable, e.loaded, e.total);
+                };
 
-            // CARA 2 : send sebagai File ke server menjadi ReadableStream
-            // request.send(file);
+                // Should call the load method when done and pass the returned server file id
+                // this server file id is then used later on when reverting or restoring a file
+                // so your server knows which file to return without exposing that info to the client
+                request.onload = function () {
+                  if (request.status >= 200 && request.status < 300) {
+                    // the load method accepts either a string (id) or an object
+                    load(request.responseText);
+                  } else {
+                    // Can call the error method if something is wrong, should exit after
+                    error("oh no");
+                  }
+                };
 
-            // Should expose an abort method so the request can be cancelled
-            return {
-              abort: () => {
-                // This function is entered if the user has tapped the cancel button
-                request.abort();
+                // CARA 1 : send sebagai FormData
+                request.send(formData);
 
-                // Let FilePond know the request has been cancelled
-                abort();
+                // CARA 2 : send sebagai File ke server menjadi ReadableStream
+                // request.send(file);
+
+                // Should expose an abort method so the request can be cancelled
+                return {
+                  abort: () => {
+                    // This function is entered if the user has tapped the cancel button
+                    request.abort();
+
+                    // Let FilePond know the request has been cancelled
+                    abort();
+                  },
+                };
               },
-            };
-          },
-        }}
-      />
-      <Button onClick={kirim}>Upload Gambar</Button>
+            }}
+          />
+          {/* <Button onClick={kirim}>Upload Gambar</Button> */}
+        </div>
+      </div>
+
+
     </>
   );
 }
+
+
+// export { pond }
