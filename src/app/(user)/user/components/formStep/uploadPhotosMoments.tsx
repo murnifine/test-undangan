@@ -5,43 +5,57 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
+import { Group, Text, rem } from '@mantine/core';
+import { IconUpload, IconPhoto, IconX } from '@tabler/icons-react';
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import '@mantine/dropzone/styles.css';
 
 
-// const fileList: UploadFile[] = [
-//     {
-//         uid: '0',
-//         name: 'xxx.png',
-//         status: 'uploading',
-//         percent: 33,
-//     },
-//     {
-//         uid: '-1',
-//         name: 'yyy.png',
-//         status: 'done',
-//         url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-//         thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-//     },
-//     {
-//         uid: '-2',
-//         name: 'zzz.png',
-//         status: 'error',
-//     },
-// ];
 
 export default function UploadPhotosMoments() {
     return (
         <>
-            <Upload
-                // action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                listType="picture"
-                multiple
-                maxCount={10}
-
-
-            // defaultFileList={[...fileList]}
+            <Dropzone
+                onDrop={(files) => console.log('accepted files', files)}
+                onReject={(files) => console.log('rejected files', files)}
+                maxSize={3 * 1024 ** 2}
+                accept={IMAGE_MIME_TYPE}
+            // {...props}
             >
-                <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
+                <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: 'none' }}>
+                    <Dropzone.Accept>
+                        <IconUpload
+                            style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-blue-6)' }}
+                            stroke={1.5}
+                        />
+                    </Dropzone.Accept>
+                    <Dropzone.Reject>
+                        <IconX
+                            style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-red-6)' }}
+                            stroke={1.5}
+                        />
+                    </Dropzone.Reject>
+                    <Dropzone.Idle>
+                        <IconPhoto
+                            style={{ width: rem(52), height: rem(52), color: 'var(--mantine-color-dimmed)' }}
+                            stroke={1.5}
+                        />
+                    </Dropzone.Idle>
+
+                    <div>
+                        <Text size="xl" inline>
+                            Drag images here or click to select files
+                        </Text>
+                        <Text size="sm" c="dimmed" inline mt={7}>
+                            Attach as many files as you like, each file should not exceed 5mb
+                        </Text>
+                    </div>
+                </Group>
+            </Dropzone>
+
+
+
+
 
         </>
     )

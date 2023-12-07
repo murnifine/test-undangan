@@ -49,7 +49,9 @@ export default function Tmp1({
           <Slide1 AllDataUser={AllDataUser} />
           <Slide2 AllDataUser={AllDataUser} />
           <Slide3 AllDataUser={AllDataUser} />
-          <Slide4 AllDataUser={AllDataUser} />
+          {AllDataUser.user.image &&
+            <Slide4 AllDataUser={AllDataUser} />
+          }
           <Slide6 AllDataUser={AllDataUser} />
           <Slide7 AllDataUser={AllDataUser} />
         </div>
