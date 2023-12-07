@@ -107,13 +107,16 @@ export function Navbar() {
             </Link>
 
             <Group h="100%" gap={0} visibleFrom="sm">
-              <a href="/desain" className={classes.link}>
+              <Link href="/user" className={classes.link}>
+                User
+              </Link>
+              <Link href="/desain" className={classes.link}>
                 Desain
-              </a>
+              </Link>
 
-              <a href="/portofolio" className={classes.link}>
+              <Link href="/portofolio" className={classes.link}>
                 Portofolio
-              </a>
+              </Link>
 
               <HoverCard
                 width={600}

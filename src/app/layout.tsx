@@ -24,6 +24,7 @@ export default async function RootLayout({
   // filter out sensitive data before passing to client.
   if (session?.user) {
     session.user = {
+      id: session.user.id,
       role: session.user.role,
       name: session.user.name,
       email: session.user.email,

@@ -3,7 +3,11 @@
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
 // import { Separator } from "@/components/ui/separator";
-import LoginWithEmail from "@/components/login-with-email";
+import { MotionDiv } from "@/components/MotionDiv";
+import LoginWithEmail from "@/components/auth/login-with-email";
+import LogoutButton from "@/components/auth/logout-button";
+import { SubmitButton } from "@/components/auth/submit-button";
+import LoginForm from "@/components/ui/login-form";
 import { auth, signIn } from "@/lib/auth";
 import { Button, Divider } from "@mantine/core";
 import {
@@ -13,31 +17,34 @@ import {
   IconBrandGithubFilled,
   IconBrandGoogleFilled,
   IconBrandTiktokFilled,
+  IconHeart,
+  IconHeartFilled,
 } from "@tabler/icons-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 // import { CSRF_experimental } from '@/auth'
 
 const provider = [
-  {
-    name: "github",
-    icon: <IconBrandGithubFilled />,
-  },
+  // {
+  //   name: "github",
+  //   icon: <IconBrandGithubFilled />,
+  // },
   {
     name: "google",
     icon: <IconBrandGoogleFilled />,
   },
-  {
-    name: "facebook",
-    icon: <IconBrandFacebookFilled />,
-  },
+  // {
+  //   name: "facebook",
+  //   icon: <IconBrandFacebookFilled />,
+  // },
   // {
   //   name: "tiktok",
   //   icon: <IconBrandTiktokFilled />,
   // },
-  {
-    name: "discord",
-    icon: <IconBrandDiscordFilled />,
-  },
+  // {
+  //   name: "discord",
+  //   icon: <IconBrandDiscordFilled />,
+  // },
 ];
 
 const errors = {
@@ -63,19 +70,18 @@ const SignIn = async ({
   const { error, callbackUrl } = searchParams;
 
   const session = await auth();
-  // if (session?.user) return redirect("/dashboard");
+  if (session?.user) return redirect("/");
 
-  if (session?.user && callbackUrl) return redirect(callbackUrl as string);
-  if (session?.user) return redirect("/user");
+  // if (session?.user && callbackUrl) return redirect(callbackUrl as string);
+  // if (session?.user) return redirect("/");
 
   return (
     <main className="flex justify-center items-center min-h-screen">
-      <div className="flex flex-col max-w-sm w-full bg-zinc-50 border shadow-sm p-7 rounded-sm gap-y-5">
-        <h1 className="text-2xl font-bold">Login</h1>
-
+      <div className="flex flex-col max-w-lg w-full bg-zinc-50 shadow border  p-20  rounded-md gap-y-5">
+        {/* 
         <p className="text-sm text-red-500">
           {error && (errors[error as keyof typeof errors] ?? errors.default)}
-        </p>
+        </p> */}
 
         {/* <form
           className="gap-y-3 flex flex-col"
@@ -96,15 +102,36 @@ const SignIn = async ({
           />
           <LoginWithEmailBtn />
         </form> */}
-        <LoginWithEmail />
+        {/* <LoginWithEmail /> */}
 
-        <Divider />
+        {/* <Divider /> */}
 
         <div className="flex flex-col items-center gap-y-5">
-          <p>Atau login dengan</p>
+          <div className="flex flex-col  gap-3 ">
+            {/* <Link href="/user">User</Link> */}
+            {/* <LogoutButton /> */}
+            <div className="flex flex-col justify-center items-center">
+              <IconHeart size={80} className="text-pink-600" />
+              <h1 className="text-2xl font-bold text-center">Olvite</h1>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 ">
-            {provider.map((item) => (
+            <p className="text-base mb-3">
+              Log in untuk mulai menggunakan Olvite.com
+            </p>
+            <form
+              action={async () => {
+                "use server";
+                await signIn("google", { redirectTo: callbackUrl as string });
+              }}
+            >
+              <MotionDiv whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <SubmitButton />
+              </MotionDiv>
+            </form>
+
+            {/* <LoginForm /> */}
+
+            {/* {provider.map((item) => (
               <form
                 className=""
                 key={item.name}
@@ -121,7 +148,7 @@ const SignIn = async ({
                   {item.icon}
                 </Button>
               </form>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

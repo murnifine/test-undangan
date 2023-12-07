@@ -1,19 +1,34 @@
+import LogoutButton from "@/components/auth/logout-button";
 import { auth } from "@/lib/auth";
+import { Button } from "@mantine/core";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import SetUpNewAccount from "./components/set-up-new-account";
+import prisma from "@/lib/prisma";
 
 export default async function Page() {
+  /* 
+  dapatkan email dari session login
+  
+  */
   const session = await auth();
-  // if (!session?.user) return redirect(`/login?callbackUrl=/user`);
+  const email = session?.user.email;
+
+  // mengambil data pengguna
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+    include: {
+      Profile: true,
+    },
+  });
 
   return (
-    <main>
-      <Link href="/api/auth/signout">Keluar</Link>
-      <h1>Selamat datang </h1>kkkkkkkkkkks
-      {/* <h1>Selamat datang {session.user.name}</h1> */}
-      {JSON.stringify(session?.user)}
-      <div className="flex flex-col justify-center items-center p-5 w-full h-screen bg-red-100">
-        <Link href={"/user/create"}>create</Link>
+    <main className=" min-h-screen w-screen flex flex-col gap-3">
+      <div className="bg-red-200 flex rounded-sm ">
+        <div className="bg-red-500">Isi Halaman User</div>
+        <div className=""></div>
       </div>
     </main>
   );
