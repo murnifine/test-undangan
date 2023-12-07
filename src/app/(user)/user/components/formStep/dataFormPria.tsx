@@ -40,11 +40,12 @@ export default function DataFormPria({ control, Controller, register }: { contro
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Tiktok" configName={field} />}
             />
+            {/* 
             <Controller
-                name="UrlTiktokPria"
+                name="FotoMempelaiPria"
                 control={control}
-                render={({ field }) => <UploadPhotosMoments label="Foto mempelai Pria" configName={field} {...register} />}
-            />
+                render={({ field }) => <UploadPhotosMoments label="Foto mempelai Pria" configName={field} />}
+            /> */}
 
 
         </div>
