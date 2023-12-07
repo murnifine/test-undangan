@@ -22,11 +22,14 @@ export default async function MempelaiPage({
   const namaTemplate = user?.Profile?.template?.nama;
 
   // GET NAMA PEMBUAT
-  const pembuat = user?.Profile?.template?.admin?.name;
+  const pembuat = user?.Profile?.template?.user.name;
+
+  console.log({ pembuat, namaTemplate });
 
   // GET TEMPLATE COMPONENT : CARA 1
   const TemplateComponent = lazy(() =>
-    import(`../../../template/${pembuat}/${namaTemplate}`).catch(() => ({
+    // import(`../../../template/${pembuat}/${namaTemplate}`).catch(() => ({
+    import(`../../../../src/template/${pembuat}/${namaTemplate}`).catch(() => ({
       default: () => <div>Pengguna belum menerapkan template</div>,
     }))
   );
