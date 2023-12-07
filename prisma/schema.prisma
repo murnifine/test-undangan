@@ -49,7 +49,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
-  role          String?
+  role          String? @default("user")
   image         String?
   accounts      Account[]
   sessions      Session[]

@@ -60,12 +60,12 @@ export async function getUserByName(name: string) {
         include: {
           ucapan: true,
           photo_moment: true,
-          template: true,
-          // template: {
-          //   include: {
-          //     admin: true,
-          //   },
-          // },
+          // template: true,
+          template: {
+            include: {
+              user: true,
+            },
+          },
         },
       },
     },
