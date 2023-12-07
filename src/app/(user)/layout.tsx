@@ -1,5 +1,5 @@
 import { MantineProvider } from "@mantine/core";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return <div className="bg-green-400">{children}</div>;
 }
