@@ -20,51 +20,66 @@ export default function Page({ dataFormusers }: { dataFormusers: AllDataUserProp
     const name = dataFormusers?.user?.Profile
     const { handleSubmit, control, register } = useForm()
 
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(0);
     const nextStep = () => setActive((current) => (current < 4 ? current + 1 : current));
     const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
     return (
-        <div className="flex flex-col gap-5 justify-center items-center p-5 w-full h-screen bg-slate-200 ">
+        <div className="flex flex-col gap-5 justify-center items-center p-5  w-full h-screen bg-slate-200 ">
 
             <form onSubmit={handleSubmit((data) => {
                 console.log(data)
-            })} className="flex flex-col w-full shadow-lg py-10 px-4 bg-slate-100 rounded-lg">
-
+            })} className=" flex flex-col w-full max-w-xl shadow-lg py-5 px-4 h-max overflow-scroll bg-slate-100 rounded-lg">
 
                 <Stepper size="sm" active={active} onStepClick={setActive}
                     iconSize={20}
                 >
                     <Stepper.Step >
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4 pb-10">
                             <span className="text-xl font-semibold">Data Mempelai Pria</span>
-                            <DataFormPria control={control} Controller={Controller} />
+                            <DataFormPria control={control} Controller={Controller} register={register} />
                         </div>
                     </Stepper.Step>
                     <Stepper.Step >
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4 pb-5">
                             <span className="text-xl font-semibold">Data Mempelai Wanita</span>
                             <DataFormWanita control={control} Controller={Controller} register={register} />
                         </div>
                     </Stepper.Step>
                     <Stepper.Step >
-                        <div className="flex flex-col gap-4">
-                            <span className="text-xl font-semibold">Waktu</span>
-                            <Controller
-                                name="akadNikah"
-                                control={control}
-                                render={({ field }) => <DateTimePicker
-                                    clearable
-                                    defaultValue={new Date()}
-                                    label="Akad Nikah"
-                                    placeholder="Akad Nikah"
-                                    {...field}
+                        <div className="flex flex-col">
+                            <div>
+                                <span className="text-xl font-semibold">Akad Nikah</span>
+                                <div className="pb-5">
+                                    <Controller
+                                        name="akadNikah"
+                                        control={control}
+                                        render={({ field }) => <DateTimePicker
+                                            clearable
+                                            defaultValue={new Date()}
+                                            {...field}
+                                        />}
+                                    />
+                                </div>
+                            </div>
+                            <div>
 
-                                />}
+                                <span className="text-xl font-semibold">Resepsi</span>
+                                <div className="pb-5">
 
-
-                            />
+                                    <Controller
+                                        name="resepsi"
+                                        control={control}
+                                        render={({ field }) => <DateTimePicker
+                                            clearable
+                                            defaultValue={new Date()}
+                                            {...field}
+                                        />}
+                                    />
+                                </div>
+                            </div>
                         </div>
+
                     </Stepper.Step>
                     <Stepper.Step >
                         <div className="flex flex-col gap-4">
@@ -74,11 +89,6 @@ export default function Page({ dataFormusers }: { dataFormusers: AllDataUserProp
                             {/* <FileUpload /> */}
                         </div>
                     </Stepper.Step>
-
-
-
-
-
                     <Stepper.Completed>
                         <button type="submit"
                             className="w-full bg-sky-200 py-2">
@@ -86,20 +96,16 @@ export default function Page({ dataFormusers }: { dataFormusers: AllDataUserProp
                         </button>
                     </Stepper.Completed>
                 </Stepper>
-
-                <Group justify="center" mt="xl">
-                    <Button variant="default" onClick={prevStep}>Back</Button>
-                    <Button onClick={nextStep}>Next step</Button>
-                </Group>
-
-
-
-
-
-
-
+                <div className="  bottom-8  w-full max-w-xl mt-5" >
+                    <Group justify="between">
+                        <div className="flex w-full justify-between items-center px-5">
+                            <Button variant="default" onClick={prevStep}>Back</Button>
+                            <Button onClick={nextStep}>Next step</Button>
+                        </div>
+                    </Group>
+                </div>
             </form>
-        </div>
+        </div >
     );
 }
 
