@@ -9,33 +9,33 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
     return (
         <div className=''>
             <Controller
-                name="namaWanita"
+                name="nama_wanita"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Mempelai Wanita" configName={field} />}
             />
             <Controller
-                name="namaAyahWanita"
+                name="nama_ayah_wanita"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Ayah" configName={field} />}
             />
             <Controller
-                name="namaIbuWanita"
+                name="nama_ibu_wanita"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Ibu" configName={field} />}
             />
 
             <Controller
-                name="UrlFacebookWanita"
+                name="wanita_fb"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Facebook" configName={field} />}
             />
             <Controller
-                name="UrlInstagramWanita"
+                name="wanita_ig"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Instagram" configName={field} />}
             />
             <Controller
-                name="UrlTiktokWanita"
+                name="wanita_tk"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Tiktok" configName={field} />}
             />

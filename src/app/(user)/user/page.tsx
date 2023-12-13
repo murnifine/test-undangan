@@ -26,9 +26,10 @@ export default async function Page() {
 
   return (
     <main className=" min-h-screen w-screen flex flex-col gap-3">
-      <div className="bg-red-200 flex rounded-sm ">
+      <div className="bg-red-200 flex flex-col rounded-sm ">
         <div className="bg-red-500">Isi Halaman User</div>
         <div className=""></div>
+        <Link href={'/user/create'}>create</Link>
       </div>
     </main>
   );
