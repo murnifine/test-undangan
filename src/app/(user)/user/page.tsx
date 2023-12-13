@@ -36,9 +36,13 @@ export default async function Page() {
     },
   });
 
-  const undangans = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-  ];
+  const profile = await prisma.profile.findMany({
+    where: {
+      userId: session?.user.id
+    }
+  }
+
+  )
 
   return (
     <main className="  min-h-screen w-screen max-w-md flex flex-col items-center">
@@ -50,16 +54,16 @@ export default async function Page() {
       <div className="relative flex flex-col  items-center p-4 sm:p-0 w-full bg-zinc-50 h-full  shadow border rounded-md gap-y-5">
         <h1 className="text-xl font-semibold sm:mt-5">Undangan Buatan Kamu</h1>
 
-        {!undangans && (
+        {!profile && (
           <p className="text-center p-10 text-base ">
             Kamu belum membuat satupun undangan, Buat Undangan Sekarang
           </p>
         )}
 
-        {undangans && (
+        {profile && (
           <div className="flex flex-col w-full gap-5 mb-20 sm:px-5">
-            {undangans.map((undangan) => (
-              <Link href="#" key={undangan}>
+            {profile.slice().reverse().map((undangan) => (
+              <Link href="#" key={undangan.id}>
                 <MotionDiv
                   whileHover={{ scale: 1.02 }}
                   // whileTap={{ scale: 0.9 }}
@@ -69,8 +73,8 @@ export default async function Page() {
                     <Avatar size={"md"} />
                   </div>
                   <div className="flex-1 flex flex-col pl-3 gap-1">
-                    <h2 className="font-medium text-sm">Budi & Ani</h2>
-                    <p className="text-xs">Selasa, 12 Desember 2023</p>
+                    <h2 className="font-medium text-sm">{undangan.nama_pria} & {undangan.nama_wanita}</h2>
+                    <p className="text-xs">{undangan.dateTime_akad_nikah ? new Date(undangan.dateTime_akad_nikah).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : ''}</p>
                     <div></div>
                   </div>
                   <div className="pr-2">
@@ -83,7 +87,7 @@ export default async function Page() {
         )}
 
         <div className="fixed bottom-5 w-full  max-w-md flex justify-center">
-          <Link href={"/desain"}>
+          <Link href={"/user/create"}>
             <Button size="md" color="indigo" fullWidth>
               <IconPlus size={30} />
             </Button>
