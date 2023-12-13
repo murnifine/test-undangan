@@ -10,33 +10,33 @@ export default function DataFormPria({ control, Controller, register }: { contro
     return (
         <div className=''>
             <Controller
-                name="namaPria"
+                name="nama_pria"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Mempelai Pria" configName={field} />}
             />
             <Controller
-                name="namaAyahPria"
+                name="nama_ayah_pria"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Ayah" configName={field} />}
             />
             <Controller
-                name="namaIbuPria"
+                name="nama_ibu_pria"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Nama Ibu" configName={field} />}
             />
 
             <Controller
-                name="UrlFacebookPria"
+                name="pria_fb"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Facebook" configName={field} />}
             />
             <Controller
-                name="UrlInstagramPria"
+                name="pria_ig"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Instagram" configName={field} />}
             />
             <Controller
-                name="UrlTiktokPria"
+                name="pria_tk"
                 control={control}
                 render={({ field }) => <InputsDataForm label="Url Tiktok" configName={field} />}
             />

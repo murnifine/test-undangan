@@ -53,7 +53,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  Profile Profile?
+  Profile Profile[]
   templates TemplateUndangan?
 }
 
@@ -83,7 +83,7 @@ model User {
 
 model Profile {
   id                  Int               @id @default(autoincrement())
-  userId              String               @unique
+  userId              String             
   slug String?
   nama_pria           String?
   nama_ayah_pria      String?
@@ -101,11 +101,11 @@ model Profile {
   url_foto_wanita     String?
   url_foto_utama      String?
   dateTime_resepsi    DateTime?
-  dateTime_akad_nikah DateTime          @default(now())
+  dateTime_akad_nikah DateTime?           
   alamat_akad_nikah   String?
   alamat_resepsi      String?
-  templateId          Int?
   photo_moment        PhotoMoments[]
+  templateId Int? @unique
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
   user                User              @relation(fields: [userId], references: [id])
   ucapan              Ucapan[]
@@ -115,7 +115,9 @@ model TemplateUndangan {
   id      Int       @id @default(autoincrement())
   nama    String?
   userId String       @unique
-  profile Profile[]
+  // profileId Int? @unique
+  profile Profile?
+  // profile   Profile? @relation(fields: [profileId], references: [id])
   user   User     @relation(fields: [userId], references: [id])
 }
 

@@ -13,6 +13,7 @@ export default function InputsDataForm({ label, configName }: { label: any, conf
                     className="w-full px-4 h-10 rounded-lg text-xs placeholder-transparent border-b-2 text-slate-700 border-gray-300 peer focus:outline-none focus:border-purple-600"
                     placeholder={label}
                     {...configName}
+
                 />
                 <label
                     className="absolute
