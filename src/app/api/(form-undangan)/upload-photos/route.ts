@@ -38,7 +38,9 @@ export async function POST(request: Request) {
         data: datas as any
     })
     console.log(a)
+    revalidatePath('/user')
     return NextResponse.json({ message: "upload bersahil" });
+    
   }
 
   
