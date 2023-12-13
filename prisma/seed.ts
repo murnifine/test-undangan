@@ -40,10 +40,14 @@ async function main() {
     data: [
       {
         userId: nasir.id,
+        slug: "nasir-nurlina",
+
+        nama_panggilan_pria: "nasir",
         nama_pria: "Nasir, S.Si.",
         nama_ayah_pria: "Gunawan",
         nama_ibu_pria: "Wa Ode Tila",
 
+        nama_panggilan_wanita: "nurlina",
         nama_wanita: "Nurlina",
         nama_ayah_wanita: "La Ringgasa",
         nama_ibu_wanita: "Wa Ode Wiya",
@@ -60,6 +64,8 @@ async function main() {
         url_foto_utama: "/img/photo.JPG",
         alamat_akad_nikah: "",
         alamat_resepsi: "",
+
+        dateTime_akad_nikah: "2024-01-07T12:59:59.168Z",
       },
     ],
   });

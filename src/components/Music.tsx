@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { ActionIcon } from "@mantine/core";
 import { useTimeout } from "@mantine/hooks";
-import { IconDisc, IconMusic } from "@tabler/icons-react";
+import { IconDisc, IconMusic, IconMusicPause } from "@tabler/icons-react";
 import { LegacyRef, useEffect, useRef, useState } from "react";
 // import useSound from "use-sound";
 import { Howl } from "howler";
@@ -68,8 +68,9 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
 
   return (
     <div
-      className={`fixed bottom-28 right-4   ${isPlay && " animate-pulse"
-        } z-30 `}
+      className={`fixed bottom-28 right-4   ${
+        isPlay && " animate-pulse"
+      } z-30 `}
       onClick={() => controlMusic(0)}
     >
       <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
@@ -81,8 +82,9 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
           size="xl"
           radius="xl"
           aria-label="Play Music"
-          className={`relative flex z-10 ${isPlay && "animate-[spin_8s_linear_infinite]"
-            } `}
+          className={`relative flex z-10 ${
+            isPlay && "animate-[spin_8s_linear_infinite]"
+          } `}
         >
           {isPlay && (
             <>
@@ -104,7 +106,10 @@ export default function Music({ listMusic }: { listMusic: string[] }) {
           )}
 
           {!isPlay && (
-            <IconMusic style={{ width: "50%", height: "50%" }} stroke={1.5} />
+            <IconMusicPause
+              style={{ width: "50%", height: "50%" }}
+              stroke={1.5}
+            />
           )}
         </ActionIcon>
       </motion.div>

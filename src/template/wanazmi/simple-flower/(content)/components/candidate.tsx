@@ -1,14 +1,13 @@
+"use client";
 import Image from "next/image";
 
-import { AllDataUserProps, PropsDataUser } from "@/types/types";
+import { ProfileProps } from "@/types/types";
 import SosialMediaPria from "./sosialMediaPria";
 import SosialMediaWanita from "./sosialMediaWanita";
+import imageDefault from "@/utils/imageDefault";
+import { useEffect, useState } from "react";
 
-export default function Candidate({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
+export default function Candidate({ profile }: { profile: ProfileProps }) {
   return (
     <div className="flex flex-col items-center justify-center gap-5 ">
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
@@ -18,9 +17,10 @@ export default function Candidate({
         >
           <Image
             src={
-              AllDataUser.user.Profile?.url_foto_pria
-                ? AllDataUser.user.Profile?.url_foto_pria
-                : AllDataUser.defaultFoto
+              profile?.url_foto_pria
+                ? profile?.url_foto_pria
+                : "https://placehold.co/400x400"
+              // : AllDataUser.defaultFoto
             }
             width={500}
             height={700}
@@ -31,14 +31,13 @@ export default function Candidate({
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putra dari</span>
             <span>
-              {AllDataUser.user.Profile?.nama_ibu_pria} &{" "}
-              {AllDataUser.user.Profile?.nama_ayah_pria}
+              {profile?.nama_ibu_pria} & {profile?.nama_ayah_pria}
             </span>
           </div>
           <span className="text-4xl font-Sacramento ">
-            {AllDataUser.user.Profile?.nama_pria}
+            {profile?.nama_pria}
           </span>
-          <SosialMediaPria AllDataUser={AllDataUser} />
+          <SosialMediaPria profile={profile} />
         </div>
       </div>
 
@@ -53,9 +52,10 @@ export default function Candidate({
         >
           <Image
             src={
-              AllDataUser.user.Profile?.url_foto_wanita
-                ? AllDataUser.user.Profile?.url_foto_wanita
-                : AllDataUser.defaultFoto
+              profile?.url_foto_wanita
+                ? profile?.url_foto_wanita
+                : "https://placehold.co/400x400"
+              // : AllDataUser.defaultFoto
             }
             width={500}
             height={700}
@@ -66,14 +66,13 @@ export default function Candidate({
           <div className=" flex flex-col items-center text-sm ">
             <span className=" font-semibold ">Putri dari</span>
             <span>
-              {AllDataUser.user.Profile?.nama_ayah_wanita} &{" "}
-              {AllDataUser.user.Profile?.nama_ibu_wanita}
+              {profile?.nama_ayah_wanita} & {profile?.nama_ibu_wanita}
             </span>
           </div>
           <span className="text-4xl font-Sacramento ">
-            {AllDataUser.user.Profile?.nama_wanita}
+            {profile?.nama_wanita}
           </span>
-          <SosialMediaWanita AllDataUser={AllDataUser} />
+          <SosialMediaWanita profile={profile} />
         </div>
       </div>
     </div>

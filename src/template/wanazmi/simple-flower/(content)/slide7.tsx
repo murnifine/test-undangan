@@ -1,15 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { AllDataUserProps } from "@/types/types";
+import { ProfileProps } from "@/types/types";
 import Image from "next/image";
 
-export default function Slide7({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
-  const photoMoments = AllDataUser.user.Profile?.photo_moment;
+export default function Slide7({ profile }: { profile: ProfileProps }) {
+  const photoMoments = profile?.photo_moment;
 
   return (
     <div
@@ -51,8 +47,7 @@ export default function Slide7({
         <div className="flex flex-col items-center gap-5 text-xs">
           <span className=" font-semibold">Kami yang berbahagia</span>
           <span className="text-3xl font-semibold font-Sacramento">
-            {AllDataUser.user?.Profile?.nama_wanita} &{" "}
-            {AllDataUser.user?.Profile?.nama_pria}
+            {profile?.nama_wanita} & {profile?.nama_pria}
           </span>
         </div>
       </div>

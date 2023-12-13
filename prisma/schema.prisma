@@ -7,20 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -43,20 +42,18 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-
 model User {
-  id            String    @id @default(cuid())
+  id            String            @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?           @unique
   emailVerified DateTime?
-  role          String? @default("user")
+  role          String?           @default("user")
   image         String?
   accounts      Account[]
   sessions      Session[]
-  Profile Profile[]
-  templates TemplateUndangan?
+  Profile       Profile[]
+  templates     TemplateUndangan?
 }
-
 
 // model User {
 //   id      Int      @id @default(autoincrement())
@@ -70,10 +67,6 @@ model User {
 //   Profile Profile?
 // }
 
-
-
-
-
 // model Admin {
 //   id        Int               @id @default(autoincrement())
 //   email     String            @unique
@@ -82,43 +75,51 @@ model User {
 // }
 
 model Profile {
-  id                  Int               @id @default(autoincrement())
-  userId              String             
-  slug String?
+  id     Int     @id @default(autoincrement())
+  userId String
+  slug   String?
+
   nama_pria           String?
+  nama_panggilan_pria String?
   nama_ayah_pria      String?
   nama_ibu_pria       String?
-  nama_wanita         String?
-  nama_ayah_wanita    String?
-  nama_ibu_wanita     String?
-  pria_fb             String?
-  pria_ig             String?
-  pria_tk             String?
-  wanita_fb           String?
-  wanita_ig           String?
-  wanita_tk           String?
-  url_foto_pria       String?
-  url_foto_wanita     String?
-  url_foto_utama      String?
-  dateTime_resepsi    DateTime?
-  dateTime_akad_nikah DateTime?           
+
+  nama_wanita           String?
+  nama_panggilan_wanita String?
+  nama_ayah_wanita      String?
+  nama_ibu_wanita       String?
+
+  pria_fb String?
+  pria_ig String?
+  pria_tk String?
+
+  wanita_fb String?
+  wanita_ig String?
+  wanita_tk String?
+
+  url_foto_pria   String?
+  url_foto_wanita String?
+  url_foto_utama  String?
+
+  dateTime_resepsi    DateTime?         @default(now())
+  dateTime_akad_nikah DateTime?         @default(now())
   alamat_akad_nikah   String?
   alamat_resepsi      String?
   photo_moment        PhotoMoments[]
-  templateId Int? @unique
+  templateId          Int?
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
   user                User              @relation(fields: [userId], references: [id])
   ucapan              Ucapan[]
 }
 
 model TemplateUndangan {
-  id      Int       @id @default(autoincrement())
+  id      Int      @id @default(autoincrement())
   nama    String?
-  userId String       @unique
+  userId  String   @unique
   // profileId Int? @unique
-  profile Profile?
+  profile Profile[]
   // profile   Profile? @relation(fields: [profileId], references: [id])
-  user   User     @relation(fields: [userId], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
 }
 
 model PhotoMoments {

@@ -1,12 +1,12 @@
 "use client";
 
-import { AllDataUserProps } from "@/types/types";
+import { ProfileProps } from "@/types/types";
 
 import Masonry from "react-responsive-masonry";
 import { Image } from "antd";
 
-const Slide4 = ({ AllDataUser }: { AllDataUser: AllDataUserProps }) => {
-  const photoMoments = AllDataUser.user.Profile?.photo_moment;
+const Slide4 = ({ profile }: { profile: ProfileProps }) => {
+  const photoMoments = profile?.photo_moment;
 
   return (
     <div

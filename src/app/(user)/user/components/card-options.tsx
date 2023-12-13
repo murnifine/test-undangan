@@ -10,7 +10,12 @@ import {
 
 export default function CardOptions() {
   return (
-    <>
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+      }}
+    >
       <Menu
         shadow="md"
         width={150}
@@ -41,6 +46,6 @@ export default function CardOptions() {
           </Menu.Item>
         </Menu.Dropdown>
       </Menu>
-    </>
+    </div>
   );
 }

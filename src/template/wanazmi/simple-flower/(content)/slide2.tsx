@@ -1,18 +1,8 @@
-"use client"
-
 import Candidate from "./components/candidate";
-import { AllDataUserProps } from "@/types/types";
-import { useScroll, MotionValue, useTransform } from "framer-motion";
+import { ProfileProps } from "@/types/types";
 
-export default function Slide2({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
-
-
+export default function Slide2({ profile }: { profile: ProfileProps }) {
   return (
-
     <div
       id="section2"
       data-aos="fade-up"
@@ -30,7 +20,7 @@ export default function Slide2({
           Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
         </span>
       </div>
-      <Candidate AllDataUser={AllDataUser} />
+      <Candidate profile={profile} />
     </div>
   );
 }

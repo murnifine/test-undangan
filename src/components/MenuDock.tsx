@@ -1,12 +1,5 @@
 "use client";
-import {
-  IconCalendar,
-  IconForms,
-  IconHeartBolt,
-  IconHome,
-  IconNote,
-  IconPhoto,
-} from "@tabler/icons-react";
+
 import {
   MotionValue,
   motion,
@@ -15,38 +8,15 @@ import {
   useTransform,
 } from "framer-motion";
 
-import { useRef } from "react";
+import { ReactElement, useRef } from "react";
 import { Link } from "react-scroll";
 
-export default function MenuDock() {
+export default function MenuDock({
+  menus,
+}: {
+  menus: { icon: ReactElement; link: string }[];
+}) {
   let mouseX = useMotionValue(Infinity);
-
-  const menus = [
-    {
-      icon: <IconHeartBolt color="white" />,
-      link: "section1",
-    },
-    {
-      icon: <IconHome color="white" />,
-      link: "section2",
-    },
-    {
-      icon: <IconCalendar color="white" />,
-      link: "section3",
-    },
-    {
-      icon: <IconPhoto color="white" />,
-      link: "section4",
-    },
-    {
-      icon: <IconForms color="white" />,
-      link: "section6",
-    },
-    {
-      icon: <IconNote color="white" />,
-      link: "section7",
-    },
-  ];
 
   return (
     <div className="fixed z-40 bottom-3 right-0  flex w-full gap-3 justify-center items-center">

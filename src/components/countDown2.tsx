@@ -2,31 +2,37 @@
 
 import { motion } from "framer-motion";
 
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
-const countDowntarget: Date = new Date("2024-01-07:12:59:59");
-const TargetTimesamp = countDowntarget.getTime();
-const waktuSekarang: Date = new Date();
-const now = waktuSekarang.getTime();
-const totalTimeLeft = TargetTimesamp - now;
-export default function CountDown2() {
+export default function CountDown2({
+  date_time,
+  children,
+}: {
+  date_time: any;
+  children?: ReactNode;
+}) {
   const [isClient, setIsClient] = useState(false);
+
+  const countDowntarget = new Date(date_time);
+  // const countDowntarget: Date = new Date("2024-01-07:12:59:59");
+  const TargetTimesamp = countDowntarget.getTime();
+  const waktuSekarang: Date = new Date();
+  const now = waktuSekarang.getTime();
+  const totalTimeLeft = TargetTimesamp - now;
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  if (!isClient) return <></>;
+
   return (
-    <>
-      {isClient && (
-        <Countdown
-          daysInHours={true}
-          date={Date.now() + totalTimeLeft}
-          renderer={renderer}
-        />
-      )}
-    </>
+    <Countdown
+      daysInHours={true}
+      date={Date.now() + totalTimeLeft}
+      renderer={renderer}
+    />
   );
 }
 
@@ -54,14 +60,12 @@ const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     },
   ];
   if (completed) {
-    // Render a completed state
     return (
       <span className="mt-5 font-Rajdhani font-bold bg-pink-500 text-white rounded-lg py-4 px-10">
         Acara Pernikahan Telah Selesai
       </span>
     );
   } else {
-    // Render a countdown
     return (
       <>
         <div className="flex  gap-4 mt-5">
