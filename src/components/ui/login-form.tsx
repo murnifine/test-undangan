@@ -10,7 +10,7 @@
 import { useFormState, useFormStatus } from "react-dom";
 
 import { Icon12Hours } from "@tabler/icons-react";
-import { authenticate } from "@/lib/auth-action";
+import { authenticate } from "@/actions/auth-action";
 import { Button } from "@mantine/core";
 
 export default function LoginForm() {
