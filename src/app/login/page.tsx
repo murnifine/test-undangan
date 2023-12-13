@@ -70,7 +70,7 @@ const SignIn = async ({
   const { error, callbackUrl } = searchParams;
 
   const session = await auth();
-  if (session?.user) return redirect("/");
+  if (session?.user) return redirect("/user");
 
   // if (session?.user && callbackUrl) return redirect(callbackUrl as string);
   // if (session?.user) return redirect("/");

@@ -1,6 +1,6 @@
 "use client";
 import { signOut } from "@/lib/auth";
-import { handleLogout } from "@/lib/auth-action";
+import { handleLogout } from "@/actions/auth-action";
 import { Button } from "@mantine/core";
 import { startTransition } from "react";
 import { useFormStatus } from "react-dom";

@@ -1,11 +1,12 @@
 "use server";
 
 import { AuthError } from "next-auth";
-import { signIn, signOut } from "./auth";
+import { signIn, signOut } from "../lib/auth";
 
 export async function handleLogout() {
   await signOut({ redirectTo: "/" });
 }
+
 export async function handleLogin(provider: string) {
   await signIn(provider);
 }
@@ -27,4 +28,12 @@ export async function authenticate(
     }
     throw error;
   }
+}
+
+export async function handleSignInWithEmail(
+  email: string,
+  callbackUrl: string
+) {
+  // const { email } = Object.fromEntries(formData);
+  return await signIn("email", { redirect: false, email, callbackUrl });
 }
