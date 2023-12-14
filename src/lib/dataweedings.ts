@@ -62,3 +62,36 @@ const dataWeedings = [
 
 
 export default dataWeedings;
+
+
+
+export const exampleData = {
+    // userId: nasir.id,
+    slug: "nasir-nurlina",
+
+    nama_panggilan_pria: "Example",
+    nama_pria: "Example",
+    nama_ayah_pria: "Gunawan",
+    nama_ibu_pria: "Wa Ode Tila",
+
+    nama_panggilan_wanita: "Example",
+    nama_wanita: "Example Wanita",
+    nama_ayah_wanita: "La Ringgasa",
+    nama_ibu_wanita: "Wa Ode Wiya",
+    templateId: 2,
+
+    pria_fb: "https://www.facebook.com/nasiracill?mibextid=ZbWKwL",
+    pria_ig: "",
+    pria_tk: "https://www.tiktok.com/@shinobi.mubar?_t=8hcXG1a5lO4&_r=1",
+    wanita_fb: "https://www.facebook.com/nurlina.ajhadech?mibextid=ZbWKwL",
+    wanita_ig: "",
+    wanita_tk: "",
+    url_foto_pria: "/img/mempelaiP.jpg",
+    url_foto_wanita: "/img/mempelaiP.jpg",
+    url_foto_utama: "/img/photo.JPG",
+    alamat_akad_nikah: "",
+    alamat_resepsi: "",
+    photo_moment: [],
+
+    dateTime_akad_nikah: "2024-01-07T12:59:59.168Z",
+  }
