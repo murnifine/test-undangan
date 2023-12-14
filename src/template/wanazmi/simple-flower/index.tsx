@@ -82,6 +82,7 @@ export default function Tmp1({ profile }: { profile: ProfileProps }) {
 
         <Music listMusic={listMusic} />
         <MenuDock menus={menus} />
+        <Particle />
 
         <Footer />
       </Layout>

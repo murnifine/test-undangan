@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { User } from "next-auth/types";
 import { redirect } from "next/navigation";
+import { number } from "zod";
 
 export async function POST(request: Request) {
   if (!request.body) return NextResponse.json({ message: "bodynya kosong" });
@@ -33,14 +34,20 @@ export async function POST(request: Request) {
   datas.dateTime_resepsi = new Date(
     datas.dateTime_resepsi as string
   ).toISOString();
+  // datas.templateId = datas.templateId;
+  datas.slug = datas.nama_panggilan_pria + "-" + datas.nama_panggilan_wanita;
+  const getAllDataForm = {
+    ...datas, templateId: Number(datas.templateId)
+  }
+
 
   //   const pria = (datas.nama_pria as string).split(' ')[0]
   //   const wanita = (datas.nama_wanita as string).split(' ')[0]
-  datas.slug = datas.nama_panggilan_pria + "-" + datas.nama_panggilan_wanita;
-  console.log("ini datas tesss", datas);
+  // console.log("ini datas tesss", datas);
 
   const a = await prisma.profile.create({
-    data: datas as any,
+    // data: datas as any,
+    data: getAllDataForm as any
   });
 
   //   console.log(a);

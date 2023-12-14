@@ -2,15 +2,17 @@
 
 
 import { DateTimePicker } from "@mantine/dates";
-
+import { useSearchParams } from 'next/navigation'
 import { useForm, Controller } from "react-hook-form";
 import DataFormPria from "../components/formStep/dataFormPria";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Stepper, Button, Group, FileInput } from "@mantine/core";
 import DataFormWanita from "../components/formStep/dataFormWanita";
 import { useRouter } from "next/navigation";
 
 import "@mantine/dates/styles.css";
+import { useFormStatus } from "react-dom";
+import { space } from "postcss/lib/list";
 
 export default function Default({ sessionId }: { sessionId: string }) {
   const router = useRouter();
@@ -19,6 +21,17 @@ export default function Default({ sessionId }: { sessionId: string }) {
     const file = event.target.files && event.target.files[0];
     setSelectedFile(file);
   };
+  // const { pending } = useFormStatus()
+
+  const [pending, setPending] = useState(false)
+  // const handleButtonSubmit = useRef<HTMLFormElement>()
+
+
+  const getParams = useSearchParams()
+
+  const getTemplateId = getParams.get('templateId')
+  // const limit: number = parseInt(getTemplateId as string)
+
 
   const { handleSubmit, control, register } = useForm();
 
@@ -33,6 +46,7 @@ export default function Default({ sessionId }: { sessionId: string }) {
     <form
       onSubmit={handleSubmit(async (data) => {
         // console.log(data)
+        setPending(true)
         const sendData = new FormData();
         for (const dataForm in data) {
           sendData.append(dataForm, data[dataForm]);
@@ -40,6 +54,10 @@ export default function Default({ sessionId }: { sessionId: string }) {
         sendData.delete("url_foto_pria");
         sendData.append("url_foto_pria", data.url_foto_pria[0]);
         sendData.append("userId", sessionId);
+        if (getTemplateId) {
+          sendData.append("templateId", getTemplateId);
+        }
+
         const kirimData = await fetch("/api/upload-photos", {
           method: "POST",
           body: sendData,
@@ -121,15 +139,28 @@ export default function Default({ sessionId }: { sessionId: string }) {
       <div className="  bottom-8  w-full max-w-xl mt-5">
         <Group justify="between">
           <div className="flex w-full justify-between items-center px-5">
-            <Button type="button" variant="default" onClick={prevStep}>
-              Back
-            </Button>
-            {active === 3 && <Button type="submit">Save</Button>}
+            {
+              pending === true ?
+                <>
+                  <Button type="button" variant="default" disabled >
+                    Back
+                  </Button>
+                  <Button loading={pending} type="button" disabled>Loading</Button>
+                </>
+                :
+                <>
+                  <Button type="button" variant="default" onClick={prevStep}>
+                    Back
+                  </Button>
+                  {active === 3 && <Button type="submit">Save</Button>}
+                </>
+            }
             {active !== 3 && (
               <Button type="button" onClick={nextStep}>
                 Next step
               </Button>
             )}
+
           </div>
           {/* <div className="flex w-full justify-between items-center px-5">
                         <Button variant="default" onClick={prevStep}>Back</Button>
