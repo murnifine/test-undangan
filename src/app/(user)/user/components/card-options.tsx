@@ -7,8 +7,9 @@ import {
   IconSettings,
   IconShare,
 } from "@tabler/icons-react";
+import Link from "next/link";
 
-export default function CardOptions() {
+export default function CardOptions({ profileId }: { profileId: number }) {
   return (
     <div
       onClick={(e) => {
@@ -30,20 +31,25 @@ export default function CardOptions() {
 
         <Menu.Dropdown className="bg-blue-300">
           {/* <Menu.Label>Application</Menu.Label> */}
-          <Menu.Item
-            leftSection={
-              <IconEdit style={{ width: rem(14), height: rem(14) }} />
-            }
-          >
-            Edit
-          </Menu.Item>
-          <Menu.Item
-            leftSection={
-              <IconShare style={{ width: rem(14), height: rem(14) }} />
-            }
-          >
-            Bagikan
-          </Menu.Item>
+
+          <Link href={`/user/edit?profileId=` + profileId}>
+            <Menu.Item
+              leftSection={
+                <IconEdit style={{ width: rem(14), height: rem(14) }} />
+              }
+            >
+              Edit
+            </Menu.Item>
+          </Link>
+          <Link href={`/user/share?profileId=` + profileId}>
+            <Menu.Item
+              leftSection={
+                <IconShare style={{ width: rem(14), height: rem(14) }} />
+              }
+            >
+              Bagikan
+            </Menu.Item>
+          </Link>
         </Menu.Dropdown>
       </Menu>
     </div>
