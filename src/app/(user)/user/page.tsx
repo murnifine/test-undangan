@@ -62,36 +62,58 @@ export default async function Page() {
 
         {profile && (
           <div className="flex flex-col w-full gap-5 mb-20 sm:px-5">
-            {profile.slice().reverse().map((undangan) => (
-              <Link href="#" key={undangan.id}>
-                <MotionDiv
-                  whileHover={{ scale: 1.02 }}
-                  // whileTap={{ scale: 0.9 }}
-                  className="bg-gray-50 border flex items-center hover:bg-white  rounded-md p-2 h-16 transition-all duration-75 hover:border-pink-500"
+            {profile
+              .slice()
+              .reverse()
+              .map((undangan) => (
+                <Link
+                  href={`/${undangan.slug}`}
+                  target="_blank"
+                  key={undangan.id}
                 >
-                  <div>
-                    <Avatar size={"md"} />
-                  </div>
-                  <div className="flex-1 flex flex-col pl-3 gap-1">
-                    <h2 className="font-medium text-sm">{undangan.nama_pria} & {undangan.nama_wanita}</h2>
-                    <p className="text-xs">{undangan.dateTime_akad_nikah ? new Date(undangan.dateTime_akad_nikah).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : ''}</p>
-                    <div></div>
-                  </div>
-                  <div className="pr-2">
-                    <CardOptions />
-                  </div>
-                </MotionDiv>
-              </Link>
-            ))}
+                  <MotionDiv
+                    whileHover={{ scale: 1.02 }}
+                    // whileTap={{ scale: 0.9 }}
+                    className="bg-gray-50 border flex items-center hover:bg-white  rounded-md p-2 h-16 transition-all duration-75 hover:border-pink-500"
+                  >
+                    <div>
+                      <Avatar size={"md"} src={undangan.url_foto_utama} />
+                    </div>
+                    <div className="flex-1 flex flex-col pl-3 gap-1">
+                      <h2 className="font-medium text-sm">
+                        {undangan.nama_pria} & {undangan.nama_wanita}
+                      </h2>
+                      <p className="text-xs">
+                        {undangan.dateTime_akad_nikah
+                          ? new Date(
+                              undangan.dateTime_akad_nikah
+                            ).toLocaleDateString("id-ID", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })
+                          : ""}
+                      </p>
+                      <div></div>
+                    </div>
+                    <div className="pr-2">
+                      <CardOptions />
+                    </div>
+                  </MotionDiv>
+                </Link>
+              ))}
           </div>
         )}
 
         <div className="fixed bottom-5 w-full  max-w-md flex justify-center">
-          <Link href={"/user/create"}>
-            <Button size="md" color="indigo" fullWidth>
-              <IconPlus size={30} />
-            </Button>
-          </Link>
+          <MotionDiv whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+            <Link href={"/user/create"}>
+              <Button size="md" color="indigo" fullWidth>
+                <IconPlus size={30} />
+              </Button>
+            </Link>
+          </MotionDiv>
         </div>
       </div>
     </main>

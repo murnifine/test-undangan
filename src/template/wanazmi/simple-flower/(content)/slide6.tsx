@@ -1,14 +1,10 @@
 "use client";
 
 import { sendUcapan } from "@/lib/actions";
-import { AllDataUserProps } from "@/types/types";
+import { ProfileProps } from "@/types/types";
 import { LegacyRef, useRef } from "react";
 
-export default function Slide6({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
+export default function Slide6({ profile }: { profile: ProfileProps }) {
   const ref: LegacyRef<HTMLFormElement> | undefined = useRef(null);
   return (
     <div
@@ -20,8 +16,8 @@ export default function Slide6({
       </span>
       <form
         ref={ref}
-        action={async (FormData) => {
-          await sendUcapan(FormData, AllDataUser.user);
+        action={async (formData) => {
+          await sendUcapan(formData, profile);
           ref.current?.reset();
         }}
         className="flex  flex-col w-full h-full gap-5"
@@ -46,7 +42,7 @@ export default function Slide6({
         50 Ucapan
       </span>
       <div className="flex flex-col gap-4  w-full p-3 bg-white/50 h-64 overflow-scroll">
-        {AllDataUser.user?.Profile?.ucapan
+        {profile?.ucapan
           ?.map((x) => (
             <div
               key={x.id}

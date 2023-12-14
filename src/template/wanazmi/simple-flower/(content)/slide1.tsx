@@ -2,23 +2,14 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import CountDown2 from "@/components/countDown2";
-import { AllDataUserProps } from "@/types/types";
+import { ProfileProps } from "@/types/types";
 import { jalankanAos } from "@/lib/aos";
-export default function Slide1({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
-
-
-  // useEffect(() => {
-  //   jalankanAos();
-  // }, []);
-
-  const waktu = AllDataUser.user?.Profile?.dateTime_akad_nikah;
+import imageDefault from "@/utils/imageDefault";
+export default function Slide1({ profile }: { profile: ProfileProps }) {
+  const waktu = profile?.dateTime_akad_nikah;
 
   return (
     <div
@@ -57,9 +48,9 @@ export default function Slide1({
         <Image
           className=" w-72  z-0"
           src={
-            AllDataUser.user?.Profile?.url_foto_utama
-              ? AllDataUser.user?.Profile?.url_foto_utama
-              : AllDataUser.defaultFoto
+            profile?.url_foto_utama
+              ? profile?.url_foto_utama
+              : "https://placehold.co/400x400"
           }
           width={500}
           height={500}
@@ -73,8 +64,7 @@ export default function Slide1({
       >
         <span className="font-Shadows text-lg">THE WEDDING OF</span>
         <span className=" text-4xl font-Rouge">
-          {AllDataUser.user?.Profile?.nama_wanita} &
-          {AllDataUser.user?.Profile?.nama_pria}
+          {profile?.nama_wanita} &{profile?.nama_pria}
         </span>
         <div
           data-aos="fade-in"
@@ -85,7 +75,7 @@ export default function Slide1({
           className="flex justify-center items-center  font-Rajdhani font-bold text-lg text-slate-800 mt-2 "
         >
           {/* <span>
-            {AllDataUser.user?.Profile?.dateTime_akad_nikah.toLocaleString(
+            {profile?.dateTime_akad_nikah.toLocaleString(
               "en-GB",
               {
                 hour: "2-digit",
@@ -116,7 +106,7 @@ export default function Slide1({
           </div>
         </div>
 
-        <CountDown2 />
+        <CountDown2 date_time={profile.dateTime_akad_nikah} />
 
         <div className="flex flex-col justify-center text-sky-600 items-center gap-2 mt-5">
           <IoIosArrowRoundDown id="arrow-scroll" size="2em" />

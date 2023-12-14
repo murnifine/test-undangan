@@ -1,22 +1,22 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import prisma from "./prisma";
-import { User } from "@prisma/client";
+import { Profile, User } from "@prisma/client";
 import { put } from "@vercel/blob";
 import { UserProps } from "@/types/types";
 
-export const sendUcapan = async (formData: FormData, user: UserProps) => {
+export const sendUcapan = async (formData: FormData, profile: Profile) => {
   const nama = formData.get("nama");
   const ucapan = formData.get("ucapan");
 
-  const sendUser = await prisma.ucapan.create({
+  const newUcapan = await prisma.ucapan.create({
     data: {
-      profileId: user.Profile?.id,
+      profileId: profile.id,
       nama: nama as string,
       pesan: ucapan as string,
     },
   });
-  revalidatePath(`/${user?.name}`);
+  revalidatePath(`/${profile.slug}`);
 };
 
 export const getAllUsers = async () => {
@@ -118,3 +118,41 @@ export async function getUserById(id: string) {
 //   })
 // }
 
+export async function getProfileBySlug(slug: string) {
+  // const user = await prisma.user.findFirst({
+  //   include: {
+  //     Profile: {
+  //       include: {
+  //         ucapan: true,
+  //         photo_moment: true,
+  //         // template: true,
+  //         template: {
+  //           include: {
+  //             user: true,
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  //   where: {
+  //     name: name,
+  //   },
+  // });
+
+  const user = await prisma.profile.findFirst({
+    where: {
+      slug: slug,
+    },
+    include: {
+      ucapan: true,
+      photo_moment: true,
+      template: {
+        include: {
+          user: true,
+        },
+      },
+    },
+  });
+
+  return user;
+}

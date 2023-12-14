@@ -34,17 +34,33 @@ type TemplateUndanganProps = Prisma.TemplateUndanganGetPayload<{
   };
 }>;
 
-type AllDataUserProps = {
-  defaultFoto : string,
-  user: UserProps
-      sosialMediaPria: {
-      facebook : string,
-      instagram : string,
-      tiktok : string,
+// type AllDataProfileProps = {
+//   defaultFoto : string,
+//   user: UserProps
+//       sosialMediaPria: {
+//       facebook : string,
+//       instagram : string,
+//       tiktok : string,
+//     },
+//     sosialMediaWanita: {
+//       facebook : string,
+//       instagram : string,
+//       tiktok : string,
+//     }
+// }
+
+
+
+
+
+type ProfileProps = Prisma.ProfileGetPayload<{
+  include: {
+    ucapan: true,
+    photo_moment: true,
+    template: {
+      include: {
+        user: true,
+      },
     },
-    sosialMediaWanita: {
-      facebook : string,
-      instagram : string,
-      tiktok : string,
-    }
-}
+  },
+}>;

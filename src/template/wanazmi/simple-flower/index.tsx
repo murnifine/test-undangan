@@ -9,33 +9,61 @@ import Slide3 from "./(content)/slide3";
 import Slide4 from "./(content)/slide4";
 import Slide5 from "./(content)/slide5";
 import Slide6 from "./(content)/slide6";
-import { AllDataUserProps } from "@/types/types";
 import Slide7 from "./(content)/slide7";
 import Footer from "@/app/(tamu)/components/Footer/Footer";
 import Music from "@/components/Music";
 import MenuDock from "@/components/MenuDock";
 
+import {
+  IconCalendar,
+  IconForms,
+  IconHeartBolt,
+  IconHome,
+  IconNote,
+  IconPhoto,
+} from "@tabler/icons-react";
+
 import Cover from "./(content)/cover";
 
 import { Komponen1 } from "@/components/contoh/ControhContext";
+import { ProfileProps } from "@/types/types";
+import Particle from "@/components/Particle";
 
-
-export default function Tmp1({
-  AllDataUser,
-}: {
-  AllDataUser: AllDataUserProps;
-}) {
+export default function Tmp1({ profile }: { profile: ProfileProps }) {
   const listMusic = [
-    // "music/snowfall.mp3",
     "https://invisimple.id/wp-content/uploads/2023/06/Bruno-Mars-Marry-You.mp3",
-    // "https://files.freemusicarchive.org/storage-freemusicarchive-org/tracks/LS3LNGNUv9ggLA10rIC67I31xO4g3GWdwovPm8wA.mp3",
-    // "https://cdn.discordapp.com/attachments/997069374009659415/1179276306018467861/snowfall.mp3",
+  ];
+
+  const menus = [
+    {
+      icon: <IconHeartBolt color="white" />,
+      link: "section1",
+    },
+    {
+      icon: <IconHome color="white" />,
+      link: "section2",
+    },
+    {
+      icon: <IconCalendar color="white" />,
+      link: "section3",
+    },
+    {
+      icon: <IconPhoto color="white" />,
+      link: "section4",
+    },
+    {
+      icon: <IconForms color="white" />,
+      link: "section6",
+    },
+    {
+      icon: <IconNote color="white" />,
+      link: "section7",
+    },
   ];
 
   return (
     <>
-
-      <Cover AllDataUser={AllDataUser} />
+      <Cover profile={profile} />
       <Layout>
         {/* <Komponen1 /> */}
 
@@ -44,25 +72,19 @@ export default function Tmp1({
           data-selector="index"
           data-music="false"
         >
-
-
-          <Slide1 AllDataUser={AllDataUser} />
-          <Slide2 AllDataUser={AllDataUser} />
-          <Slide3 AllDataUser={AllDataUser} />
-          {AllDataUser.user.image &&
-            <Slide4 AllDataUser={AllDataUser} />
-          }
-          <Slide6 AllDataUser={AllDataUser} />
-          <Slide7 AllDataUser={AllDataUser} />
+          <Slide1 profile={profile} />
+          <Slide2 profile={profile} />
+          <Slide3 profile={profile} />
+          {profile.photo_moment.length > 0 && <Slide4 profile={profile} />}
+          <Slide6 profile={profile} />
+          <Slide7 profile={profile} />
         </div>
 
         <Music listMusic={listMusic} />
-        <MenuDock />
+        <MenuDock menus={menus} />
+
         <Footer />
-      </Layout >
-
-
+      </Layout>
     </>
-
   );
 }
