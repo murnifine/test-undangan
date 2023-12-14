@@ -10,12 +10,44 @@ import {
   IconBrandWhatsapp,
   IconUserCheck,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Share = ({ slug }: { slug: string }) => {
+const Share = ({ slug, id }: { slug: string; id: number }) => {
   const [kepada, setKepada] = useState(``);
 
   const clipboard = useClipboard({ timeout: 1000 });
+
+  async function bayar() {
+    const data = {
+      id: 50,
+      //   id: id,
+      harga: 250000,
+    };
+
+    const req = await fetch("/api/tokenizer", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    const res = await req.json();
+
+    console.log({ res });
+
+    // https://simulator.sandbox.midtrans.com/bca/va/payment
+    (window as any).snap.pay(res.token);
+  }
+
+  useEffect(() => {
+    // const src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    // const clientKey = process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY as string;
+    // const script = document.createElement("script");
+    // script.src = src;
+    // script.setAttribute("data-client-key", clientKey);
+    // script.async = true;
+    // document.body.appendChild(script);
+    // return () => {
+    //   document.body.removeChild(script);
+    // };
+  }, []);
 
   return (
     <>
@@ -63,6 +95,10 @@ const Share = ({ slug }: { slug: string }) => {
             </div>
           </>
         )}
+
+        <Button className="mt-10" onClick={bayar}>
+          Bayar
+        </Button>
       </div>
     </>
   );
