@@ -3,6 +3,7 @@ import { ProfileProps } from "@/types/types";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 export default function Cover({ profile }: { profile: ProfileProps }) {
   const [openUndangan, setOpenUndangan] = useState(0);
@@ -20,6 +21,11 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
     setOpenUndangan(openMove);
     setOpacity(0);
   };
+
+  const searchParams = useSearchParams();
+
+  const to = searchParams.get("to");
+
   return (
     <motion.div
       className="flex  fixed justify-center items-center w-full  top-0 h-screen bg-slate-900 z-50 py-20"
@@ -55,10 +61,14 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
             <span>&</span>
             <span className="  ">{profile?.nama_pria}</span>
           </div>
+
+          {/* {to && ( */}
           <div className="flex flex-col items-center gap-1 mt-2">
             <span className="text-xs">Kepada Yth:</span>
-            <span className=" text-lg font-GlassAntiqu">wanazmi</span>
+            <span className=" text-lg font-GlassAntiqu">{to}</span>
           </div>
+          {/* )} */}
+
           <button
             onClick={HandleOpen}
             className="flex items-center justify-center gap-2  bg-red-300 px-4 py-2 rounded-full mt-5"

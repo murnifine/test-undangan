@@ -42,13 +42,13 @@ export default function UserMenu({ session }: { session: Session | null }) {
         >
           Settings
         </Menu.Item>
-        <Menu.Item
+        {/* <Menu.Item
           leftSection={
             <IconMessageCircle style={{ width: rem(14), height: rem(14) }} />
           }
         >
           Messages
-        </Menu.Item>
+        </Menu.Item> */}
 
         <Menu.Divider />
 

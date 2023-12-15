@@ -6,6 +6,7 @@ import "@mantine/core/styles.css";
 import "./globals.css";
 import { auth } from "@/lib/auth";
 import { Toaster } from "sonner";
+import Script from "next/script";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,10 @@ export default async function RootLayout({
           <Toaster position="top-center" />
           <MantineProvider>{children}</MantineProvider>
         </SessionProvider>
+        <Script
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key={process.env.MIDTRANS_CLIENT_KEY}
+        />
       </body>
     </html>
   );
