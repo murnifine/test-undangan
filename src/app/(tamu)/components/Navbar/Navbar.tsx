@@ -135,7 +135,7 @@ export function Navbar() {
                         Request Desain Undangan
                       </Text>
                       <Text size="xs" c="dimmed">
-                        Bisa melakukan permintaan custom desaian sesuai keinginan dan style anda
+                        Bisa melakukan permintaan custom desain sesuai keinginan dan style anda.
                       </Text>
                     </div>
                     <Link className="border rounded-md p-2 hover:bg-slate-100" href={'#'}>Request</Link>
