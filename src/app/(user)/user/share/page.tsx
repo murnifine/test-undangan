@@ -28,7 +28,11 @@ export default async function Page({
         <p className="text-center p-10 text-base ">Profile bermasalah</p>
       )}
 
-      <Share slug={profile?.slug as string} id={profile.id} />
+      <Share
+        slug={profile?.slug as string}
+        id={profile.id}
+        order={profile.order}
+      />
 
       <div className="fixed bottom-5 w-full  max-w-md flex justify-center">
         <Button component={Link} href={"/user"} variant="outline" size="md">

@@ -8,6 +8,8 @@ import {
   IconBrandInstagram,
   IconBrandTiktokFilled,
   IconBrandWhatsapp,
+  IconLock,
+  IconLockAccess,
   IconUserCheck,
 } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
@@ -19,7 +21,7 @@ const Share = ({ slug, id }: { slug: string; id: number }) => {
 
   async function bayar() {
     const data = {
-      id: 50,
+      id: 59,
       //   id: id,
       harga: 250000,
     };
@@ -32,22 +34,25 @@ const Share = ({ slug, id }: { slug: string; id: number }) => {
 
     console.log({ res });
 
-    // https://simulator.sandbox.midtrans.com/bca/va/payment
-    (window as any).snap.pay(res.token);
+    // https://simulator.sandbox.midtrans.com/bca/va/index
+    (window as any).snap.pay(res.token, {
+      onSuccess: function (result: any) {
+        console.log("success");
+        console.log(result);
+      },
+      onPending: function (result: any) {
+        console.log("pending");
+        console.log(result);
+      },
+      onError: function (result: any) {
+        console.log("error");
+        console.log(result);
+      },
+      onClose: function () {
+        console.log("customer closed the popup without finishing the payment");
+      },
+    });
   }
-
-  useEffect(() => {
-    // const src = "https://app.sandbox.midtrans.com/snap/snap.js";
-    // const clientKey = process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY as string;
-    // const script = document.createElement("script");
-    // script.src = src;
-    // script.setAttribute("data-client-key", clientKey);
-    // script.async = true;
-    // document.body.appendChild(script);
-    // return () => {
-    //   document.body.removeChild(script);
-    // };
-  }, []);
 
   return (
     <>
@@ -60,7 +65,18 @@ const Share = ({ slug, id }: { slug: string; id: number }) => {
         />
 
         {kepada && (
-          <>
+          <div className="relative mt-5 rounded-lg overflow-hidden">
+            <div className="absolute  bg-gray-500/90 w-full h-full z-50 flex flex-col justify-center items-center">
+              <p className="text-sm text-white text-center mb-4">
+                Fitur terkunci, selesaikan pembayaran untuk dapat menggunakan
+                fitur ini
+              </p>
+              <IconLock size={70} color="white" />
+
+              <Button className="mt-4 z-[9999] opacity-100" onClick={bayar}>
+                Selesaikan Pembayaran
+              </Button>
+            </div>
             <div className=" mt-1 p-2 text-center">
               olvite.com/{slug}?to={kepada}
             </div>
@@ -93,12 +109,8 @@ const Share = ({ slug, id }: { slug: string; id: number }) => {
                 <IconBrandTiktokFilled />
               </Button>
             </div>
-          </>
+          </div>
         )}
-
-        <Button className="mt-10" onClick={bayar}>
-          Bayar
-        </Button>
       </div>
     </>
   );
