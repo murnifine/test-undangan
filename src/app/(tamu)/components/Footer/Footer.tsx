@@ -8,7 +8,7 @@ import { IconHeartFilled } from "@tabler/icons-react";
 
 export default function Footer() {
   return (
-    <footer className="flex relative flex-col justify-center items-center w-full bg-slate-200 gap-10  py-20 px-5">
+    <footer className="flex relative flex-col justify-center items-center w-full bg-white gap-10  py-20 px-5">
       <div className="flex flex-col items-center">
         <Link href={"/"} className="flex gap-2 items-center">
           <IconHeartFilled className="text-pink-600" />

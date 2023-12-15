@@ -7,6 +7,7 @@ import "./globals.css";
 import { auth } from "@/lib/auth";
 import { Toaster } from "sonner";
 import Script from "next/script";
+import { Navbar } from "./(tamu)/components/Navbar/Navbar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,10 @@ export default async function RootLayout({
       <body className=" min-h-screen min-w-full">
         <SessionProvider session={session}>
           <Toaster position="top-center" />
-          <MantineProvider>{children}</MantineProvider>
+          <MantineProvider>
+
+            {children}
+          </MantineProvider>
         </SessionProvider>
         <Script
           src="https://app.sandbox.midtrans.com/snap/snap.js"
