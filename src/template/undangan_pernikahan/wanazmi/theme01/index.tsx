@@ -4,7 +4,7 @@ import Image from "next/image";
 import Slide1 from "./(content)/slide1";
 import Slide2 from "./(content)/slide2";
 import Layout from "./layout";
-import dataWeedings from "../../../lib/dataweedings";
+import dataWeedings from "../../../../lib/dataweedings";
 import Slide3 from "./(content)/slide3";
 import Slide4 from "./(content)/slide4";
 import Slide5 from "./(content)/slide5";

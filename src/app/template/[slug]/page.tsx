@@ -1,41 +1,34 @@
 import prisma from "@/lib/prisma";
 import { Suspense, lazy } from "react";
 import { exampleData } from "@/lib/dataweedings";
+import Link from "next/link";
+import { LuEye } from "react-icons/lu";
+import { category } from "@prisma/client";
+import IsiCard from "../components/isiCard";
 export default async function Slug({ params }: { params: { slug: string } }) {
-
-    const templateUndangan = await prisma.templateUndangan.findFirst({
+    if (!params.slug) return
+    const templateUndangan = await prisma.templateUndangan.findMany({
         where: {
-            nama: params.slug
+            category: params.slug.replaceAll('-', '_') as category
         },
         include: {
             user: true
         }
     })
+
     const namaTemplate = params.slug
 
-    const pembuatTemplate = templateUndangan?.user.name
-    console.log(namaTemplate, pembuatTemplate)
-    const TemplateUndanganComponent = lazy(() =>
-        // import(`../../../template/${pembuatTemplate}/${namaTemplate}`).catch(
-        import(`../../../template/${pembuatTemplate}/${namaTemplate}`).catch(
-            () => ({
-                default: () => <div>Pengguna belum menerapkan template</div>,
-            })
-        )
-    );
+
     return (
-        <div className=''>
-            <div className="fixed flex flex-col top-5 left-5  z-50">
-                <span className=" bg-red-100 p-2 ">
-                    example {params.slug}
-                </span>
-                <button className="p-2 bg-sky-200">Terapkan</button>
+        <>
+            <div className='w-full h-full py-20 '>
+                <div className="flex flex-col items-center  gap-5 py-20 px-5 md:px-10 w-full  h-full bg-white">
+
+                    <IsiCard dataTemplates={templateUndangan} categoryName={namaTemplate.replaceAll('_', '-')} />
+                </div>
 
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
-                <TemplateUndanganComponent profile={exampleData} />
-            </Suspense>
+        </>
 
-        </div>
     )
 }

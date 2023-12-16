@@ -46,7 +46,7 @@ export async function CardItemTemplate({
   // );
 
   const [previewTemplate, setPreviewTemplate] = useState<string | null>(
-    "wanazmi/simple-flower"
+    "wanazmi/theme01"
   );
 
   // const TemplateComponent = dynamic(
