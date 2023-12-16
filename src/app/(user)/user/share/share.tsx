@@ -99,9 +99,9 @@ const Share = ({
 
   async function handleShare() {
     const data = {
-      title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
-      text: `Halo ${kepada} aku mengundangmu /n`,
-      url: `https://${finalUrl}`,
+      title: `Undangan pernikahan \n ${profile.nama_pria} & ${profile.nama_wanita}`,
+      text: kepada + ", Halo aku mengundangmu \n",
+      url: `${finalUrl}`,
     };
 
     try {
