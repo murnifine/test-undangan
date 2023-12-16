@@ -38,13 +38,15 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
       </head>
       <body className=" min-h-screen min-w-full">
         <SessionProvider session={session}>
           <Toaster position="top-center" />
-          <MantineProvider>
-            {children}
-          </MantineProvider>
+          <MantineProvider>{children}</MantineProvider>
         </SessionProvider>
         <Script
           src="https://app.sandbox.midtrans.com/snap/snap.js"
