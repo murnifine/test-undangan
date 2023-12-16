@@ -39,11 +39,15 @@ const nama_wanita = profile.nama_wanita?.toUpperCase;
 const nama_panggilan_pria = profile.nama_panggilan_pria?.toUpperCase;
 const nama_panggilan_wanita = profile.nama_panggilan_wanita?.toUpperCase;
 
+
 const [kepada, setKepada] = useState(``);
 
 const [finalUrl, setFinalUrl] = useState(`${host}/${slug}`);
 
 const clipboard = useClipboard({ timeout: 1000 });
+
+
+const text = `Kepada Yth.\nBapak/Ibu/Saudara/i\n\n${kepada}\n\n\nAssalamu’alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${nama_pria} & ${nama_wanita}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu’alaikum Wr. Wb.\n\nTerima Kasih..\n\nHormat kami,\n${nama_panggilan_pria} & ${nama_panggilan_wanita}\n\n\n Berikut link untuk info lengkap undangan kami`;
 
 async function bayar() {
   // const data = {
@@ -107,7 +111,7 @@ async function bayar() {
 async function handleShare() {
   const data = {
     title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
-    text: `Kepada Yth.\nBapak/Ibu/Saudara/i\n\n${kepada}\n\n\nAssalamu’alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${nama_pria} & ${nama_wanita}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\n(Salin link dan buka di browser bila link tidak dapat dibuka, usahakan mematikan fitur dark mode dalam browser untuk hasil yang maksimal)\n\nWassalamu’alaikum Wr. Wb.\n\nTerima Kasih..\n\nHormat kami,\n${nama_panggilan_pria} & ${nama_panggilan_wanita}\n\n\n Berikut link untuk info lengkap undangan kami`,
+    text,
     url: `${finalUrl}`,
   };
 
