@@ -43,6 +43,8 @@ import { IoCutOutline } from "react-icons/io5";
 import { TbTemplate } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
 import { IoIosHelpCircle } from "react-icons/io";
+import { useSession } from "next-auth/react";
+import UserMenu from "@/app/(user)/user/components/user-menu";
 
 const mockdata = [
   {
@@ -61,7 +63,6 @@ const mockdata = [
     icon: IconFingerprint,
     title: "Undangan Aqiqah",
   },
-
 ];
 
 export function Navbar() {
@@ -71,10 +72,15 @@ export function Navbar() {
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
 
+  const { data: session } = useSession();
+  console.log({ session });
 
   return (
     <div className={`fixed w-full z-50 bg-white  `}>
-      <Group justify="space-between" className="flex px-5 md:px-10 w-full h-16  ">
+      <Group
+        justify="space-between"
+        className="flex px-5 md:px-10 w-full h-16  "
+      >
         <div>
           <Link href={"/"} className="flex gap-2 items-center">
             <IconHeartFilled className="text-pink-600" />
@@ -83,7 +89,13 @@ export function Navbar() {
         </div>
         <div className="flex gap-10">
           <Group className="w-full h-16" gap={5} visibleFrom="sm">
-            <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
+            <HoverCard
+              width={600}
+              position="bottom"
+              radius="md"
+              shadow="md"
+              withinPortal
+            >
               <HoverCard.Target>
                 <div className={`${classes.link} cursor-pointer`}>
                   <Center inline>
@@ -98,7 +110,7 @@ export function Navbar() {
                 </div>
               </HoverCard.Target>
 
-              <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
+              <HoverCard.Dropdown style={{ overflow: "hidden" }}>
                 <Group justify="space-between" px="md">
                   <Text fw={500}>Template Undangan</Text>
                   <Anchor href="/template" fz="xs">
@@ -109,23 +121,42 @@ export function Navbar() {
                 <Divider my="sm" />
 
                 <SimpleGrid cols={2} spacing={0}>
-                  <Link href="/template/undangan-pernikahan" className={` flex gap-2 items-center hover:bg-slate-100 p-2`}>
+                  <Link
+                    href="/template/undangan-pernikahan"
+                    className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
+                  >
                     <GiBigDiamondRing size="1.5em" color="red" />
-                    <span className="text-sm font-semibold">Undangan Pernikahan</span>
+                    <span className="text-sm font-semibold">
+                      Undangan Pernikahan
+                    </span>
                   </Link>
-                  <Link href="/template/undangan-ulang-tahun" className={` flex gap-2 items-center hover:bg-slate-100 p-2`}>
+                  <Link
+                    href="/template/undangan-ulang-tahun"
+                    className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
+                  >
                     <BsCake2 size="1.5em" color="red" />
-                    <span className="text-sm font-semibold">Undangan Ulang Tahun</span>
+                    <span className="text-sm font-semibold">
+                      Undangan Ulang Tahun
+                    </span>
                   </Link>
-                  <Link href="/template/undangan-pingitan" className={` flex gap-2 items-center hover:bg-slate-100 p-2`}>
+                  <Link
+                    href="/template/undangan-pingitan"
+                    className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
+                  >
                     <PiFlowerTulipThin size="1.5em" color="red" />
-                    <span className="text-sm font-semibold">Undangan Pingitan</span>
+                    <span className="text-sm font-semibold">
+                      Undangan Pingitan
+                    </span>
                   </Link>
-                  <Link href="/template/undangan-aqiqah" className={` flex gap-2 items-center hover:bg-slate-100 p-2`}>
+                  <Link
+                    href="/template/undangan-aqiqah"
+                    className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
+                  >
                     <IoCutOutline size="1.5em" color="red" />
-                    <span className="text-sm font-semibold">Undangan Aqiqah</span>
+                    <span className="text-sm font-semibold">
+                      Undangan Aqiqah
+                    </span>
                   </Link>
-
                 </SimpleGrid>
 
                 <div className={classes.dropdownFooter}>
@@ -135,10 +166,16 @@ export function Navbar() {
                         Request Desain Undangan
                       </Text>
                       <Text size="xs" c="dimmed">
-                        Bisa melakukan permintaan custom desain sesuai keinginan dan style anda.
+                        Bisa melakukan permintaan custom desain sesuai keinginan
+                        dan style anda.
                       </Text>
                     </div>
-                    <Link className="border rounded-md p-2 hover:bg-slate-100" href={'#'}>Request</Link>
+                    <Link
+                      className="border rounded-md p-2 hover:bg-slate-100"
+                      href={"#"}
+                    >
+                      Request
+                    </Link>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
@@ -151,42 +188,69 @@ export function Navbar() {
             <Link href="/about" className={classes.link}>
               About
             </Link>
-
           </Group>
           <Group visibleFrom="sm">
-            <Link href={"/login"}>
-              <Button variant="default">Masuk</Button>
-            </Link>
+            {session?.user ? (
+              <UserMenu session={session} />
+            ) : (
+              <Link href={"/login"}>
+                <Button variant="default">Masuk</Button>
+              </Link>
+            )}
           </Group>
         </div>
         {/* mobile mode */}
-        <Burger
-          opened={drawerOpened}
-          onClick={open}
-          hiddenFrom="sm"
-        />
-        <Drawer opened={opened} onClose={close} position="right" >
+        <Burger opened={drawerOpened} onClick={open} hiddenFrom="sm" />
+        <Drawer opened={opened} onClose={close} position="right">
           <div className="flex flex-col gap-5">
             <div>
-              <NavLink className="font-semibold" leftSection={<TbTemplate size="1.5em" />} label="Templates" childrenOffset={28} href="#required-for-focus">
-                <NavLink leftSection={<GiBigDiamondRing size="1em" color="red" />}
-                  label="Undangan Pernikahan" component={Link} href="/template/undangan-pernihahan" />
-                <NavLink leftSection={<BsCake2 size="1em" color="red" />}
-                  label="Undangan Ulang Tahun" component={Link} href="/template/undangan-ulang-tahun" />
-                <NavLink leftSection={<PiFlowerTulipThin size="1em" color="red" />}
-                  label="Undangan Pingitan" component={Link} href="/template/undangan-pingitan" />
-                <NavLink leftSection={<IoCutOutline size="1em" color="red" />}
-                  label="Undangan Aqiqah" component={Link} href="/template/undangan-aqiqah" />
+              <NavLink
+                className="font-semibold"
+                leftSection={<TbTemplate size="1.5em" />}
+                label="Templates"
+                childrenOffset={28}
+                href="#required-for-focus"
+              >
+                <NavLink
+                  leftSection={<GiBigDiamondRing size="1em" color="red" />}
+                  label="Undangan Pernikahan"
+                  component={Link}
+                  href="/template/undangan-pernihahan"
+                />
+                <NavLink
+                  leftSection={<BsCake2 size="1em" color="red" />}
+                  label="Undangan Ulang Tahun"
+                  component={Link}
+                  href="/template/undangan-ulang-tahun"
+                />
+                <NavLink
+                  leftSection={<PiFlowerTulipThin size="1em" color="red" />}
+                  label="Undangan Pingitan"
+                  component={Link}
+                  href="/template/undangan-pingitan"
+                />
+                <NavLink
+                  leftSection={<IoCutOutline size="1em" color="red" />}
+                  label="Undangan Aqiqah"
+                  component={Link}
+                  href="/template/undangan-aqiqah"
+                />
                 <div className="flex flex-col gap-2 w-full border-t border-t-slate-300">
                   <div>
                     <Text fw={500} fz="sm">
                       Request Desain Undangan
                     </Text>
                     <Text size="xs" c="dimmed">
-                      Bisa melakukan permintaan custom desain sesuai keinginan dan style anda.
+                      Bisa melakukan permintaan custom desain sesuai keinginan
+                      dan style anda.
                     </Text>
                   </div>
-                  <Link className="text-sm p-2 border rounded-md  font-semibold hover:bg-slate-50" href='#'>Request</Link>
+                  <Link
+                    className="text-sm p-2 border rounded-md  font-semibold hover:bg-slate-50"
+                    href="#"
+                  >
+                    Request
+                  </Link>
                 </div>
               </NavLink>
 
@@ -200,16 +264,17 @@ export function Navbar() {
               </Link>
             </div>
             <div>
-              <Link href={"/login"} >
-                <Button variant="default">Masuk</Button>
-              </Link>
+              {session?.user ? (
+                <UserMenu session={session} />
+              ) : (
+                <Link href={"/login"}>
+                  <Button variant="default">Masuk</Button>
+                </Link>
+              )}
             </div>
           </div>
-
         </Drawer>
-
-
-      </Group >
-    </div >
+      </Group>
+    </div>
   );
 }

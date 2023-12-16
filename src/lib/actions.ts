@@ -119,32 +119,13 @@ export async function getUserById(id: string) {
 // }
 
 export async function getProfileBySlug(slug: string) {
-  // const user = await prisma.user.findFirst({
-  //   include: {
-  //     Profile: {
-  //       include: {
-  //         ucapan: true,
-  //         photo_moment: true,
-  //         // template: true,
-  //         template: {
-  //           include: {
-  //             user: true,
-  //           },
-  //         },
-  //       },
-  //     },
-  //   },
-  //   where: {
-  //     name: name,
-  //   },
-  // });
-
   const user = await prisma.profile.findFirst({
     where: {
       slug: slug,
     },
     include: {
       ucapan: true,
+      order: true,
       photo_moment: true,
       template: {
         include: {
@@ -156,3 +137,4 @@ export async function getProfileBySlug(slug: string) {
 
   return user;
 }
+
