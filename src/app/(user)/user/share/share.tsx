@@ -111,8 +111,8 @@ async function bayar() {
 async function handleShare() {
   const data = {
     title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
-    // text,
-    url: text,
+    text,
+    // url: text,
     // url: `${finalUrl}`,
   };
 
