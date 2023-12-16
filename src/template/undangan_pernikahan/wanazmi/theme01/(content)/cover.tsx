@@ -32,7 +32,7 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
       animate={{ y: openUndangan, opacity: opacity }}
       // transition={{ ease: "easeOut", duration: 2, times: [0, 1.5, 1], }}
       transition={{ ease: "easeOut", duration: 2 }}
-    // transition={{ duration: 2 }}
+      // transition={{ duration: 2 }}
     >
       <div className="flex  fixed justify-center items-center w-full  md:max-w-[600px] shadow-md  top-0 h-screen">
         <Image
@@ -73,7 +73,7 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
             onClick={HandleOpen}
             className="flex items-center justify-center gap-2  bg-red-300 px-4 py-2 rounded-full mt-5"
           >
-            <img
+            <Image
               width={15}
               height={15}
               src="https://img.icons8.com/external-outline-satawat-anukul/64/external-card-wedding-outline-satawat-anukul.png"

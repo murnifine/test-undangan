@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { SearchTemplate } from "../components/SearchTemplate";
-import { CardItemTemplate } from "../components/CardItemTemplate";
+// import { CardItemTemplate } from "../components/CardItemTemplate";
 
 
 import prisma from "@/lib/prisma";
@@ -99,7 +99,7 @@ export default async function Page() {
                   span={{ base: 12, sm: 6, md: 4, lg: 3 }}
                   key={item.id}
                 >
-                  <CardItemTemplate template={item} />
+                  {/* <CardItemTemplate template={item} /> */}
                 </Grid.Col>
               ))}
             {/* {filteredTemplates &&

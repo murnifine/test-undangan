@@ -14,7 +14,7 @@ export default async function MempelaiPage({
   const namaTemplate = profile?.template?.nama;
   const category = profile?.template?.category
 
-  const pembuatTemplate = profile?.template?.user.name;
+  const pembuatTemplate = (profile?.template?.user as any).name;
 
   const TemplateUndanganComponent = lazy(() =>
     import(`../../../template/${category}/${pembuatTemplate}/${namaTemplate}`).catch(

@@ -26,6 +26,8 @@ import { useEffect, useState } from "react";
 const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
   const [kepada, setKepada] = useState(``);
 
+  const [finalUrl, setFinalUrl] = useState(`localhost:3000/${slug}`);
+
   const clipboard = useClipboard({ timeout: 1000 });
 
   async function bayar() {
@@ -87,16 +89,60 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
     });
   }
 
+  async function handleShare() {
+    const data = {
+      title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
+      text: `Halo ${kepada}  aku mengundangmu`,
+      url: `https://${finalUrl}`,
+    };
+
+    try {
+      await navigator.share(data);
+    } catch (e) {
+      console.log("share error", e);
+    }
+  }
+
   return (
     <>
-
       <div className="w-full px-7 mt-2">
         <Input
           size="lg"
           placeholder="Nama penerima undangan"
           leftSection={<IconUserCheck size={16} />}
-          onChange={(e) => setKepada(e.target.value)}
+          onChange={(e) => {
+            setKepada(e.target.value);
+
+            const tempValue =
+              e.target.value !== ""
+                ? `localhost:3000/${slug}?to=${e.target.value}`
+                : `localhost:3000/${slug}`;
+
+            setFinalUrl(tempValue);
+          }}
         />
+
+        <div className="border mt-5 p-5 text-center rounded-sm flex flex-col gap-y-3">
+          <Link href={finalUrl} className="underline text-blue-500">
+            {/* localhost:3000/{slug} */}
+
+            {finalUrl}
+          </Link>
+
+          <Button
+            fullWidth
+            size="sm"
+            variant="light"
+            color={clipboard.copied ? "teal" : "blue"}
+            onClick={() =>
+              clipboard.copy(
+                `olvite.com/${slug}?to=${kepada.replace(" ", "%20")}`
+              )
+            }
+          >
+            {clipboard.copied ? "Link undangan disalin" : "Salin link undangan"}
+          </Button>
+        </div>
 
         {kepada && (
           <div className="relative mt-5 rounded-lg overflow-hidden">
@@ -114,46 +160,38 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
               </div>
             )}
 
-            <div className=" mt-1 p-2 text-center">
-              olvite.com/{slug}?to={kepada}
-            </div>
-
-            <Button
-              fullWidth
-              size="sm"
-              variant="light"
-              color={clipboard.copied ? "teal" : "blue"}
-              onClick={() =>
-                clipboard.copy(
-                  `olvite.com/${slug}?to=${kepada.replace(" ", "%20")}`
-                )
-              }
-            >
-              {clipboard.copied
-                ? "Link undangan disalin"
-                : "Salin link undangan"}
-            </Button>
             <p className="mt-10 mb-3 text-center">Bagikan melalui :</p>
 
             <div className="flex gap-3 w-full justify-center p-5">
-
-              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
+              {/* <Link
+                href={"#"}
+                className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105"
+              >
                 <IconBrandWhatsapp />
               </Link>
-              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
+              <Link
+                href={"#"}
+                className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105"
+              >
                 <IconBrandFacebookFilled />
               </Link>
-              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
+              <Link
+                href={"#"}
+                className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105"
+              >
                 <IconBrandInstagram />
               </Link>
-              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
+              <Link
+                href={"#"}
+                className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105"
+              >
                 <IconBrandTiktokFilled />
-              </Link>
-            </div>
+              </Link> */}
 
+              <Button onClick={handleShare}>Share</Button>
+            </div>
           </div>
         )}
-
       </div>
     </>
   );
