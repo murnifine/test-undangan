@@ -47,7 +47,7 @@ const [finalUrl, setFinalUrl] = useState(`${host}/${slug}`);
 const clipboard = useClipboard({ timeout: 1000 });
 
 
-const text = `Kepada Yth.\nBapak/Ibu/Saudara/i\n\n${kepada}\n\n\nAssalamu’alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${nama_pria} & ${nama_wanita}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu’alaikum Wr. Wb.\n\nTerima Kasih..\n\nHormat kami,\n${nama_panggilan_pria} & ${nama_panggilan_wanita}\n\n\nBerikut link untuk info lengkap undangan kami`;
+const text = `Kepada Yth.\nBapak/Ibu/Saudara/i\n\n${kepada}\n\n\nAssalamu’alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${nama_pria} & ${nama_wanita}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu’alaikum Wr. Wb.\n\nTerima Kasih..\n\nHormat kami,\n${nama_panggilan_pria} & ${nama_panggilan_wanita}\n\n\nBerikut link untuk info lengkap undangan kami\n`;
 
 async function bayar() {
   // const data = {
