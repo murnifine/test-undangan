@@ -14,6 +14,8 @@ export default async function CardUndangan({ categoryName }: { categoryName: str
         }
     })
 
+    console.log({ dataTemplates });
+
 
     return (
         <div className=' gap-2 pb-10 bg-zinc-50 px-5 rounded-lg shadow-md pt-5 w-full lg:max-w-6xl  '>

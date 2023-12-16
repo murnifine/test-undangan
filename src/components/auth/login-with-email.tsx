@@ -2,8 +2,8 @@
 import { toast } from "sonner";
 import { useState } from "react";
 import { IconCircleCheck, IconX } from "@tabler/icons-react";
-import { handleSignInWithEmail } from "@/app/login/action";
 import { Button, Input } from "@mantine/core";
+import { handleSignInWithEmail } from "@/actions/auth-action";
 
 export default function LoginWithEmail() {
   const [isLoading, setIsLoading] = useState(false);
