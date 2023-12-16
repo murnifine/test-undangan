@@ -99,9 +99,41 @@ const Share = ({
 
   async function handleShare() {
     const data = {
-      title: `Undangan pernikahan \n ${profile.nama_pria} & ${profile.nama_wanita}`,
-      text: kepada + ", Halo aku mengundangmu \n",
-      url: `${finalUrl}`,
+      title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
+      text: `
+          Kepada Yth. \n
+          Bapak/Ibu/Saudara/i \n
+\n
+          ${kepada}\n
+          __\n
+\n
+          Assalamu’alaikum Wr. Wb.\n
+\n
+          Bismillahirahmanirrahim.\n
+          Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n
+\n
+          ${profile.nama_pria?.toUpperCase}\n
+            &\n
+            ${profile.nama_wanita?.toUpperCase}\n
+\n
+          Berikut link untuk info lengkap undangan kami\n
+\n
+          ${finalUrl}\n
+\n
+          Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n
+\n
+          Jangan lupa isi Rsvp ya.. \n
+\n
+          (Salin link dan buka di browser bila link tidak dapat dibuka, usahakan mematikan fitur dark mode dalam browser untuk hasil yang maksimal)\n
+\n
+          Wassalamu’alaikum Wr. Wb.\n
+\n
+          Terima Kasih..\n
+\n
+          Hormat kami,\n
+          ${profile.nama_panggilan_pria?.toUpperCase} & ${profile.nama_panggilan_wanita?.toUpperCase}\n
+      `,
+      // url: `${finalUrl}`,
     };
 
     try {
