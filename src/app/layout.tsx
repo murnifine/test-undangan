@@ -8,6 +8,7 @@ import { auth } from "@/lib/auth";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { Navbar } from "./(tamu)/components/Navbar/Navbar";
+import Footer from "./(tamu)/components/Footer/Footer";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,6 @@ export default async function RootLayout({
         <SessionProvider session={session}>
           <Toaster position="top-center" />
           <MantineProvider>
-
             {children}
           </MantineProvider>
         </SessionProvider>

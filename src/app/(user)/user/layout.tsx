@@ -2,6 +2,7 @@ import { MantineProvider } from "@mantine/core";
 import Logo from "./components/logo";
 import UserMenu from "./components/user-menu";
 import { auth } from "@/lib/auth";
+import { Navbar } from "@/app/(tamu)/components/Navbar/Navbar";
 
 export default async function Layout({
   children,
@@ -12,15 +13,14 @@ export default async function Layout({
   const email = session?.user.email;
 
   return (
-    <div className="flex justify-center h-screen">
-      <div className=" h-full  w-screen max-w-md flex flex-col items-center relative">
-        <div className="flex justify-between p-4 max-w-md px-1 w-full sm:py-5 fixed z-50  ">
-          <Logo />
-          <UserMenu session={session} />
-        </div>
-
-        <div className="mt-20 w-full h-full">{children}</div>
+    <>
+      <div className="flex justify-between p-4 px-7 md:px-10 w-full fixed z-50 bg-white ">
+        <Logo />
+        <UserMenu session={session} />
       </div>
-    </div>
+      <div className="flex justify-center h-full">
+        {children}
+      </div>
+    </>
   );
 }

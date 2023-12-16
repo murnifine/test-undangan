@@ -43,6 +43,7 @@ import { IoCutOutline } from "react-icons/io5";
 import { TbTemplate } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
 import { IoIosHelpCircle } from "react-icons/io";
+import { Session } from "next-auth/types";
 
 const mockdata = [
   {
