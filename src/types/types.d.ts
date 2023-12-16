@@ -55,12 +55,33 @@ type TemplateUndanganProps = Prisma.TemplateUndanganGetPayload<{
 
 type ProfileProps = Prisma.ProfileGetPayload<{
   include: {
-    ucapan: true,
-    photo_moment: true,
+    ucapan: true;
+    order: true;
+    photo_moment: true;
     template: {
       include: {
-        user: true,
-      },
-    },
-  },
+        user: true;
+      };
+    };
+  };
 }>;
+
+export interface PaymentStatus {
+  status_code: string;
+  transaction_id: string;
+  gross_amount: string;
+  currency: string;
+  order_id: string;
+  payment_type: string;
+  signature_key: string;
+  transaction_status: string;
+  fraud_status: string;
+  status_message: string;
+  merchant_id: string;
+  va_numbers: VaNumber[][];
+  payment_amounts: any[];
+  transaction_time: string;
+  expiry_time: string;
+}
+
+export interface VaNumber {}

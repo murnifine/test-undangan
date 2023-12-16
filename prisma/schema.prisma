@@ -110,6 +110,9 @@ model Profile {
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
   user                User              @relation(fields: [userId], references: [id])
   ucapan              Ucapan[]
+  order              Order[]
+
+
 }
 
 model TemplateUndangan {
@@ -135,4 +138,21 @@ model Ucapan {
   pesan     String?
   profileId Int?
   profile   Profile? @relation(fields: [profileId], references: [id])
+}
+
+
+model Order {
+  id        String      @id @default(cuid())
+
+  price     Float
+  status    String
+  profileId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile   Profile @relation(fields: [profileId], references: [id])
+  // customer  String
+  // product   String
+  // quantity  Int
 }
