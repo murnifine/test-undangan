@@ -23,7 +23,7 @@ async function main() {
         userId: edi.id,
       },
       {
-        nama: "simple-flower",
+        nama: "theme01",
         userId: wanazmi.id,
       },
     ],

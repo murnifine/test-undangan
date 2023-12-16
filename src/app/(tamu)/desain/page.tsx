@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SearchTemplate } from "../components/SearchTemplate";
 import { CardItemTemplate } from "../components/CardItemTemplate";
 
-import { debounce } from "lodash";
+
 import prisma from "@/lib/prisma";
 
 // export const metadata: Metadata = {

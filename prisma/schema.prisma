@@ -52,7 +52,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Profile       Profile[]
-  templates     TemplateUndangan?
+  templates     TemplateUndangan[]
 }
 
 // model User {
@@ -115,21 +115,30 @@ model Profile {
 
 }
 
+enum category {
+  undangan_pernikahan
+  undangan_ulang_tahun
+  undangan_aqiqah
+  undangan_pingitan
+}
+
 model TemplateUndangan {
   id      Int      @id @default(autoincrement())
   nama    String?
-  userId  String   @unique
-  // profileId Int? @unique
+  userId  String?
   profile Profile[]
-  // profile   Profile? @relation(fields: [profileId], references: [id])
-  user    User     @relation(fields: [userId], references: [id])
+  user    User?     @relation(fields: [userId], references: [id])
+  category category?
+  harga Int? @default(0)
+  discount Int? @default(0)
+  url_img String?
 }
 
 model PhotoMoments {
   id        Int      @id @default(autoincrement())
   url_foto  String?
   profileId Int?
-  profile   Profile? @relation(fields: [profileId], references: [id])
+  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 model Ucapan {
@@ -137,7 +146,7 @@ model Ucapan {
   nama      String?
   pesan     String?
   profileId Int?
-  profile   Profile? @relation(fields: [profileId], references: [id])
+  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 
@@ -151,7 +160,7 @@ model Order {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
   // customer  String
   // product   String
   // quantity  Int

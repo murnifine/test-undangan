@@ -37,6 +37,15 @@ export default function UserMenu({ session }: { session: Session | null }) {
       <Menu.Dropdown>
         <Menu.Label>{name}</Menu.Label>
 
+        <Link className="w-full" href={'/user'}>
+          <Menu.Item
+            leftSection={
+              <IconSettings style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            Profile
+          </Menu.Item>
+        </Link>
         <Link className="w-full" href={'/template'}>
           <Menu.Item
             leftSection={

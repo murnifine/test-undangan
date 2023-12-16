@@ -39,8 +39,8 @@ export default function Index({ profile }: { profile: ProfileProps }) {
   const waktu = `
     ${dateTime?.toLocaleString("id-ID", { weekday: "long" })},
     ${dateTime?.toLocaleString("id-ID", {
-      day: "2-digit",
-    })}-${dateTime?.toLocaleString("id-ID", {
+    day: "2-digit",
+  })}-${dateTime?.toLocaleString("id-ID", {
     month: "2-digit",
   })}-${dateTime?.toLocaleString("id-ID", { year: "numeric" })}
     `;

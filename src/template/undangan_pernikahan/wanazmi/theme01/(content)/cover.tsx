@@ -32,7 +32,7 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
       animate={{ y: openUndangan, opacity: opacity }}
       // transition={{ ease: "easeOut", duration: 2, times: [0, 1.5, 1], }}
       transition={{ ease: "easeOut", duration: 2 }}
-      // transition={{ duration: 2 }}
+    // transition={{ duration: 2 }}
     >
       <div className="flex  fixed justify-center items-center w-full  md:max-w-[600px] shadow-md  top-0 h-screen">
         <Image
@@ -57,17 +57,17 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
             WEDDING INVITATION
           </div>
           <div className="flex gap-2 font-GlassAntiqu text-2xl text-red-500">
-            <span className="   ">{profile?.nama_wanita}</span>
+            <span className="   ">{profile?.nama_panggilan_pria}</span>
             <span>&</span>
-            <span className="  ">{profile?.nama_pria}</span>
+            <span className="  ">{profile?.nama_panggilan_wanita}</span>
           </div>
 
-          {/* {to && ( */}
-          <div className="flex flex-col items-center gap-1 mt-2">
-            <span className="text-xs">Kepada Yth:</span>
-            <span className=" text-lg font-GlassAntiqu">{to}</span>
-          </div>
-          {/* )} */}
+          {to && (
+            <div className="flex flex-col items-center gap-1 mt-2">
+              <span className="text-xs">Kepada Yth:</span>
+              <span className=" text-lg font-GlassAntiqu">{to}</span>
+            </div>
+          )}
 
           <button
             onClick={HandleOpen}

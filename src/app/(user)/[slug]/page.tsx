@@ -12,11 +12,13 @@ export default async function MempelaiPage({
   if (!profile) return <p>Data profile tidak ditemukan</p>;
 
   const namaTemplate = profile?.template?.nama;
+  const category = profile?.template?.category
 
   const pembuatTemplate = profile?.template?.user.name;
 
   const TemplateUndanganComponent = lazy(() =>
-    import(`../../../template/${pembuatTemplate}/${namaTemplate}`).catch(
+    import(`../../../template/${category}/${pembuatTemplate}/${namaTemplate}`).catch(
+      // import(`../../../template/.${pembuatTemplate}/${namaTemplate}`).catch(
       () => ({
         default: () => <div>Pengguna belum menerapkan template</div>,
       })

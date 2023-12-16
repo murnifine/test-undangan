@@ -1,13 +1,17 @@
 import prisma from "@/lib/prisma";
-import CardPernikahan from "./components/cardPernikahan";
-import CardUlangTahun from "./components/cardUlangTahun";
-import CardAqiqah from "./components/cardAqiqah";
-import CardPingitan from "./components/cardPingitan";
+
+import CardUndangan from "./components/cardUndangan";
+import { category } from "@prisma/client";
 
 export default async function Template() {
 
     const dataTemplates = await prisma.templateUndangan.findMany()
+    const categoryData = category
 
+
+    const categoryNames = Object.keys(categoryData).map((key) => ((categoryData as any)[key] as string))
+
+    console.log(categoryNames)
     return (
         <>
             <div className="flex flex-col items-center  gap-5 py-20 px-5 md:px-10 w-full  h-full bg-white">
@@ -22,26 +26,13 @@ export default async function Template() {
                     </div>
 
                 </div>
-                <CardPernikahan />
-                <CardUlangTahun />
-                <CardAqiqah />
-                <CardPingitan />
+                {categoryNames.map((categoryName) => (
+                    <CardUndangan categoryName={categoryName} />
+                ))}
+
+
             </div>
-            {/* <div>
-                    <div>template undangan</div>
-                    {dataTemplates.map((dataTemplate) => (
-                        <div className="w-max bg-sky-400">
-                            <div>{dataTemplate.nama}</div>
-                            <div className="flex flex-col gap-1">
-                                <span>Harga Rp 100.000</span>
-                                <Link href={`user/create?templateId=${dataTemplate.id}`}>Use Tempalte</Link>
-                                <Link className="bg-red-200" href={`/template/${dataTemplate.nama}`}>Demo</Link>
-                            </div>
 
-                        </div>
-                    ))}
-
-                </div> */}
         </>
     )
 }

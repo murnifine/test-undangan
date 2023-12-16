@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex flex-col gap-y-5    w-full">
+      <div className="flex flex-col justify-center py-20 px-5 items-center gap-y-5    w-full">
         <Default sessionId={session?.user.id} />
       </div>
 

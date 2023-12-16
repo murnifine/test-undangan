@@ -19,7 +19,9 @@ import {
   IconUserCheck,
 } from "@tabler/icons-react";
 import { revalidatePath, revalidateTag } from "next/cache";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+
 
 const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
   const [kepada, setKepada] = useState(``);
@@ -87,6 +89,7 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
 
   return (
     <>
+
       <div className="w-full px-7 mt-2">
         <Input
           size="lg"
@@ -130,25 +133,27 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
                 ? "Link undangan disalin"
                 : "Salin link undangan"}
             </Button>
-
             <p className="mt-10 mb-3 text-center">Bagikan melalui :</p>
 
             <div className="flex gap-3 w-full justify-center p-5">
-              <Button size="md" variant="filled" color="green">
+
+              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
                 <IconBrandWhatsapp />
-              </Button>
-              <Button size="md" variant="filled" color="blue">
+              </Link>
+              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
                 <IconBrandFacebookFilled />
-              </Button>
-              <Button size="md" variant="filled" color="pink">
+              </Link>
+              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
                 <IconBrandInstagram />
-              </Button>
-              <Button size="md" variant="filled" color="dark">
+              </Link>
+              <Link href={'#'} className="p-2 bg-sky-400 rounded-lg hover:bg-sky-500 hover:scale-105" >
                 <IconBrandTiktokFilled />
-              </Button>
+              </Link>
             </div>
+
           </div>
         )}
+
       </div>
     </>
   );

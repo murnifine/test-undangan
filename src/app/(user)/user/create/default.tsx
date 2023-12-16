@@ -68,7 +68,7 @@ export default function Default({ sessionId }: { sessionId: string }) {
 
         // setSelectedFile(data.fotoMemplaiPria)
       })}
-      className=" flex flex-col w-full max-w-xl shadow-lg py-5 px-4 h-max overflow-scroll bg-slate-100 rounded-lg"
+      className=" flex flex-col w-full max-w-xl shadow-lg p-10 h-max overflow-scroll bg-zinc-50 rounded-lg"
     >
       <Stepper size="sm" active={active} onStepClick={setActive} iconSize={20}>
         <Stepper.Step>
