@@ -138,21 +138,3 @@ export async function getProfileBySlug(slug: string) {
   return user;
 }
 
-export async function handleOrder(slug: string) {
-  const user = await prisma.profile.findFirst({
-    where: {
-      slug: slug,
-    },
-    include: {
-      ucapan: true,
-      photo_moment: true,
-      template: {
-        include: {
-          user: true,
-        },
-      },
-    },
-  });
-
-  return user;
-}

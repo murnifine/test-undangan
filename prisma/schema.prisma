@@ -110,7 +110,7 @@ model Profile {
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
   user                User              @relation(fields: [userId], references: [id])
   ucapan              Ucapan[]
-  order              Order?
+  order              Order[]
 
 
 }
@@ -142,10 +142,12 @@ model Ucapan {
 
 
 model Order {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(cuid())
+
   price     Float
   status    String
-  profileId Int @unique
+  profileId Int
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
