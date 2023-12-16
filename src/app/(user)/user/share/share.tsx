@@ -34,10 +34,10 @@ const Share = ({
 }) => {
 
   
-const nama_pria = profile.nama_pria?.toUpperCase;
-const nama_wanita = profile.nama_wanita?.toUpperCase;
-const nama_panggilan_pria = profile.nama_panggilan_pria?.toUpperCase;
-const nama_panggilan_wanita = profile.nama_panggilan_wanita?.toUpperCase;
+const nama_pria = profile.nama_pria?.toUpperCase();
+const nama_wanita = profile.nama_wanita?.toUpperCase();
+const nama_panggilan_pria = profile.nama_panggilan_pria?.toUpperCase();
+const nama_panggilan_wanita = profile.nama_panggilan_wanita?.toUpperCase();
 
 
 const [kepada, setKepada] = useState(``);
