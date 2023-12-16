@@ -23,10 +23,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
-const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
+const Share = ({
+  slug,
+  profile,
+  host,
+}: {
+  slug: string;
+  profile: ProfileProps;
+  host: string;
+}) => {
   const [kepada, setKepada] = useState(``);
 
-  const [finalUrl, setFinalUrl] = useState(`localhost:3000/${slug}`);
+  const [finalUrl, setFinalUrl] = useState(`${host}/${slug}`);
 
   const clipboard = useClipboard({ timeout: 1000 });
 
@@ -92,7 +100,7 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
   async function handleShare() {
     const data = {
       title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
-      text: `Halo ${kepada}  aku mengundangmu`,
+      text: `Halo ${kepada} aku mengundangmu /n`,
       url: `https://${finalUrl}`,
     };
 
@@ -115,8 +123,8 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
 
             const tempValue =
               e.target.value !== ""
-                ? `localhost:3000/${slug}?to=${e.target.value}`
-                : `localhost:3000/${slug}`;
+                ? `${host}/${slug}?to=${e.target.value}`
+                : `${host}/${slug}`;
 
             setFinalUrl(tempValue);
           }}

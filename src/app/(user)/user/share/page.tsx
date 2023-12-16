@@ -17,6 +17,8 @@ export default async function Page({
 }) {
   const { profileId } = searchParams;
 
+  const host = process.env.AUTH_URL;
+
   const profile = await prisma.profile.findFirst({
     where: {
       id: Number(profileId),
@@ -81,6 +83,7 @@ export default async function Page({
 
       <Share
         slug={profile?.slug as string}
+        host={host as string}
         // id={profile.id}
         // orderId={profile.order?.id as number}
         // orderStatus={profile.order?.status as string}
