@@ -23,85 +23,105 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
-const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
-  const [kepada, setKepada] = useState(``);
+const Share = ({
+  slug,
+  profile,
+  host,
+}: {
+  slug: string;
+  profile: ProfileProps;
+  host: string;
+}) => {
 
-  const [finalUrl, setFinalUrl] = useState(`localhost:3000/${slug}`);
+  
+const nama_pria = profile.nama_pria?.toUpperCase();
+const nama_wanita = profile.nama_wanita?.toUpperCase();
+const nama_panggilan_pria = profile.nama_panggilan_pria?.toUpperCase();
+const nama_panggilan_wanita = profile.nama_panggilan_wanita?.toUpperCase();
 
-  const clipboard = useClipboard({ timeout: 1000 });
 
-  async function bayar() {
-    // const data = {
-    //   // id: profile.id,
-    //   profile_id: profile.id,
-    //   harga: 250000,
-    // };
+const [kepada, setKepada] = useState(``);
 
-    // const req = await fetch("/api/tokenizer", {
-    //   method: "POST",
-    //   body: JSON.stringify(data),s
-    // });
-    // const { token } = await req.json();
-    // console.log({ token });
+const [finalUrl, setFinalUrl] = useState(`${host}/${slug}`);
 
-    const snap = (window as any).snap;
+const clipboard = useClipboard({ timeout: 1000 });
 
-    snap.show();
 
-    const orders = await getOrderByProfileId(profile.id);
+const text = `Kepada Yth.\nBapak/Ibu/Saudara/i\n\n${kepada}\n\n\nAssalamu’alaikum Wr. Wb.\n\nBismillahirahmanirrahim.\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, teman sekaligus sahabat, untuk menghadiri acara pernikahan kami:\n\n${nama_pria} & ${nama_wanita}\n\nMerupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.\n\nWassalamu’alaikum Wr. Wb.\n\nTerima Kasih..\n\nHormat kami,\n${nama_panggilan_pria} & ${nama_panggilan_wanita}\n\n\nBerikut link untuk info lengkap undangan kami\n${finalUrl}`;
 
-    const order = orders[0];
-    if (order && order?.status === "pending") {
-      console.log("ini muncul", { order });
-      const trxStatus = await verifyTransaction(order.id, profile.id);
+async function bayar() {
+  // const data = {
+  //   // id: profile.id,
+  //   profile_id: profile.id,
+  //   harga: 250000,
+  // };
 
-      if (trxStatus?.transaction_status === "settlement") {
-        console.log("ini muncul dalamnya");
-        snap.hide();
-        return;
-      }
-    }
+  // const req = await fetch("/api/tokenizer", {
+  //   method: "POST",
+  //   body: JSON.stringify(data),s
+  // });
+  // const { token } = await req.json();
+  // console.log({ token });
 
-    const token = await getPaymentToken(25000, profile.id);
+  const snap = (window as any).snap;
 
-    if (!token) return snap.hide();
+  snap.show();
 
-    // simulasi pembayaran
-    // https://simulator.sandbox.midtrans.com/bca/va/index
+  const orders = await getOrderByProfileId(profile.id);
 
-    snap.pay(token, {
-      onSuccess: async function (result: any) {
-        console.log("success");
-        await updateStatusOrderSuccess(result.order_id, profile.id);
-        // console.log(result);
-      },
-      onPending: function (result: any) {
-        console.log("pending");
-        // console.log(result);
-      },
-      onError: function (result: any) {
-        console.log("error");
-        // console.log(result);
-      },
-      onClose: function () {
-        console.log("customer closed the popup without finishing the payment");
-      },
-    });
-  }
+  const order = orders[0];
+  if (order && order?.status === "pending") {
+    console.log("ini muncul", { order });
+    const trxStatus = await verifyTransaction(order.id, profile.id);
 
-  async function handleShare() {
-    const data = {
-      title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
-      text: `Halo ${kepada}  aku mengundangmu`,
-      url: `https://${finalUrl}`,
-    };
-
-    try {
-      await navigator.share(data);
-    } catch (e) {
-      console.log("share error", e);
+    if (trxStatus?.transaction_status === "settlement") {
+      console.log("ini muncul dalamnya");
+      snap.hide();
+      return;
     }
   }
+
+  const token = await getPaymentToken(25000, profile.id);
+
+  if (!token) return snap.hide();
+
+  // simulasi pembayaran
+  // https://simulator.sandbox.midtrans.com/bca/va/index
+
+  snap.pay(token, {
+    onSuccess: async function (result: any) {
+      console.log("success");
+      await updateStatusOrderSuccess(result.order_id, profile.id);
+      // console.log(result);
+    },
+    onPending: function (result: any) {
+      console.log("pending");
+      // console.log(result);
+    },
+    onError: function (result: any) {
+      console.log("error");
+      // console.log(result);
+    },
+    onClose: function () {
+      console.log("customer closed the popup without finishing the payment");
+    },
+  });
+}
+
+async function handleShare() {
+  const data = {
+    title: `Undangan pernikahan ${profile.nama_pria} & ${profile.nama_wanita}`,
+    text,
+    // url: text,
+    // url: `${finalUrl}`,
+  };
+
+  try {
+    await navigator.share(data);
+  } catch (e) {
+    console.log("share error", e);
+  }
+}
 
   return (
     <>
@@ -115,8 +135,8 @@ const Share = ({ slug, profile }: { slug: string; profile: ProfileProps }) => {
 
             const tempValue =
               e.target.value !== ""
-                ? `localhost:3000/${slug}?to=${e.target.value}`
-                : `localhost:3000/${slug}`;
+                ? `${host}/${slug}?to=${e.target.value}`
+                : `${host}/${slug}`;
 
             setFinalUrl(tempValue);
           }}
