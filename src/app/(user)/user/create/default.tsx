@@ -46,7 +46,7 @@ export default function Default({ sessionId }: { sessionId: string }) {
     <form
       onSubmit={handleSubmit(async (data) => {
         // console.log(data)
-        setPending(true)
+        setPending(true);
         const sendData = new FormData();
         for (const dataForm in data) {
           sendData.append(dataForm, data[dataForm]);
@@ -139,28 +139,28 @@ export default function Default({ sessionId }: { sessionId: string }) {
       <div className="  bottom-8  w-full max-w-xl mt-5">
         <Group justify="between">
           <div className="flex w-full justify-between items-center px-5">
-            {
-              pending === true ?
-                <>
-                  <Button type="button" variant="default" disabled >
-                    Back
-                  </Button>
-                  <Button loading={pending} type="button" disabled>Loading</Button>
-                </>
-                :
-                <>
-                  <Button type="button" variant="default" onClick={prevStep}>
-                    Back
-                  </Button>
-                  {active === 3 && <Button type="submit">Save</Button>}
-                </>
-            }
+            {pending === true ? (
+              <>
+                <Button type="button" variant="default" disabled>
+                  Back
+                </Button>
+                <Button loading={pending} type="button" disabled>
+                  Loading
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button type="button" variant="default" onClick={prevStep}>
+                  Back
+                </Button>
+                {active === 3 && <Button type="submit">Save</Button>}
+              </>
+            )}
             {active !== 3 && (
               <Button type="button" onClick={nextStep}>
                 Next step
               </Button>
             )}
-
           </div>
           {/* <div className="flex w-full justify-between items-center px-5">
                         <Button variant="default" onClick={prevStep}>Back</Button>
