@@ -23,7 +23,14 @@ export default function EditFormMempelai({ sessionId, dataValue }: { sessionId: 
 
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
-        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
+        return (
+          <Image
+            alt="Foto mempelai"
+            key={index}
+            src={imageUrl}
+            onLoad={() => URL.revokeObjectURL(imageUrl)}
+          />
+        );
     });
 
 

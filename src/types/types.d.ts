@@ -58,7 +58,7 @@ type ProfileProps = Prisma.ProfileGetPayload<{
     ucapan: true;
     order: true;
     photo_moment: true;
-    music: true;
+    music?: true;
     template: {
       include: {
         user: true;

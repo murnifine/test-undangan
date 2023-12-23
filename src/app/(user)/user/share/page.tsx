@@ -30,6 +30,7 @@ export default async function Page({
           createdAt: "asc",
         },
       },
+      music: true,
       photo_moment: true,
       template: {
         include: {
