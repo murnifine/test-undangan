@@ -127,6 +127,7 @@ export async function getProfileBySlug(slug: string) {
       ucapan: true,
       order: true,
       photo_moment: true,
+      music: true,
       template: {
         include: {
           user: true,

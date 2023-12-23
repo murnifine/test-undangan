@@ -28,11 +28,16 @@ import Cover from "./(content)/cover";
 import { Komponen1 } from "@/components/contoh/ControhContext";
 import { ProfileProps } from "@/types/types";
 import Particle from "@/components/Particle";
+import prisma from "@/lib/prisma";
 
-export default function Tmp1({ profile }: { profile: ProfileProps }) {
-  const listMusic = [
-    "https://invisimple.id/wp-content/uploads/2023/06/Bruno-Mars-Marry-You.mp3",
-  ];
+export default async function Tmp1({ profile }: { profile: ProfileProps }) {
+  const music =
+    profile.music?.url ??
+    "https://invisimple.id/wp-content/uploads/2023/06/Bruno-Mars-Marry-You.mp3";
+
+  // console.log(profile, profile.music);
+
+  const listMusic = [music];
 
   const menus = [
     {

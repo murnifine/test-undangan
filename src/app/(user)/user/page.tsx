@@ -22,6 +22,7 @@ export default async function Page() {
     },
     include: {
       Profile: true,
+
     },
   });
 
@@ -29,7 +30,12 @@ export default async function Page() {
     where: {
       userId: session?.user.id,
     },
+    include: {
+      music: true,
+    },
   });
+
+  // console.log(profiles[0].music);
 
   return (
     <div className="relative flex justify-center pt-20 pb-10 px-5 md:px-10 w-full h-screen bg-white ">
@@ -56,9 +62,9 @@ export default async function Page() {
                   <MotionDiv
                     whileHover={{ scale: 1.02 }}
                     // whileTap={{ scale: 0.9 }}
-                    className="bg-gray-50 border flex items-center hover:bg-white  rounded-md p-2 h-16 transition-all duration-75 hover:border-pink-500"
+                    className="bg-gray-50 border flex items-center hover:bg-white  rounded-md h-16 transition-all duration-75 hover:border-pink-500 "
                   >
-                    <div>
+                    <div className="pl-2">
                       <Avatar size={"md"} src={undangan.url_foto_utama} />
                     </div>
                     <div className="flex-1 flex flex-col pl-3 gap-1">
@@ -79,7 +85,7 @@ export default async function Page() {
                       </p>
                       <div></div>
                     </div>
-                    <div className="pr-2">
+                    <div className="pr-2 h-full w-10 flex">
                       <CardOptions profile={undangan} />
                     </div>
                   </MotionDiv>
