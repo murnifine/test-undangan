@@ -1,12 +1,19 @@
-"use client"
-
+"use client";
 
 import { DateTimePicker } from "@mantine/dates";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import DataFormPria from "../components/formStep/dataFormPria";
 import { useRef, useState } from "react";
-import { Stepper, Button, Group, FileInput, SimpleGrid, Image, Text } from "@mantine/core";
+import {
+  Stepper,
+  Button,
+  Group,
+  FileInput,
+  SimpleGrid,
+  Image,
+  Text,
+} from "@mantine/core";
 import DataFormWanita from "../components/formStep/dataFormWanita";
 import { useRouter } from "next/navigation";
 
@@ -17,13 +24,19 @@ import InputsDataForm from "../components/inputsDataForm";
 
 export default function Default({ sessionId }: { sessionId: string }) {
   const [files, setFiles] = useState<File[]>([]);
-  const openRef = useRef<() => void>(null)
+  const openRef = useRef<() => void>(null);
 
   const previews = files.map((file, index) => {
     const imageUrl = URL.createObjectURL(file);
-    return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
+    return (
+      <Image
+        alt="Foto"
+        key={index}
+        src={imageUrl}
+        onLoad={() => URL.revokeObjectURL(imageUrl)}
+      />
+    );
   });
-
 
   const router = useRouter();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -32,13 +45,11 @@ export default function Default({ sessionId }: { sessionId: string }) {
     setSelectedFile(file);
   };
 
-  const [pending, setPending] = useState(false)
+  const [pending, setPending] = useState(false);
 
+  const getParams = useSearchParams();
 
-  const getParams = useSearchParams()
-
-  const getTemplateId = getParams.get('templateId')
-
+  const getTemplateId = getParams.get("templateId");
 
   const { handleSubmit, control, register } = useForm();
 
@@ -52,8 +63,7 @@ export default function Default({ sessionId }: { sessionId: string }) {
   return (
     <form
       onSubmit={handleSubmit(async (data) => {
-
-        setPending(true)
+        setPending(true);
         const sendData = new FormData();
         for (const dataForm in data) {
           sendData.append(dataForm, data[dataForm]);
@@ -75,8 +85,6 @@ export default function Default({ sessionId }: { sessionId: string }) {
         files.forEach((file, index) => {
           sendData.append(`fotoMoments[${index}]`, file);
         });
-
-
 
         const kirimData = await fetch("/api/upload-photos", {
           method: "POST",
@@ -182,13 +190,20 @@ export default function Default({ sessionId }: { sessionId: string }) {
         <Stepper.Step>
           <div className="flex flex-col gap-4">
             <span className="text-xl font-semibold">Foto Moment</span>
-            <Dropzone className='pt-5 pb-8' accept={IMAGE_MIME_TYPE} onDrop={(fotoMoment) => {
-              setFiles(fotoMoment)
-              console.log(fotoMoment)
-            }}>
+            <Dropzone
+              className="pt-5 pb-8"
+              accept={IMAGE_MIME_TYPE}
+              onDrop={(fotoMoment) => {
+                setFiles(fotoMoment);
+                console.log(fotoMoment);
+              }}
+            >
               <Text ta="center">Drop images here</Text>
             </Dropzone>
-            <SimpleGrid cols={{ base: 1, xs: 4 }} mt={previews.length > 0 ? 'xl' : 0}>
+            <SimpleGrid
+              cols={{ base: 1, xs: 4 }}
+              mt={previews.length > 0 ? "xl" : 0}
+            >
               {previews}
             </SimpleGrid>
           </div>
@@ -197,28 +212,28 @@ export default function Default({ sessionId }: { sessionId: string }) {
       <div className="  bottom-8  w-full max-w-xl mt-5">
         <Group justify="between">
           <div className="flex w-full justify-between items-center px-5">
-            {
-              pending === true ?
-                <>
-                  <Button type="button" variant="default" disabled >
-                    Back
-                  </Button>
-                  <Button loading={pending} type="button" disabled>Loading</Button>
-                </>
-                :
-                <>
-                  <Button type="button" variant="default" onClick={prevStep}>
-                    Back
-                  </Button>
-                  {active === 4 && <Button type="submit">Save</Button>}
-                </>
-            }
+            {pending === true ? (
+              <>
+                <Button type="button" variant="default" disabled>
+                  Back
+                </Button>
+                <Button loading={pending} type="button" disabled>
+                  Loading
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button type="button" variant="default" onClick={prevStep}>
+                  Back
+                </Button>
+                {active === 4 && <Button type="submit">Save</Button>}
+              </>
+            )}
             {active !== 4 && (
               <Button type="button" onClick={nextStep}>
                 Next step
               </Button>
             )}
-
           </div>
         </Group>
       </div>
