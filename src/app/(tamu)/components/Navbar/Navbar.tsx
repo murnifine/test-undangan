@@ -61,18 +61,6 @@ export function Navbar() {
 
 
   const { data: session } = useSession();
-  // const { name, image } = session?.user;
-
-  // let image = ''
-  // let name = ''
-
-  // if (session?.user) {
-  //   const { name, image } = session?.user;
-  // }
-  // else {
-  //   let image = ''
-  //   let name = ''
-  // }
   const pathname = usePathname()
 
 

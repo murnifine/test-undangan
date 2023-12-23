@@ -12,7 +12,6 @@ export default async function Template() {
 
   const categoryNames = Object.keys(categoryData).map((key) => ((categoryData as any)[key] as string))
 
-  console.log(categoryNames)
   return (
     <>
       <div className="flex flex-col items-center  gap-5 py-20 px-5 md:px-10 w-full  h-full bg-white">
