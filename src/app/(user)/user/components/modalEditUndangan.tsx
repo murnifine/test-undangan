@@ -26,14 +26,14 @@ export default function ModalEditUndangan({
       <Modal opened={opened} onClose={close} title="Edit" centered>
         {/* Modal content */}
         <Link
-          href={`/user/edit?profileId=` + profile.id}
+          href={`/user/edit?profileId=${profile.id}&type=dataMempelai`}
           className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
         >
           <GiBigDiamondRing size="1.5em" color="red" />
           <span className="text-sm font-semibold">Edit Form Mempelai</span>
         </Link>
         <Link
-          href="#"
+          href={`/user/edit?profileId=${profile.id}&type=waktu`}
           className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
         >
           <BsCake2 size="1.5em" color="red" />

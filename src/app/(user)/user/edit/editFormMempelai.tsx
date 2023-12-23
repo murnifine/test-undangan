@@ -14,8 +14,10 @@ import "@mantine/dates/styles.css";
 
 import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import InputsDataForm from "../components/inputsDataForm";
+import { Profile } from "@prisma/client";
+import { updateProfile } from "@/actions/actions-profile";
 
-export default function EditFormMempelai({ sessionId }: { sessionId: string }) {
+export default function EditFormMempelai({ sessionId, dataValue }: { sessionId: string, dataValue: Profile }) {
     const [files, setFiles] = useState<File[]>([]);
     const openRef = useRef<() => void>(null)
 
@@ -52,41 +54,7 @@ export default function EditFormMempelai({ sessionId }: { sessionId: string }) {
     return (
         <form
             onSubmit={handleSubmit(async (data) => {
-
-                setPending(true)
-                const sendData = new FormData();
-                for (const dataForm in data) {
-                    sendData.append(dataForm, data[dataForm]);
-                }
-                sendData.delete("url_foto_pria");
-                sendData.append("url_foto_pria", data.url_foto_pria[0]);
-
-                sendData.delete("url_foto_wanita");
-                sendData.append("url_foto_wanita", data.url_foto_wanita[0]);
-
-                sendData.delete("url_foto_utama");
-                sendData.append("url_foto_utama", data.url_foto_utama[0]);
-
-                sendData.append("userId", sessionId);
-
-                if (getTemplateId) {
-                    sendData.append("templateId", getTemplateId);
-                }
-                files.forEach((file, index) => {
-                    sendData.append(`fotoMoments[${index}]`, file);
-                });
-
-
-
-                const kirimData = await fetch("/api/upload-photos", {
-                    method: "POST",
-                    body: sendData,
-                });
-                const response = await kirimData.json();
-
-                router.push("/user");
-
-                // setSelectedFile(data.fotoMemplaiPria)
+                await updateProfile(dataValue.id, data)
             })}
             className=" flex flex-col w-full max-w-xl shadow-lg p-10 h-max overflow-scroll bg-zinc-50 rounded-lg"
         >
@@ -95,6 +63,7 @@ export default function EditFormMempelai({ sessionId }: { sessionId: string }) {
                     <div className="flex flex-col gap-4">
                         <span className="text-xl font-semibold">Form Mempelai Pria</span>
                         <DataFormPria
+                            dataValue={dataValue}
                             control={control}
                             Controller={Controller}
                             register={register}
@@ -104,7 +73,7 @@ export default function EditFormMempelai({ sessionId }: { sessionId: string }) {
                 <Stepper.Step>
                     <div className="flex flex-col gap-4 ">
                         <span className="text-xl font-semibold">Form Mempelai Wanita</span>
-                        <DataFormWanita control={control} Controller={Controller} />
+                        <DataFormWanita dataValue={dataValue} control={control} Controller={Controller} register={register} />
                     </div>
                 </Stepper.Step>
 

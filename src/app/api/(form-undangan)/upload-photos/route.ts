@@ -122,7 +122,7 @@ export const POST = auth(async (request) => {
   const newFotoMoments = await prisma.photoMoments.createMany({
     data: UploadFoto
   })
-  console.log('iniii', newFotoMoments)
+
   
 
   revalidatePath("/user");

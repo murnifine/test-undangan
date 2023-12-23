@@ -5,10 +5,13 @@ import { usePathname } from "next/navigation";
 import InputsDataForm from "../inputsDataForm"
 import UploadPhotosMoments from "./uploadPhotosMoments"
 import InputsEditDataForm from "../inputsEditDataForm";
+import { Profile } from "@prisma/client";
 
 
-export default function DataFormPria({ control, Controller, register }: { control: any, Controller: any, register: any }) {
+export default function DataFormPria({ control, Controller, register, dataValue }: { control: any, Controller: any, register?: any, dataValue?: Profile }) {
   const pathname = usePathname()
+
+  if (!dataValue) return
   return (
     <div className="">
       <Controller
@@ -17,7 +20,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Inisial" configName={field} id={'inisial_pria'} />
+              <InputsEditDataForm label="Nama Inisial" dataValue={dataValue.nama_panggilan_pria} configName={field} id={'inisial_pria'} />
               :
               <InputsDataForm label="Nama Inisial" configName={field} id={'inisial_pria'} />
           }
@@ -30,7 +33,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Lengkap" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_pria} label="Nama Lengkap" configName={field} />
               :
               <InputsDataForm label="Nama Lengkap" configName={field} />
           }
@@ -42,7 +45,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Ayah" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_ayah_pria} label="Nama Ayah" configName={field} />
               :
               <InputsDataForm label="Nama Ayah" configName={field} />
           }
@@ -54,7 +57,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Ibu" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_ibu_pria} label="Nama Ibu" configName={field} />
               :
               <InputsDataForm label="Nama Ibu" configName={field} />
 
@@ -69,7 +72,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Facebook" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.pria_fb} label="Url Facebook" configName={field} />
               :
               <InputsDataForm label="Url Facebook" configName={field} />
 
@@ -83,7 +86,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Instagram" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.pria_ig} label="Url Instagram" configName={field} />
               :
               <InputsDataForm label="Url Instagram" configName={field} />
           }
@@ -96,7 +99,7 @@ export default function DataFormPria({ control, Controller, register }: { contro
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Tiktok" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.pria_tk} label="Url Tiktok" configName={field} />
               :
               <InputsDataForm label="Url Tiktok" configName={field} />
           }

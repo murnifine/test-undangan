@@ -1,6 +1,7 @@
+import { Profile } from "@prisma/client";
 
 
-export default function InputsEditDataForm({ label, configName, id }: { label: any, configName: any, id?: string }) {
+export default function InputsEditDataForm({ label, configName, id, dataValue }: { label: any, configName: any, id?: string, dataValue: string | null }) {
     return (
         <>
             <div className="relative mb-8">
@@ -9,7 +10,7 @@ export default function InputsEditDataForm({ label, configName, id }: { label: a
                     placeholder={label}
                     {...configName}
                     id={id}
-                    value={'tes'}
+                    defaultValue={dataValue}
                     onKeyUp={(event) => {
                         let targetVal = event.currentTarget.value.replace(' ', "");
                         // Fixing the issue with null check and type casting
