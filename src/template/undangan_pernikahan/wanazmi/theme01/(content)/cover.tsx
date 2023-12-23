@@ -32,7 +32,7 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
       animate={{ y: openUndangan, opacity: opacity }}
       // transition={{ ease: "easeOut", duration: 2, times: [0, 1.5, 1], }}
       transition={{ ease: "easeOut", duration: 2 }}
-      // transition={{ duration: 2 }}
+    // transition={{ duration: 2 }}
     >
       <div className="flex  fixed justify-center items-center w-full  md:max-w-[600px] shadow-md  top-0 h-screen">
         <Image

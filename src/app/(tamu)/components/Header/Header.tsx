@@ -1,68 +1,91 @@
-import { Image, Container, Title, Button, Group, Text } from "@mantine/core";
 import classes from "./Header.module.css";
 import Link from "next/link";
+import { IconCheck, IconCheckbox } from "@tabler/icons-react";
+import Image from "next/image";
+import Particle from "@/components/Particle";
+import { GiBigDiamondRing } from "react-icons/gi";
+import { BsCake2 } from "react-icons/bs";
+import { IoCutOutline } from "react-icons/io5";
+import { PiFlowerTulipThin } from "react-icons/pi";
+import { FaUserInjured } from "react-icons/fa";
 
 export function Header() {
   return (
-    <div className="">
-      <Container size="lg">
-        <div className={classes.inner}>
-          <div className={classes.content}>
-            <Title className={classes.title}>Website Undangan Pernikahan</Title>
-            <Text c="dimmed" mt="md">
-              Masa aktif selamanya dan edit tanpa batas! Fitur paling lengkap
-              banyak preset siap pakai
-            </Text>
-            {/* <List
-              mt={30}
-              spacing="sm"
-              size="sm"
-              icon={
-                <ThemeIcon size={20} radius="xl">
-                  <IconCheck
-                    style={{ width: rem(12), height: rem(12) }}
-                    stroke={1.5}
-                  />
-                </ThemeIcon>
-              }
-            >
-              <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all
-                components and hooks export types
-              </List.Item>
-              <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you
-                can use Mantine in any project
-              </List.Item>
-              <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when
-                user navigates with keyboard
-              </List.Item>
-            </List> */}
-            <Group mt={30}>
-              <Link href={"/login"}>
-                <Button
-                  radius="sm"
-                  size="md"
-                  color="blue"
-                  className={classes.control}
-                >
-                  Buat Undanganmu Sekarang
-                </Button>
-              </Link>
-              {/* <Button
-                variant="default"
-                radius="xl"
-                size="md"
-                className={classes.control}
-              >
-                Source code
-              </Button> */}
-            </Group>
+    <>
+      <div className="flex  relative   md:flex-row  py-20 md:py-0 px-5  bg-white  md:px-14 items-center w-full h-screen ">
+        {/* <Particle /> */}
+        <Image
+          src={'/img/bg-home.jpg'}
+          className="absolute  saturate-50 brightness-50 "
+          fill
+          quality={75}
+          alt="bg-home" />
+
+        <div className="flex justify-center md:items-start items-center flex-col gap-5 z-20 w-full md:w-max  text-white ">
+          <div className="">
+            <span className="text-3xl  md:text-4xl font-bold ">UNDANGAN DIGITAL</span>
+            <div className="flex flex-col">
+              <span className="font-semibold ">pertama di Indonesia</span>
+              <span>Semua jenis undangan hanya ada disini!</span>
+            </div>
+
           </div>
-          <Image src="./header.webp" className={classes.image} alt="gambar" />
+          <div className="flex flex-col w-full  gap-5 ">
+            <div>
+              <ul className="flex flex-col gap-4 text-sm">
+                <li>
+                  <Link href={'/template/undangan-pernikahan'}
+                    className="flex justify-center items-center gap-2 py-2   rounded-lg text-white border hover:border-pink-300  hover:shadow-md transition ease-in-out delay-150"
+                  >
+                    <GiBigDiamondRing size="1em" color="red" />
+                    Undangan Pernikahan
+                  </Link>
+                </li>
+                <li>
+                  <Link href={'/template/undangan-ulang-tahun'}
+                    className="flex justify-center items-center gap-2 py-2   rounded-lg text-white border hover:border-pink-300  hover:shadow-md transition ease-in-out delay-150"
+                  >
+                    <BsCake2 size="1em" color="red" />
+                    Undangan Ulang Tahun
+                  </Link>
+                </li>
+                <li>
+                  <Link href={'/template/undangan-aqiqah'}
+                    className="flex justify-center items-center gap-2 py-2   rounded-lg text-white border hover:border-pink-300  hover:shadow-md transition ease-in-out delay-150"
+                  >
+                    <IoCutOutline size="1em" color="red" />
+                    Undangan Aqiqah
+                  </Link>
+                </li>
+                <li>
+                  <Link href={'/template/undangan-pingitan'}
+                    className="flex justify-center items-center gap-2 py-2   rounded-lg text-white border hover:border-pink-300  hover:shadow-md transition ease-in-out delay-150"
+                  >
+                    <PiFlowerTulipThin size="1em" color="red" />
+                    Undangan Pingitan
+                  </Link>
+                </li>
+                <li>
+                  <Link href={'/template/undangan-katoba'}
+                    className="flex justify-center items-center gap-2 py-2   rounded-lg text-white border hover:border-pink-300  hover:shadow-md transition ease-in-out delay-150"
+                  >
+                    <FaUserInjured size="1em" color="red" />
+                    Undangan Katoba
+                  </Link>
+                </li>
+
+              </ul>
+            </div>
+            <Link className="flex justify-center items-center px-4 py-2 bg-sky-600  transition ease-in-out delay-150 hover:scale-105 hover:-translate-y-1  text-white rounded-lg text-sm font-semibold" href={'/template'}>
+              Lihat Semua
+            </Link>
+          </div>
+
+
         </div>
-      </Container>
-    </div>
+      </div>
+    </>
+
+
   );
 }
