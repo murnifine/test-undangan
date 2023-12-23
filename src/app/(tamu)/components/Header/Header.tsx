@@ -12,11 +12,11 @@ import { FaUserInjured } from "react-icons/fa";
 export function Header() {
   return (
     <>
-      <div className="flex  relative   md:flex-row  py-20 md:py-0 px-5  bg-white  md:px-14 items-center w-full h-screen ">
+      <div className="flex  relative   md:flex-row  py-20 md:py-0 px-5  bg-white  md:px-14 lg:px-40 items-center w-full h-screen ">
         {/* <Particle /> */}
         <Image
           src={'/img/bg-home.jpg'}
-          className="absolute  saturate-50 brightness-50 "
+          className="absolute object-cover saturate-50 brightness-50 "
           fill
           quality={75}
           alt="bg-home" />
