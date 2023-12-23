@@ -15,9 +15,13 @@ import DeleteButton from "./delete-button";
 import { ProfileProps } from "@/types/types";
 import { Profile } from "@prisma/client";
 import ModalEditUndangan from "./modalEditUndangan";
+import { useDisclosure } from "@mantine/hooks";
 
 export default function CardOptions({ profile }: { profile: Profile }) {
+  const [opened, { open, close }] = useDisclosure(false);
 
+  if (opened)
+    return <ModalEditUndangan {...{ opened, open, close, profile }} />;
 
   return (
     <div
@@ -39,10 +43,14 @@ export default function CardOptions({ profile }: { profile: Profile }) {
         </Menu.Target>
 
         <Menu.Dropdown className="bg-blue-300">
-          {/* <Menu.Label>Application</Menu.Label> */}
-
-
-          <ModalEditUndangan profileId={profile.id} />
+          <Menu.Item
+            onClick={open}
+            leftSection={
+              <IconRowRemove style={{ width: rem(14), height: rem(14) }} />
+            }
+          >
+            Edit
+          </Menu.Item>
 
           <Link href={`/user/share?profileId=` + profile.id}>
             <Menu.Item
