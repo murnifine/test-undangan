@@ -15,8 +15,6 @@ export const POST = auth(async (request) => {
   const dataForm = await request.formData();
   const datas = Object.fromEntries(dataForm);
   
-  
-
 
   const fotomempelaiPria = dataForm.get("url_foto_pria") as File;
   if (fotomempelaiPria.name) {
@@ -48,13 +46,9 @@ export const POST = auth(async (request) => {
 
   const fotoUtama = dataForm.get("url_foto_utama") as File;
   if (fotoUtama.name) {
-    const UploadFotoUtama = await put(
-      fotoUtama.name,
-      fotoUtama,
-      {
-        access: "public",
-      }
-    );
+    const UploadFotoUtama = await put(fotoUtama.name, fotoUtama, {
+      access: "public",
+    });
     datas.url_foto_utama = UploadFotoUtama.url;
   } else {
     datas.url_foto_utama = "";
@@ -69,11 +63,15 @@ export const POST = auth(async (request) => {
     datas.dateTime_resepsi as string
   ).toISOString();
 
-    // datas.templateId = datas.templateId;
-    // model.id = nanoid() //=> "4f90d13a42"
-  datas.slug = datas.nama_panggilan_pria + "-" + datas.nama_panggilan_wanita + '_(' + nanoid(6) + ')';
-
-
+  // datas.templateId = datas.templateId;
+  // model.id = nanoid() //=> "4f90d13a42"
+  datas.slug =
+    datas.nama_panggilan_pria +
+    "-" +
+    datas.nama_panggilan_wanita +
+    "_(" +
+    nanoid(6) +
+    ")";
 
   //   const pria = (datas.nama_pria as string).split(' ')[0]
   //   const wanita = (datas.nama_wanita as string).split(' ')[0]
@@ -83,42 +81,41 @@ export const POST = auth(async (request) => {
 
   for (const [key, value] of Object.entries(datas)) {
     if (value instanceof File) {
-      dataInputFotoMoments[key]  = value;
+      dataInputFotoMoments[key] = value;
     } else {
       dataInputProfile[key] = value;
     }
   }
 
+  // datas.templateId = datas.templateId;
+  const getAllDataForm = {
+    ...dataInputProfile,
+    templateId: Number(datas.templateId),
+  };
 
-      // datas.templateId = datas.templateId;
-      const getAllDataForm = {
-        ...dataInputProfile, templateId: Number(datas.templateId)
-      }
-    
   const newProfile = await prisma.profile.create({
     // data: datas as any,
-    data: getAllDataForm as any
+    data: getAllDataForm as any,
   });
 
-  
-  const fotoMomentsArray = Object.values(dataInputFotoMoments).filter(value => value instanceof File);
+  const fotoMomentsArray = Object.values(dataInputFotoMoments).filter(
+    (value) => value instanceof File
+  );
   let getUrlFotoMomets = [];
   for (let i = 0; i < fotoMomentsArray.length; i++) {
     const foto = fotoMomentsArray[i] as File;
-    const uploadFoto = await put(
-      `fotomoments/${foto.name}`,
-      foto,
-      {
-        access: "public",
-      }
-      );
-      getUrlFotoMomets.push(uploadFoto.url);
-    }
+
+    const uploadFoto = await put(`fotomoments/${foto.name}`, foto, {
+      access: "public",
+    });
+    getUrlFotoMomets.push(uploadFoto.url);
+  }
 
   const UploadFoto = getUrlFotoMomets.map((datas) => ({
     url_foto : datas,
     profileId : newProfile.id
   }))
+
   const newFotoMoments = await prisma.photoMoments.createMany({
     data: UploadFoto
   })

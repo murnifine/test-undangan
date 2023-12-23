@@ -44,7 +44,7 @@ export default function CardOptions({ profile }: { profile: Profile }) {
           <IconDots />
         </Menu.Target>
 
-        <Menu.Dropdown className="bg-blue-300">
+        <Menu.Dropdown>
           <Menu.Item
             onClick={open}
             leftSection={
