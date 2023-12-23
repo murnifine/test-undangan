@@ -1,8 +1,4 @@
 import prisma from "@/lib/prisma";
-import { Suspense, lazy } from "react";
-import { exampleData } from "@/lib/dataweedings";
-import Link from "next/link";
-import { LuEye } from "react-icons/lu";
 import { category } from "@prisma/client";
 import IsiCard from "../components/isiCard";
 export default async function Slug({ params }: { params: { slug: string } }) {
@@ -15,6 +11,7 @@ export default async function Slug({ params }: { params: { slug: string } }) {
             user: true
         }
     })
+
 
     const namaTemplate = params.slug
 

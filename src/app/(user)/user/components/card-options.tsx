@@ -14,11 +14,10 @@ import Link from "next/link";
 import DeleteButton from "./delete-button";
 import { ProfileProps } from "@/types/types";
 import { Profile } from "@prisma/client";
+import ModalEditUndangan from "./modalEditUndangan";
 
 export default function CardOptions({ profile }: { profile: Profile }) {
-  // function handleDeleteProfile(){
 
-  // }
 
   return (
     <div
@@ -42,15 +41,9 @@ export default function CardOptions({ profile }: { profile: Profile }) {
         <Menu.Dropdown className="bg-blue-300">
           {/* <Menu.Label>Application</Menu.Label> */}
 
-          <Link href={`/user/edit?profileId=` + profile.id}>
-            <Menu.Item
-              leftSection={
-                <IconEdit style={{ width: rem(14), height: rem(14) }} />
-              }
-            >
-              Edit
-            </Menu.Item>
-          </Link>
+
+          <ModalEditUndangan profileId={profile.id} />
+
           <Link href={`/user/share?profileId=` + profile.id}>
             <Menu.Item
               leftSection={
