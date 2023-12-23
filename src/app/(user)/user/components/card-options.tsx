@@ -3,7 +3,9 @@ import { Menu, rem } from "@mantine/core";
 import {
   IconDots,
   IconEdit,
+  IconHttpDelete,
   IconMessageCircle,
+  IconRowRemove,
   IconSettings,
   IconShare,
 } from "@tabler/icons-react";
@@ -48,6 +50,15 @@ export default function CardOptions({ profileId }: { profileId: number }) {
               }
             >
               Bagikan
+            </Menu.Item>
+          </Link>
+          <Link href={`#` + profileId}>
+            <Menu.Item
+              leftSection={
+                <IconRowRemove style={{ width: rem(14), height: rem(14) }} />
+              }
+            >
+              Hapus
             </Menu.Item>
           </Link>
         </Menu.Dropdown>

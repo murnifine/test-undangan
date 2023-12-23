@@ -14,10 +14,11 @@ export default async function Layout({
 
   return (
     <>
-      <div className="flex justify-between p-4 px-7 md:px-10 w-full fixed z-50 bg-white ">
+      {/* <div className="flex justify-between p-4 px-7 md:px-10 w-full fixed z-50 bg-white ">
         <Logo />
         <UserMenu session={session} />
-      </div>
+      </div> */}
+      <Navbar />
       <div className="flex justify-center h-full">
         {children}
       </div>
