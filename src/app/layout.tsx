@@ -41,11 +41,10 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <ColorSchemeScript />
-
-        <meta
+        {/* <meta
           name="viewport"
-          content="width=320, initial-scale=2.3, user-scalable=no"
-        />
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        /> */}
       </head>
       <body className=" min-h-screen min-w-full">
         <SessionProvider session={session}>
