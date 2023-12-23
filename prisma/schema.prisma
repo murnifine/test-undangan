@@ -105,6 +105,8 @@ model Profile {
   dateTime_akad_nikah DateTime?         @default(now())
   alamat_akad_nikah   String?
   alamat_resepsi      String?
+  url_akad_nikah   String?
+  url_alamat_resepsi      String?
   photo_moment        PhotoMoments[]
   templateId          Int?
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
@@ -120,6 +122,7 @@ enum category {
   undangan_ulang_tahun
   undangan_aqiqah
   undangan_pingitan
+  undangan_katoba
 }
 
 model TemplateUndangan {
@@ -136,8 +139,10 @@ model TemplateUndangan {
 
 model PhotoMoments {
   id        Int      @id @default(autoincrement())
+
   url_foto  String?
   profileId Int?
+  
   profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 

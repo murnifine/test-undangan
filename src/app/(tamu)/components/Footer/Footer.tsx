@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { CiInstagram } from "react-icons/ci";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaUserInjured, FaWhatsapp } from "react-icons/fa";
 import { GiBigDiamondRing } from "react-icons/gi";
 import { BsCake2 } from "react-icons/bs";
 import { PiFlowerTulipThin } from "react-icons/pi";
 import { IconHeartFilled } from "@tabler/icons-react";
+import { IoCutOutline } from "react-icons/io5";
 
 export default function Footer() {
   return (
@@ -16,27 +17,41 @@ export default function Footer() {
         </Link>
         <span className="text-xs text-slate-700">www.olvite.com</span>
       </div>
-      <div className="flex gap-2 md:gap-5">
+      <div className="grid grid-cols-3 gap-5 md:gap-5">
         <Link
-          href={"/"}
+          href={"/template/undangan-pernikahan"}
           className="flex gap-2  items-center hover:text-red-600 "
         >
           <GiBigDiamondRing size="1.5em" color="red" />
           <span className="text-xs">Undangan Pernikahan</span>
         </Link>
         <Link
-          href={"/"}
+          href={"/template/undangan-ulang-tahun"}
           className="flex gap-2  items-center hover:text-red-600 "
         >
           <BsCake2 size="1.5em" color="red" />
           <span className="text-xs">Undangan Ulang Tahun</span>
         </Link>
         <Link
-          href={"/"}
+          href={"/template/undangan-aqiqah"}
+          className="flex gap-2  items-center hover:text-red-600 "
+        >
+          <IoCutOutline size="1.5em" color="red" />
+          <span className="text-xs">Undangan Aqiqah</span>
+        </Link>
+        <Link
+          href={"/template/undangan-pingitan"}
           className="flex gap-2  items-center hover:text-red-600 "
         >
           <PiFlowerTulipThin size="1.5em" color="red" />
           <span className="text-xs">Undangan Pingitan</span>
+        </Link>
+        <Link
+          href={"/template/undangan-katoba"}
+          className="flex gap-2  items-center hover:text-red-600 "
+        >
+          <FaUserInjured size="1.5em" color="red" />
+          <span className="text-xs">Undangan Katoba</span>
         </Link>
       </div>
       <div className="flex flex-col gap-1 text-white w-full md:w-max">

@@ -10,12 +10,12 @@ export default async function Page() {
       <div className="flex flex-col justify-center py-20 px-5 items-center gap-y-5    w-full">
         <Default sessionId={session?.user.id} />
       </div>
-
+      {/* 
       <div className="fixed bottom-5 w-full  max-w-md flex justify-center">
         <Button component={Link} href={"/user"} variant="outline" size="md">
           Kembali
         </Button>
-      </div>
+      </div> */}
     </>
   );
 }

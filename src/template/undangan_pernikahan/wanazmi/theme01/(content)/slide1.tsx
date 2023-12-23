@@ -14,16 +14,16 @@ export default function Slide1({ profile }: { profile: ProfileProps }) {
   return (
     <div
       id="section1"
-      className="relative  flex flex-col justify-center items-center max-w-full md:w-[600px] h-screen z-20"
+      className="relative scale-90 flex flex-col justify-center items-center max-w-full md:w-[600px] h-screen z-20"
     >
       {[
         {
           image_url: "/img/flower.png",
-          position: "top-0 -right-5 origin-top-right w-24 z-10",
+          position: "-top-10 -right-10 origin-top-right w-16 z-10",
         },
         {
           image_url: "/img/flower2.png",
-          position: "bottom-0 -left-5 -bottom-5 origin-bottom-left w-24 z-10",
+          position: "-bottom-10 -left-10 -bottom-5 origin-bottom-left w-16 z-10",
         },
       ].map((item) => (
         <motion.div
@@ -43,17 +43,19 @@ export default function Slide1({ profile }: { profile: ProfileProps }) {
 
       <div
         data-aos="fade-up"
-        className=".image_url2 bg-white w-72 rounded-full overflow-hidden border-2 border-white "
+        className=".image_url2 relative bg-white w-56 h-56 z-50 rounded-full overflow-hidden border-2 border-white "
       >
         <Image
-          className=" w-72  z-0"
+          className="absolute object-cover z-50  "
           src={
             profile?.url_foto_utama
               ? profile?.url_foto_utama
               : "https://placehold.co/400x400"
           }
-          width={500}
-          height={500}
+          // width={500}
+          // height={500}
+          fill
+          quality={75}
           alt="bg"
         />
       </div>
@@ -74,27 +76,7 @@ export default function Slide1({ profile }: { profile: ProfileProps }) {
           data-aos="fade-in"
           className="flex justify-center items-center  font-Rajdhani font-bold text-lg text-slate-800 mt-2 "
         >
-          {/* <span>
-            {profile?.dateTime_akad_nikah.toLocaleString(
-              "en-GB",
-              {
-                hour: "2-digit",
-                minute: "2-digit",
-              }
-            )}
-          </span> */}
 
-          {/* <motion.div
-            className="container"
-            initial={{ scale: 180 }}
-            animate={{ rotate: 0, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-              duration: 10,
-            }}
-          > */}
           <span className=" border-r-2 pr-5 border-slate-600 mr-5 ">
             {waktu?.toLocaleString("id-ID", { weekday: "long" })}
           </span>

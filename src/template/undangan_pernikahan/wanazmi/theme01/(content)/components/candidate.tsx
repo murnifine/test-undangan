@@ -13,17 +13,18 @@ export default function Candidate({ profile }: { profile: ProfileProps }) {
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div
           data-aos="fade-right"
-          className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
+          className="relative border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
         >
           <Image
+            className="absolute object-cover"
             src={
               profile?.url_foto_pria
                 ? profile?.url_foto_pria
                 : "https://placehold.co/400x400"
               // : AllDataUser.defaultFoto
             }
-            width={500}
-            height={700}
+            fill
+            quality={75}
             alt="mempelai pria"
           />
         </div>
@@ -48,17 +49,20 @@ export default function Candidate({ profile }: { profile: ProfileProps }) {
       <div className="flex flex-col justify-center items-center gap-5 text-xl">
         <div
           data-aos="fade-left"
-          className="border-4 border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
+          className="border-4 relative border-white shadow-lg flex justify-center items-center w-44 h-64 rounded-t-full rounded-b-2xl bg-red-400 overflow-hidden "
         >
           <Image
+            className="absolute object-cover"
             src={
               profile?.url_foto_wanita
                 ? profile?.url_foto_wanita
                 : "https://placehold.co/400x400"
               // : AllDataUser.defaultFoto
             }
-            width={500}
-            height={700}
+            fill
+            quality={75}
+            // width={500}
+            // height={700}
             alt="mempelai wanita"
           />
         </div>
