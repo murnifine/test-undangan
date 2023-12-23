@@ -3,11 +3,15 @@
 
 import { usePathname } from "next/navigation";
 import InputsDataForm from "../inputsDataForm"
+import UploadPhotosMoments from "./uploadPhotosMoments"
 import InputsEditDataForm from "../inputsEditDataForm";
+import { Profile } from "@prisma/client";
 
 
-export default function DataFormWanita({ control, Controller }: { control: any, Controller: any }) {
+export default function DataFormWanita({ control, Controller, register, dataValue }: { control: any, Controller: any, register?: any, dataValue?: Profile }) {
   const pathname = usePathname()
+
+  if (!dataValue) return
   return (
     <div className="">
       <Controller
@@ -16,7 +20,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Inisial" configName={field} id={'inisial_wanita'} />
+              <InputsEditDataForm label="Nama Inisial" dataValue={dataValue.nama_panggilan_wanita} configName={field} id={'inisial_wanita'} />
               :
               <InputsDataForm label="Nama Inisial" configName={field} id={'inisial_wanita'} />
           }
@@ -29,7 +33,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Lengkap" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_wanita} label="Nama Lengkap" configName={field} />
               :
               <InputsDataForm label="Nama Lengkap" configName={field} />
           }
@@ -41,7 +45,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Ayah" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_ayah_wanita} label="Nama Ayah" configName={field} />
               :
               <InputsDataForm label="Nama Ayah" configName={field} />
           }
@@ -53,7 +57,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Nama Ibu" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.nama_ibu_wanita} label="Nama Ibu" configName={field} />
               :
               <InputsDataForm label="Nama Ibu" configName={field} />
 
@@ -68,7 +72,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Facebook" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.wanita_fb} label="Url Facebook" configName={field} />
               :
               <InputsDataForm label="Url Facebook" configName={field} />
 
@@ -82,7 +86,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Instagram" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.wanita_ig} label="Url Instagram" configName={field} />
               :
               <InputsDataForm label="Url Instagram" configName={field} />
           }
@@ -95,7 +99,7 @@ export default function DataFormWanita({ control, Controller }: { control: any, 
         render={({ field }: { field: any }) => (
           {
             ...pathname.includes('/edit') ?
-              <InputsEditDataForm label="Url Tiktok" configName={field} />
+              <InputsEditDataForm dataValue={dataValue.wanita_tk} label="Url Tiktok" configName={field} />
               :
               <InputsDataForm label="Url Tiktok" configName={field} />
           }
