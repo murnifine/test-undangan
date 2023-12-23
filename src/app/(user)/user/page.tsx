@@ -10,13 +10,11 @@ import {
 import { MotionDiv } from "@/components/MotionDiv";
 import CardOptions from "./components/card-options";
 import ModalCretaeUndangan from "./components/modalCretaeUndangan";
+import { Profile } from "@prisma/client";
 
 export default async function Page() {
-
   const session = await auth();
   const email = session?.user.email;
-
-
 
   const user = await prisma.user.findUnique({
     where: {
@@ -27,28 +25,26 @@ export default async function Page() {
     },
   });
 
-  const profile = await prisma.profile.findMany({
+  const profiles = await prisma.profile.findMany({
     where: {
       userId: session?.user.id,
     },
   });
-
 
   return (
     <div className="relative flex justify-center pt-20 pb-10 px-5 md:px-10 w-full h-screen bg-white ">
       <div className=" py-5    bg-zinc-50 flex flex-col h-full  items-center  p-4 sm:p-0 w-full md:max-w-lg  overflow-scroll  shadow border rounded-md gap-y-5">
         <h1 className="text-xl font-semibold sm:mt-5">List Undangan</h1>
 
-
-        {!profile && (
+        {!profiles && (
           <p className="text-center p-10 text-base ">
             Kamu belum membuat satupun undangan, Buat Undangan Sekarang
           </p>
         )}
 
-        {profile && (
+        {profiles && (
           <div className="flex flex-col w-full  gap-5 mb-20 sm:px-5">
-            {profile
+            {profiles
               .slice()
               .reverse()
               .map((undangan) => (
@@ -72,26 +68,25 @@ export default async function Page() {
                       <p className="text-xs">
                         {undangan.dateTime_akad_nikah
                           ? new Date(
-                            undangan.dateTime_akad_nikah
-                          ).toLocaleDateString("id-ID", {
-                            weekday: "long",
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })
+                              undangan.dateTime_akad_nikah
+                            ).toLocaleDateString("id-ID", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })
                           : ""}
                       </p>
                       <div></div>
                     </div>
                     <div className="pr-2">
-                      <CardOptions profileId={undangan.id} />
+                      <CardOptions profile={undangan} />
                     </div>
                   </MotionDiv>
                 </Link>
               ))}
           </div>
         )}
-
 
         <ModalCretaeUndangan />
       </div>

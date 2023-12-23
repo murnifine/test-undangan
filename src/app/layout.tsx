@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
 import "./globals.css";
 import { auth } from "@/lib/auth";
@@ -9,6 +11,7 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 import { Navbar } from "./(tamu)/components/Navbar/Navbar";
 import Footer from "./(tamu)/components/Footer/Footer";
+import { ModalsProvider } from "@mantine/modals";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -46,7 +49,10 @@ export default async function RootLayout({
       <body className=" min-h-screen min-w-full">
         <SessionProvider session={session}>
           <Toaster position="top-center" />
-          <MantineProvider>{children}</MantineProvider>
+          <MantineProvider>
+            <Notifications />
+            <ModalsProvider>{children}</ModalsProvider>
+          </MantineProvider>
         </SessionProvider>
         <Script
           src="https://app.sandbox.midtrans.com/snap/snap.js"

@@ -21,10 +21,12 @@ async function main() {
       {
         nama: "minimalist",
         userId: edi.id,
+        category: "undangan_pernikahan",
       },
       {
         nama: "theme01",
         userId: wanazmi.id,
+        category: "undangan_pernikahan",
       },
     ],
   });

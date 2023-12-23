@@ -1,5 +1,6 @@
 "use client";
-import { Menu, rem } from "@mantine/core";
+import { deleteProfile } from "@/actions/actions-profile";
+import { Button, Menu, rem } from "@mantine/core";
 import {
   IconDots,
   IconEdit,
@@ -10,8 +11,15 @@ import {
   IconShare,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import DeleteButton from "./delete-button";
+import { ProfileProps } from "@/types/types";
+import { Profile } from "@prisma/client";
 
-export default function CardOptions({ profileId }: { profileId: number }) {
+export default function CardOptions({ profile }: { profile: Profile }) {
+  // function handleDeleteProfile(){
+
+  // }
+
   return (
     <div
       onClick={(e) => {
@@ -34,7 +42,7 @@ export default function CardOptions({ profileId }: { profileId: number }) {
         <Menu.Dropdown className="bg-blue-300">
           {/* <Menu.Label>Application</Menu.Label> */}
 
-          <Link href={`/user/edit?profileId=` + profileId}>
+          <Link href={`/user/edit?profileId=` + profile.id}>
             <Menu.Item
               leftSection={
                 <IconEdit style={{ width: rem(14), height: rem(14) }} />
@@ -43,7 +51,7 @@ export default function CardOptions({ profileId }: { profileId: number }) {
               Edit
             </Menu.Item>
           </Link>
-          <Link href={`/user/share?profileId=` + profileId}>
+          <Link href={`/user/share?profileId=` + profile.id}>
             <Menu.Item
               leftSection={
                 <IconShare style={{ width: rem(14), height: rem(14) }} />
@@ -52,7 +60,8 @@ export default function CardOptions({ profileId }: { profileId: number }) {
               Bagikan
             </Menu.Item>
           </Link>
-          <Link href={`#` + profileId}>
+
+          <DeleteButton profile={profile}>
             <Menu.Item
               leftSection={
                 <IconRowRemove style={{ width: rem(14), height: rem(14) }} />
@@ -60,7 +69,7 @@ export default function CardOptions({ profileId }: { profileId: number }) {
             >
               Hapus
             </Menu.Item>
-          </Link>
+          </DeleteButton>
         </Menu.Dropdown>
       </Menu>
     </div>
