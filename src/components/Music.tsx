@@ -1,40 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { ActionIcon } from "@mantine/core";
-import { useTimeout } from "@mantine/hooks";
-import { IconDisc, IconMusic, IconMusicPause } from "@tabler/icons-react";
-import { LegacyRef, useEffect, useRef, useState } from "react";
-// import useSound from "use-sound";
+import { IconDisc, IconMusicPause } from "@tabler/icons-react";
+import { useState } from "react";
 import { Howl } from "howler";
 
 export default function Music({ listMusic }: { listMusic: string[] }) {
   const [music, setMusic] = useState<Howl>();
   const [isPlay, setIsPlay] = useState(false);
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     const music = document.querySelector("[data-music='false']");
-
-  //     if (music) {
-  //       music.addEventListener("mouseenter", () => {
-  //         if (music.getAttribute("data-music") == "false") {
-  //           controlMusic();
-  //           music.setAttribute("data-music", "true");
-  //         }
-  //       });
-  //     }
-
-  //     // document.querySelector("#index")?.addEventListener("mouseenter", () => {
-  //     //   controlMusic();
-  //     // });
-  //   }, 2000);
-
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // }, []);
 
   function controlMusic(index: number = 0) {
     if (!music) {

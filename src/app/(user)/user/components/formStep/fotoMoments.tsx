@@ -11,7 +11,14 @@ export function FotoMoments({ control, Controller, register }: { control: any, C
 
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
-        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
+        return (
+          <Image
+            alt="Foro moments"
+            key={index}
+            src={imageUrl}
+            onLoad={() => URL.revokeObjectURL(imageUrl)}
+          />
+        );
     });
 
     return (

@@ -114,7 +114,8 @@ model Profile {
   ucapan              Ucapan[]
   order              Order[]
 
-
+  musicId          String?
+  music            Music? @relation(fields: [musicId], references: [id])
 }
 
 enum category {
@@ -169,4 +170,14 @@ model Order {
   // customer  String
   // product   String
   // quantity  Int
+}
+
+
+model Music {
+ id        String      @id @default(cuid())
+ title String
+ url String
+
+profile Profile[]
+ 
 }

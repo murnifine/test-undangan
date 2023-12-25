@@ -6,6 +6,7 @@ import {
   IconEdit,
   IconHttpDelete,
   IconMessageCircle,
+  IconMusic,
   IconRowRemove,
   IconSettings,
   IconShare,
@@ -25,6 +26,7 @@ export default function CardOptions({ profile }: { profile: Profile }) {
 
   return (
     <div
+      className=" h-full w-full flex justify-center items-center"
       onClick={(e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -51,6 +53,16 @@ export default function CardOptions({ profile }: { profile: Profile }) {
           >
             Edit
           </Menu.Item>
+
+          <Link href={`/user/music?profileId=` + profile.id}>
+            <Menu.Item
+              leftSection={
+                <IconMusic style={{ width: rem(14), height: rem(14) }} />
+              }
+            >
+              Music
+            </Menu.Item>
+          </Link>
 
           <Link href={`/user/share?profileId=` + profile.id}>
             <Menu.Item

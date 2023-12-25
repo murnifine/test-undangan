@@ -38,6 +38,23 @@ async function main() {
     },
   });
 
+  const musics = await prisma.music.createMany({
+    data: [
+      {
+        title: "Musik Jantan",
+        url: "https://cdn.bensound.com/bensound-worldonfire.mp3",
+      },
+      {
+        title: "Pesona",
+        url: "https://cdn.bensound.com/bensound-backtothefuture.mp3",
+      },
+      {
+        title: "Mantabkan",
+        url: "https://cdn.bensound.com/bensound-playtowin.mp3",
+      },
+    ],
+  });
+
   await prisma.profile.createMany({
     data: [
       {
