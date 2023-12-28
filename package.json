@@ -6,9 +6,9 @@
   },
   "private": true,
   "scripts": {
-    "dev": "next dev --experimental-https",
-    "build": "next build && next start",
-    "start": "next start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next build && next start",
     "lint": "next lint"
   },
   "dependencies": {
