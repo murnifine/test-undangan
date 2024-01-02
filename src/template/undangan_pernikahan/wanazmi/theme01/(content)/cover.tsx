@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 export default function Cover({ profile }: { profile: ProfileProps }) {
   const [openUndangan, setOpenUndangan] = useState(0);
   const [opacity, setOpacity] = useState(100);
+  const [button, setButton] = useState(false)
 
   const HandleOpen = () => {
     const openMove = -500;
@@ -17,9 +18,13 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
     isiUndangan?.classList.add("h-full");
     isiUndangan?.classList.remove("overflow-hidden");
     isiUndangan?.classList.remove("h-screen");
+    if (button == true) {
+      document.querySelector('#open-undang')?.classList.add('hidden')
+    }
     (playMusic as HTMLElement).click();
     setOpenUndangan(openMove);
     setOpacity(0);
+    setButton(true)
   };
 
   const searchParams = useSearchParams();
@@ -69,7 +74,8 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
             </div>
           )}
 
-          <button
+          <button id="open-undangan"
+            disabled={button}
             onClick={HandleOpen}
             className="flex items-center justify-center gap-2  bg-red-300 px-4 py-2 rounded-full mt-5"
           >

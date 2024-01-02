@@ -11,6 +11,7 @@ import { MotionDiv } from "@/components/MotionDiv";
 import CardOptions from "./components/card-options";
 import ModalCretaeUndangan from "./components/modalCretaeUndangan";
 import { Profile } from "@prisma/client";
+import { instance } from "@/lib/axios/instance"
 
 export default async function Page() {
   const session = await auth();
@@ -34,6 +35,7 @@ export default async function Page() {
       music: true,
     },
   });
+  // const profiles = instance.get("/api/profile")
 
   // console.log(profiles[0].music);
 
@@ -74,13 +76,13 @@ export default async function Page() {
                       <p className="text-xs">
                         {undangan.dateTime_akad_nikah
                           ? new Date(
-                              undangan.dateTime_akad_nikah
-                            ).toLocaleDateString("id-ID", {
-                              weekday: "long",
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })
+                            undangan.dateTime_akad_nikah
+                          ).toLocaleDateString("id-ID", {
+                            weekday: "long",
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })
                           : ""}
                       </p>
                       <div></div>
