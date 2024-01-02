@@ -55,7 +55,8 @@ export default function IsiCard({ dataTemplates, categoryName }: { dataTemplates
                 <div className="w-full">
                   <div className="flex justify-between ">
                     <Link
-                      href={"#"}
+                      href={`/demo/${template.nama}`}
+                      target="_blank"
                       className="flex gap-1 py-2 px-2 items-center rounded-md  bg-slate-100 text-slate-900 shadow-md hover:bg-red-200"
                     >
                       <LuEye />

@@ -24,12 +24,12 @@ export default function EditFormMempelai({ sessionId, dataValue }: { sessionId: 
     const previews = files.map((file, index) => {
         const imageUrl = URL.createObjectURL(file);
         return (
-          <Image
-            alt="Foto mempelai"
-            key={index}
-            src={imageUrl}
-            onLoad={() => URL.revokeObjectURL(imageUrl)}
-          />
+            <Image
+                alt="Foto mempelai"
+                key={index}
+                src={imageUrl}
+                onLoad={() => URL.revokeObjectURL(imageUrl)}
+            />
         );
     });
 
@@ -73,7 +73,6 @@ export default function EditFormMempelai({ sessionId, dataValue }: { sessionId: 
                             dataValue={dataValue}
                             control={control}
                             Controller={Controller}
-                            register={register}
                         />
                     </div>
                 </Stepper.Step>

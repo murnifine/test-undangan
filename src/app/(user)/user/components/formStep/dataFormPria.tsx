@@ -8,7 +8,7 @@ import InputsEditDataForm from "../inputsEditDataForm";
 import { Profile } from "@prisma/client";
 
 
-export default function DataFormPria({ control, Controller, register, dataValue }: { control: any, Controller: any, register?: any, dataValue?: Profile }) {
+export default function DataFormPria({ control, Controller, dataValue }: { control: any, Controller: any, dataValue?: Profile }) {
   const pathname = usePathname();
 
   // if (!dataValue) return
