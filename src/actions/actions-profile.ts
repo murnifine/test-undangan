@@ -42,6 +42,11 @@ export async function deleteProfile(id: number) {
 }
 
 export async function updateProfile(id: number, data: any) {
+  // let newCollectionData
+  //   if (data.nama_panggilan_pria !== undefined) {
+  //     newCollectionData = {...data, slug: }
+  //   }
+
   const edit = await prisma.profile.update({
     where: {
       id,
