@@ -75,11 +75,14 @@ export default function Index({ sessionId }: { sessionId: string }) {
                     body: sendData
                 })
 
+                const respons = await fetchData.json();
 
-                const respons = await fetchData.json()
-                if (respons.message === 'success') {
-                    router.push('/user')
+                if (respons.message === "success") {
+                  router.push(
+                    `/user/create?profile_id=${respons.data.id}&type=add_photo`
+                  );
                 }
+
                 if (respons.message === 'failed') {
                     notifications.show({
                         color: 'red',

@@ -48,7 +48,7 @@ export default async function RootLayout({
       </head>
       <body className=" min-h-screen min-w-full">
         <SessionProvider session={session}>
-          <Toaster position="top-center" />
+          <Toaster position="bottom-right" richColors />
           <MantineProvider>
             <Notifications />
             <ModalsProvider>{children}</ModalsProvider>

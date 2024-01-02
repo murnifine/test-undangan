@@ -1,8 +1,22 @@
 import { auth } from "@/lib/auth";
 import Default from "./default";
 import Index from ".";
-export default async function Page() {
+import ChangePhoto from "../components/change-photo";
+import ChangePhotoMoment from "../components/change-photo-moment";
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   const session = await auth();
+
+  const { type, profile_id } = searchParams;
+
+  if (type === "photo_moment")
+    return <ChangePhotoMoment profile_id={profile_id as string} />;
+
+  if (type === "add_photo")
+    return <ChangePhoto profile_id={profile_id as string} />;
 
   return (
     <>
