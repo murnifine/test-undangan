@@ -126,6 +126,21 @@ export default function DataFormPria({ control, Controller, dataValue }: { contr
           )),
         })}
       />
+      {/* <Controller
+        name="rekening_bank"
+        control={control}
+        render={({ field }: { field: any }) => ({
+          ...(pathname.includes("/edit") && dataValue ? (
+            <InputsEditDataForm
+              dataValue={dataValue.pria_tk}
+              label="No Rekening Bank"
+              configName={field}
+            />
+          ) : (
+            <InputsDataForm label="No Rekening Bank" configName={field} />
+          )),
+        })}
+      /> */}
     </div>
   );
 }

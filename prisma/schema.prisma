@@ -107,6 +107,7 @@ model Profile {
   alamat_resepsi      String?
   url_akad_nikah   String?
   url_alamat_resepsi      String?
+  rekening_bank        bank[]
   photo_moment        PhotoMoments[]
   templateId          Int?
   template            TemplateUndangan? @relation(fields: [templateId], references: [id])
@@ -116,6 +117,14 @@ model Profile {
 
   musicId          String?
   music            Music? @relation(fields: [musicId], references: [id])
+}
+
+model bank{
+  id      Int      @id @default(autoincrement())
+  nama_bank String?
+  nomor_req Int?
+  profileId Int?
+  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 enum category {
@@ -143,7 +152,6 @@ model PhotoMoments {
 
   url_foto  String?
   profileId Int?
-  
   profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
@@ -171,6 +179,8 @@ model Order {
   // product   String
   // quantity  Int
 }
+
+
 
 
 model Music {

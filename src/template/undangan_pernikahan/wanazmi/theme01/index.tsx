@@ -29,6 +29,7 @@ import { Komponen1 } from "@/components/contoh/ControhContext";
 import { ProfileProps } from "@/types/types";
 import Particle from "@/components/Particle";
 import prisma from "@/lib/prisma";
+import Gift from "./(content)/gift";
 
 export default async function Tmp1({ profile }: { profile: ProfileProps }) {
   const music =
@@ -83,6 +84,7 @@ export default async function Tmp1({ profile }: { profile: ProfileProps }) {
           {profile?.photo_moment?.length > 0 && <Slide4 profile={profile} />}
           <Slide6 profile={profile} />
           <Slide7 profile={profile} />
+          <Gift profile={profile} />
         </div>
 
         <Music listMusic={listMusic} />

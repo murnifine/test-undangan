@@ -12,6 +12,9 @@ export default async function Page({ searchParams }: { searchParams: { [key: str
     const dataValue = await prisma.profile.findUnique({
         where: {
             id: Number(profileId)
+        },
+        include: {
+            rekening_bank: true,
         }
     })
     if (!dataValue) return redirect('/not-found')

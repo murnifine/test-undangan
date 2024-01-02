@@ -11,8 +11,12 @@ import { MotionDiv } from "@/components/MotionDiv";
 import CardOptions from "./components/card-options";
 import ModalCretaeUndangan from "./components/modalCretaeUndangan";
 import { Profile } from "@prisma/client";
+
+import { instance } from "@/lib/axios/instance"
+
 import { toast } from "sonner";
 import Notif from "./components/notif";
+
 
 export default async function Page({
   searchParams,
@@ -39,6 +43,7 @@ export default async function Page({
       music: true,
     },
   });
+  // const profiles = instance.get("/api/profile")
 
   // console.log(profiles[0].music);
 
