@@ -53,15 +53,14 @@ export const POST = auth(async (request) => {
       datas.templateId = Number(datas.templateId) as any
       datas.userId = request.auth.user.id
 
-      const saveData = await prisma.profile.create({
-        data : datas as any
-      })
-      revalidatePath('/user')
-      return NextResponse.json({saveData, message: "success", status: 200 });
+      const data = await prisma.profile.create({
+        data: datas as any,
+      });
+      revalidatePath("/user");
+      return NextResponse.json({ data, message: "success", status: 200 });
     } catch (error) {
       console.log(error);
       return NextResponse.json({error: error, message: "failed", status: 401 });
-
     }
   }
 
