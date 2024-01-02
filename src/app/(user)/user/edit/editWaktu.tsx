@@ -9,36 +9,17 @@ import {
     Stepper,
     Button,
     Group,
-    FileInput,
-    SimpleGrid,
     Image,
-    Text,
 } from "@mantine/core";
-import DataFormWanita from "../components/formStep/dataFormWanita";
 import { useRouter } from "next/navigation";
 
 import "@mantine/dates/styles.css";
 
-import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import InputsDataForm from "../components/inputsDataForm";
 import { updateProfile } from "@/actions/actions-profile";
 import { Profile } from "@prisma/client";
 
 export default function EditWaktu({ sessionId, dataValue }: { sessionId: string, dataValue: Profile }) {
-    const [files, setFiles] = useState<File[]>([]);
-    const openRef = useRef<() => void>(null);
-
-    const previews = files.map((file, index) => {
-        const imageUrl = URL.createObjectURL(file);
-        return (
-            <Image
-                alt="Foto"
-                key={index}
-                src={imageUrl}
-                onLoad={() => URL.revokeObjectURL(imageUrl)}
-            />
-        );
-    });
 
     const router = useRouter();
     const [selectedFile, setSelectedFile] = useState<File | null>(null);

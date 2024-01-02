@@ -1,10 +1,11 @@
 "use client";
 
 import { DateTimePicker } from "@mantine/dates";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import DataFormPria from "../components/formStep/dataFormPria";
 import { useRef, useState } from "react";
+
 import {
   Stepper,
   Button,
@@ -15,7 +16,6 @@ import {
   Text,
 } from "@mantine/core";
 import DataFormWanita from "../components/formStep/dataFormWanita";
-import { useRouter } from "next/navigation";
 
 import "@mantine/dates/styles.css";
 
@@ -96,23 +96,27 @@ export default function Default({ sessionId }: { sessionId: string }) {
 
         // setSelectedFile(data.fotoMemplaiPria)
       })}
-      className=" flex flex-col w-full max-w-xl shadow-lg p-10 h-max overflow-scroll bg-zinc-50 rounded-lg"
+      className="relative flex flex-col w-full max-w-xl py-10 shadow-lg p-5 h-full  "
     >
       <Stepper size="sm" active={active} onStepClick={setActive} iconSize={20}>
         <Stepper.Step>
           <div className="flex flex-col gap-4">
-            <span className="text-xl font-semibold">Form Mempelai Pria</span>
+            <span className="fixed md:absolute top-16 px-5 text-white py-2 left-0 text-lg font-semibold z-20 w-full bg-sky-700">
+              Form Mempelai Pria
+            </span>
             <DataFormPria
               control={control}
               Controller={Controller}
-              register={register}
             />
             <input type="file" {...register("url_foto_pria")} />
           </div>
         </Stepper.Step>
         <Stepper.Step>
           <div className="flex flex-col gap-4 ">
-            <span className="text-xl font-semibold">Form Mempelai Wanita</span>
+            <span className="fixed md:absolute top-16 px-5 text-white py-2 left-0 text-lg font-semibold z-20 w-full bg-sky-700">
+              Form Mempelai Wanita
+            </span>
+
             <DataFormWanita control={control} Controller={Controller} />
             <input type="file" {...register("url_foto_wanita")} />
           </div>
@@ -120,7 +124,9 @@ export default function Default({ sessionId }: { sessionId: string }) {
         <Stepper.Step>
           <div className="flex gap-5 flex-col">
             <div className="flex flex-col gap-5">
-              <span className="text-xl font-semibold">Akad Nikah</span>
+              <span className="text-xl font-semibold">
+                Akad Nikah
+              </span>
               <div className="">
                 <Controller
                   name="alamat_akad_nikah"
@@ -209,11 +215,12 @@ export default function Default({ sessionId }: { sessionId: string }) {
           </div>
         </Stepper.Step>
       </Stepper>
-      <div className="  bottom-8  w-full max-w-xl mt-5">
+      <div className="  w-full max-w-xl mt-5">
         <Group justify="between">
           <div className="flex w-full justify-between items-center px-5">
             {pending === true ? (
               <>
+
                 <Button type="button" variant="default" disabled>
                   Back
                 </Button>
@@ -223,9 +230,19 @@ export default function Default({ sessionId }: { sessionId: string }) {
               </>
             ) : (
               <>
-                <Button type="button" variant="default" onClick={prevStep}>
-                  Back
-                </Button>
+                {active == 0 ? (
+                  <Button type="button" color="red" onClick={() => router.back()}>
+                    Batal
+                  </Button>
+                )
+                  :
+                  (
+                    <Button type="button" variant="default" onClick={prevStep}>
+                      Back
+                    </Button>
+                  )
+                }
+
                 {active === 4 && <Button type="submit">Save</Button>}
               </>
             )}
@@ -234,6 +251,8 @@ export default function Default({ sessionId }: { sessionId: string }) {
                 Next step
               </Button>
             )}
+
+
           </div>
         </Group>
       </div>
