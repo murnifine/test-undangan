@@ -20,7 +20,7 @@ export default function ChangePhotoMoment({
     if (imgFiles.length > 8) {
       return toast.error("Foto terlalu banyak!");
     }
-
+    //
     // console.log({ imgFiles });
     setLoading(true);
     const formData = new FormData();
