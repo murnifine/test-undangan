@@ -67,15 +67,15 @@ export default dataWeedings;
 
 export const exampleData = {
     // userId: nasir.id,
-    slug: "nasir-nurlina",
+    slug: "ege-abe",
 
-    nama_panggilan_pria: "Example",
-    nama_pria: "Example",
+    nama_panggilan_pria: "ege",
+    nama_pria: "La Ege, S.Si.",
     nama_ayah_pria: "Gunawan",
     nama_ibu_pria: "Wa Ode Tila",
 
-    nama_panggilan_wanita: "Example",
-    nama_wanita: "Example Wanita",
+    nama_panggilan_wanita: "abe",
+    nama_wanita: "Nurlina",
     nama_ayah_wanita: "La Ringgasa",
     nama_ibu_wanita: "Wa Ode Wiya",
     templateId: 2,
@@ -91,7 +91,8 @@ export const exampleData = {
     url_foto_utama: "/img/photo.JPG",
     alamat_akad_nikah: "",
     alamat_resepsi: "",
-    photo_moment: [],
 
     dateTime_akad_nikah: "2024-01-07T12:59:59.168Z",
+    dateTime_akad_resepsi: "2024-01-07T12:59:59.168Z",
+
   }

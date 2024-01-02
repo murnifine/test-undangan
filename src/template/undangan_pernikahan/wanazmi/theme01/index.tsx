@@ -80,7 +80,7 @@ export default async function Tmp1({ profile }: { profile: ProfileProps }) {
           <Slide1 profile={profile} />
           <Slide2 profile={profile} />
           <Slide3 profile={profile} />
-          {profile.photo_moment.length > 0 && <Slide4 profile={profile} />}
+          {profile?.photo_moment?.length > 0 && <Slide4 profile={profile} />}
           <Slide6 profile={profile} />
           <Slide7 profile={profile} />
         </div>

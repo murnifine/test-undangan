@@ -40,7 +40,7 @@ export default function ModalEditUndangan({
           <span className="text-sm font-semibold">Edit Tanggal</span>
         </Link>
         <Link
-          href="#"
+          href={`/user/edit?profileId=${profile.id}&type=foto-moments`}
           className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
         >
           <BsCake2 size="1.5em" color="red" />
