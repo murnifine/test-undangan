@@ -13,8 +13,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 
-export const GET = auth(async (request) => {
-  if (request.auth) {
+export const GET = async (request: NextRequest): Promise<NextResponse>  => {
+  const authen = await auth()
+  if (!authen?.user) return   NextResponse.json({ message: "Not authenticated" }, { status: 401 })
+
     let data
     const getIdParams = request.nextUrl.searchParams.get('id')
     if (getIdParams) {
@@ -28,16 +30,15 @@ export const GET = auth(async (request) => {
     }
     // return NextResponse.json({data})
     return NextResponse.json({data, message: "success", status: 200 });
-  }
 
-  return Response.json({ message: "Not authenticated" }, { status: 401 })
-})
+}
 
 
 
 
-export const POST = auth(async (request) => {
-  if (request.auth) {
+export const POST = async (request: Request): Promise<NextResponse> => {
+  const authen = await auth()
+  if (!authen?.user) return   NextResponse.json({ message: "Not authenticated" }, { status: 401 })
     
     try {
       // throw error
@@ -51,7 +52,7 @@ export const POST = auth(async (request) => {
       datas.slug = datas.nama_panggilan_pria + "-" + datas.nama_panggilan_wanita + '_(' + nanoid(6) + ')';
       // datas.userId("userId", sessionId);
       datas.templateId = Number(datas.templateId) as any
-      datas.userId = request.auth.user.id
+      datas.userId = authen.user.id
 
       const data = await prisma.profile.create({
         data: datas as any,
@@ -62,10 +63,10 @@ export const POST = auth(async (request) => {
       console.log(error);
       return NextResponse.json({error: error, message: "failed", status: 401 });
     }
-  }
+  
 
-  return Response.json({ message: "Not authenticated" }, { status: 401 })
-})
+  
+}
 
 // export const POST = auth(async (request) => {
 //     if (request.auth) {

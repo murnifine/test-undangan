@@ -5,12 +5,10 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { customAlphabet, nanoid } from 'nanoid'
 
-export const POST = auth(async (request) => {
-
-  console.log("Bagian : 1");
-
-  if (request.auth) {
-    console.log("Bagian : 2");
+export const POST = async (request : Request): Promise<NextResponse> => {
+  const authen = await auth()
+  if (!authen?.user) return   NextResponse.json({ message: "Not authenticated" }, { status: 401 })
+  
     // return NextResponse.json({ message: "bodynya kosong" });
     if (!request.body) return NextResponse.json({ message: "bodynya kosong" });
 
@@ -131,7 +129,6 @@ export const POST = auth(async (request) => {
 
     revalidatePath("/user");
     return NextResponse.json({ message: "upload bersahil" });
-  }
-  return Response.json({ message: "Not authenticated" }, { status: 401 })
-} ) as any
+
+} 
 

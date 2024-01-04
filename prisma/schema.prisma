@@ -122,6 +122,7 @@ model Profile {
 model bank{
   id      Int      @id @default(autoincrement())
   nama_bank String?
+  nama_pengguna String?
   nomor_req Int?
   profileId Int?
   profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)

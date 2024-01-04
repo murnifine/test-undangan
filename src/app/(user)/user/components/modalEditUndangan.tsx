@@ -60,6 +60,13 @@ export default function ModalEditUndangan({
           <BsCake2 size="1.5em" color="red" />
           <span className="text-sm font-semibold">Edit Foto Cover</span>
         </Link>
+        <Link
+          href={`/user/edit?profileId=${profile.id}&type=bank`}
+          className={` flex gap-2 items-center hover:bg-slate-100 p-2`}
+        >
+          <BsCake2 size="1.5em" color="red" />
+          <span className="text-sm font-semibold">Edit Rekening Bank</span>
+        </Link>
       </Modal>
 
       {/* <button className=" w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-100 rounded-sm" onClick={open} >

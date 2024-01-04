@@ -47,7 +47,7 @@ export default function Index({ sessionId }: { sessionId: string }) {
         <form
             onSubmit={handleSubmit(async (data) => {
                 isLoading(true)
-                console.log(data)
+
 
 
                 const sendData = new FormData()
@@ -78,9 +78,9 @@ export default function Index({ sessionId }: { sessionId: string }) {
                 const respons = await fetchData.json();
 
                 if (respons.message === "success") {
-                  router.push(
-                    `/user/create?profile_id=${respons.data.id}&type=add_photo`
-                  );
+                    router.push(
+                        `/user/create?profile_id=${respons.data.id}&type=add_bank`
+                    );
                 }
 
                 if (respons.message === 'failed') {
@@ -206,7 +206,7 @@ export default function Index({ sessionId }: { sessionId: string }) {
                         Loading
                     </Button>
                     :
-                    <Button type="submit">Save</Button>
+                    <Button type="submit">Next</Button>
 
                 }
 
