@@ -9,6 +9,7 @@ import {
   updateStatusOrderSuccess,
   verifyTransaction,
 } from "@/actions/action-order";
+import { ProfileProps } from "@/types/types";
 
 export default async function Page({
   searchParams,
@@ -62,14 +63,14 @@ export default async function Page({
         <p className="text-xs">
           {profile.dateTime_akad_nikah
             ? new Date(profile.dateTime_akad_nikah).toLocaleDateString(
-                "id-ID",
-                {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }
-              )
+              "id-ID",
+              {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            )
             : ""}
         </p>
       </div>
@@ -88,7 +89,8 @@ export default async function Page({
         // id={profile.id}
         // orderId={profile.order?.id as number}
         // orderStatus={profile.order?.status as string}
-        profile={profile}
+
+        profile={profile as ProfileProps}
       />
 
       <div className="fixed bottom-5 w-full  max-w-md flex justify-center">

@@ -18,13 +18,12 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
     isiUndangan?.classList.add("h-full");
     isiUndangan?.classList.remove("overflow-hidden");
     isiUndangan?.classList.remove("h-screen");
-    if (button == true) {
-      document.querySelector('#open-undang')?.classList.add('hidden')
-    }
+
     (playMusic as HTMLElement).click();
     setOpenUndangan(openMove);
     setOpacity(0);
     setButton(true)
+    document.querySelector('#coverku')?.classList.add('hidden')
   };
 
   const searchParams = useSearchParams();
@@ -33,6 +32,7 @@ export default function Cover({ profile }: { profile: ProfileProps }) {
 
   return (
     <motion.div
+      id='coverku'
       className="flex  fixed justify-center items-center w-full  top-0 h-screen bg-slate-900 z-50 py-20"
       animate={{ y: openUndangan, opacity: opacity }}
       // transition={{ ease: "easeOut", duration: 2, times: [0, 1.5, 1], }}

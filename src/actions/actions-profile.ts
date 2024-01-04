@@ -77,7 +77,6 @@ export async function setMusic(profileId: number, musicId: string) {
     },
   });
 
-  console.log({ data });
 
   // if (!data)
   //   return {
@@ -86,4 +85,9 @@ export async function setMusic(profileId: number, musicId: string) {
 
   // revalidatePath("/user");
   // redirect("/user");
+}
+
+export async function editBank(id: number, data: any) {
+  console.log(data);
+  
 }

@@ -17,9 +17,10 @@ import "@mantine/dates/styles.css";
 
 import InputsDataForm from "../components/inputsDataForm";
 import { updateProfile } from "@/actions/actions-profile";
-import { Profile } from "@prisma/client";
+// import { Profile } from "@prisma/client";
+import { ProfileProps } from "@/types/types";
 
-export default function EditBank({ sessionId, dataValue }: { sessionId: string, dataValue: Profile }) {
+export default function EditBank({ sessionId, dataValue }: { sessionId: string, dataValue: ProfileProps }) {
 
     const router = useRouter();
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -47,8 +48,14 @@ export default function EditBank({ sessionId, dataValue }: { sessionId: string, 
         <form
             onSubmit={handleSubmit(async (data) => {
 
-
-
+                const sendData = new FormData()
+                for (const dataForm in data) {
+                    sendData.append(dataForm, data[dataForm]);
+                }
+                const fechingData = await fetch('/api/bank', {
+                    method: 'POST',
+                    body: sendData,
+                })
 
                 // setSelectedFile(data.fotoMemplaiPria)
             })}
@@ -64,18 +71,26 @@ export default function EditBank({ sessionId, dataValue }: { sessionId: string, 
                             <div className="">
                                 <Controller
                                     name="nama_bank"
-                                    defaultValue={dataValue}
+                                    defaultValue={dataValue?.rekening_bank[0]?.nama_bank}
                                     control={control}
                                     render={({ field }: { field: any }) => (
-                                        <InputsDataForm label="Alamat" configName={field} />
+                                        <InputsDataForm label="Jenis Bank" configName={field} />
+                                    )}
+                                />
+                                <Controller
+                                    name="nama_pengguna"
+                                    defaultValue={dataValue?.rekening_bank[0]?.nama_pengguna}
+                                    control={control}
+                                    render={({ field }: { field: any }) => (
+                                        <InputsDataForm label="Nama" configName={field} />
                                     )}
                                 />
                                 <Controller
                                     name="nomor_rekening"
-                                    defaultValue={dataValue.url_akad_nikah}
+                                    defaultValue={dataValue?.rekening_bank[0]?.nomor_req}
                                     control={control}
                                     render={({ field }: { field: any }) => (
-                                        <InputsDataForm label="Alamat Url" configName={field} />
+                                        <InputsDataForm label="Nomor Rekening" configName={field} />
                                     )}
                                 />
                             </div>
@@ -88,28 +103,21 @@ export default function EditBank({ sessionId, dataValue }: { sessionId: string, 
             <div className="  bottom-8  w-full max-w-xl mt-5">
                 <Group justify="between">
                     <div className="flex w-full justify-between items-center px-5">
-                        {pending === true ? (
-                            <>
-                                <Button type="button" variant="default" disabled>
-                                    Back
-                                </Button>
-                                <Button loading={pending} type="button" disabled>
-                                    Loading
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                                <Button type="button" variant="default" onClick={prevStep}>
-                                    Back
-                                </Button>
-                                {active === 0 && <Button type="submit">Save</Button>}
-                            </>
-                        )}
-                        {active !== 0 && (
-                            <Button type="button" onClick={nextStep}>
-                                Next step
+
+                        {/* // <>
+                            //     <Button loading={pending} type="button" disabled>
+                            //         Loading
+                            //     </Button>
+                            // </> */}
+
+                        <>
+                            <Button type="button" variant="default" onClick={prevStep}>
+                                Back
                             </Button>
-                        )}
+
+                            <Button loading={pending} type="submit">Save</Button>
+                        </>
+
                     </div>
                 </Group>
             </div>

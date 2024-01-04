@@ -10,12 +10,8 @@ import { Button, Input } from "@mantine/core";
 import { useClipboard } from "@mantine/hooks";
 import { Order, Profile } from "@prisma/client";
 import {
-  IconBrandFacebookFilled,
-  IconBrandInstagram,
-  IconBrandTiktokFilled,
-  IconBrandWhatsapp,
+
   IconLock,
-  IconLockAccess,
   IconUserCheck,
 } from "@tabler/icons-react";
 import { revalidatePath, revalidateTag } from "next/cache";

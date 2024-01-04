@@ -8,9 +8,9 @@ import prisma from "@/lib/prisma";
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
-export const PUT = auth(async (request) => {
-  if (!request.auth)
-    return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
+export const PUT = async (request: Request): Promise<NextResponse> => {
+  const authen = await auth()
+  if (!authen?.user) return NextResponse.json({ message: "Not authenticated" }, { status: 401 })
 
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
@@ -30,7 +30,7 @@ export const PUT = auth(async (request) => {
     message: "success",
     status: 200,
   });
-});
+};
 
 async function handleFile(data: any, profile_id: number) {
   let dataInputFotoMoments = {} as any;
