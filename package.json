@@ -37,6 +37,7 @@
     "antd": "^5.11.4",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.6.3",
+    "browser-image-compression": "^2.0.2",
     "filepond": "^4.30.4",
     "filepond-plugin-image-edit": "^1.6.3",
     "filepond-plugin-image-exif-orientation": "^1.0.11",

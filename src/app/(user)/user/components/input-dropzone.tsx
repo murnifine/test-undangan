@@ -1,3 +1,4 @@
+import compressImage from "@/utils/compress-image";
 import { Text, Image, SimpleGrid } from "@mantine/core";
 import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from "@mantine/dropzone";
 import { useState } from "react";
@@ -34,12 +35,17 @@ export default function InputDropzone({
       <Dropzone
         multiple={isMultiple}
         accept={IMAGE_MIME_TYPE}
-        onDrop={(imgfiles) => {
-          setFiles(imgfiles);
+        onDrop={async (thisImages) => {
+          setFiles(thisImages);
           if (isMultiple) {
-            setImgFiles(imgfiles);
+            setImgFiles(
+              thisImages.map(async (img) => await compressImage(img))
+            );
           } else {
-            setImgFiles([...imgFiles, { name, file: imgfiles[0] }]);
+            setImgFiles([
+              ...imgFiles,
+              { name, file: await compressImage(thisImages[0]) },
+            ]);
           }
         }}
       >
